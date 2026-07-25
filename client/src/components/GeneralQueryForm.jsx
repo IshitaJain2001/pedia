@@ -18,7 +18,7 @@ const GeneralQueryForm = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post('/api/general-query', data);
+      const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/general-query', data);
       if (response.data.success) {
         toast.success('Your query has been submitted successfully!');
         reset();

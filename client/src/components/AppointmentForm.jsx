@@ -25,7 +25,7 @@ const AppointmentForm = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post('/api/appointments', data);
+      const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/appointments', data);
       if (response.data.success) {
         toast.success('Appointment request submitted successfully!');
         reset();
