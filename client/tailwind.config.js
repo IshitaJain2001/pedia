@@ -8,14 +8,14 @@ export default {
     extend: {
       colors: {
         primary: {
-          sky: '#8FD8FF',
-          mint: '#D8F8E1',
-          yellow: '#FFEAA7',
-          peach: '#FFD8C2',
+          sky: '#4A90E2',
+          mint: '#50C878',
+          yellow: '#F5B041',
+          peach: '#E8985E',
         },
         accent: {
-          coral: '#FF6B6B',
-          lavender: '#A78BFA',
+          coral: '#E74C3C',
+          lavender: '#8E44AD',
         }
       },
       fontFamily: {

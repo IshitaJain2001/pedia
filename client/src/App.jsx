@@ -19,7 +19,7 @@ import Chatbot from './components/Chatbot';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-white via-primary-mint/20 to-primary-sky/20">
+      <div className="min-h-screen bg-white">
         <Navbar />
         <Hero />
         <WhyChooseUs />
