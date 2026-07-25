@@ -17,16 +17,21 @@ const GeneralQueryForm = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+    console.log('Submitting query data:', data);
     try {
       const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/general-query', data);
+      console.log('Query response:', response.data);
       if (response.data.success) {
         toast.success('Your query has been submitted successfully!');
         reset();
+      } else {
+        toast.error(response.data.message || 'Submission failed');
       }
     } catch (error) {
       console.error('Error submitting query:', error);
+      console.error('Error response:', error.response);
       toast.error(
-        error.response?.data?.message || 'Failed to submit query. Please try again.'
+        error.response?.data?.message || error.message || 'Failed to submit query. Please try again.'
       );
     } finally {
       setIsSubmitting(false);

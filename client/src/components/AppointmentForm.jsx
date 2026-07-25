@@ -24,16 +24,21 @@ const AppointmentForm = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+    console.log('Submitting appointment data:', data);
     try {
       const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/appointments', data);
+      console.log('Appointment response:', response.data);
       if (response.data.success) {
         toast.success('Appointment request submitted successfully!');
         reset();
+      } else {
+        toast.error(response.data.message || 'Submission failed');
       }
     } catch (error) {
       console.error('Error submitting appointment:', error);
+      console.error('Error response:', error.response);
       toast.error(
-        error.response?.data?.message || 'Failed to submit appointment. Please try again.'
+        error.response?.data?.message || error.message || 'Failed to submit appointment. Please try again.'
       );
     } finally {
       setIsSubmitting(false);
