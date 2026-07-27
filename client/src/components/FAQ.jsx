@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 
 const FAQ = () => {
@@ -44,44 +45,59 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-mint/30 to-primary-sky/30">
+    <section className="py-20 bg-gradient-to-br from-primary-orange/10 to-primary-amber/10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-800 mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Find answers to common questions about our pediatric services
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index}>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <button
+                <motion.button
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
                 >
                   <span className="text-lg font-poppins font-semibold text-gray-800 pr-4">
                     {faq.question}
                   </span>
-                  <div
-                    className={`flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <FaChevronDown className="text-primary-sky" />
-                  </div>
-                </button>
+                    <FaChevronDown className="text-primary-orange" />
+                  </motion.div>
+                </motion.button>
 
-                {openIndex === index && (
-                    <div className="overflow-hidden transition-all duration-300">
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
                       <div className="px-6 pb-5 pt-0">
                         <p className="text-gray-600">
                           {faq.answer}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
+                </AnimatePresence>
               </div>
             </div>
           ))}

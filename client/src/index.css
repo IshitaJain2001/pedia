@@ -22,7 +22,7 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-sky to-accent-lavender bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent;
   }
   
   .text-gradient-dark {
@@ -30,11 +30,11 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-sky to-primary-mint text-white font-semibold px-8 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300;
+    @apply bg-gradient-to-r from-primary-light to-primary-accent text-white font-semibold px-8 py-3 rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300;
   }
   
   .btn-secondary {
-    @apply bg-white text-gray-900 border-2 border-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-300;
+    @apply bg-background-card text-white border-2 border-primary-light font-semibold px-8 py-3 rounded-lg hover:bg-primary-light hover:text-white transition-all duration-300;
   }
   
   .card-shadow {

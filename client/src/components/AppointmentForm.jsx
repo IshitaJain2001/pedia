@@ -16,10 +16,7 @@ const AppointmentForm = () => {
   } = useForm();
 
   const doctors = [
-    'Dr. Sarah Johnson - Pediatrician',
-    'Dr. Michael Chen - Neonatologist',
-    'Dr. Emily Williams - Pediatric Cardiologist',
-    'Dr. James Anderson - Pediatric Surgeon',
+    'Dr. Syed - Pediatrician & Neonatologist',
   ];
 
   const onSubmit = async (data) => {
@@ -55,11 +52,11 @@ const AppointmentForm = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
             Book an Appointment
           </h2>
-          <p className="text-lg text-gray-600">
-            Schedule a visit with our expert pediatricians for your child's healthcare needs.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Schedule a visit with Dr. Syed for your child's healthcare needs
           </p>
         </motion.div>
 

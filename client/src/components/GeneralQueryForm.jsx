@@ -39,7 +39,7 @@ const GeneralQueryForm = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-sky/20 to-primary-mint/20">
+    <section id="general-query" className="py-20 bg-background-warm">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,11 +48,11 @@ const GeneralQueryForm = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
             General Query
           </h2>
-          <p className="text-lg text-gray-600">
-            Have a question? Send us a message and we'll get back to you soon.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Have a question regarding your child's health? Send us your query and we'll get back to you shortly.
           </p>
         </motion.div>
 

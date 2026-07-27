@@ -76,7 +76,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-primary-mint/30 to-primary-sky/30">
+    <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-800 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
             Our Services
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -102,17 +102,25 @@ const Services = () => {
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full hover:shadow-2xl transition-all duration-300">
-                <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-4`}>
+              <motion.div
+                whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}
+                transition={{ duration: 0.3 }}
+                className="bg-background-warm rounded-xl shadow-lg p-6 h-full border border-gray-200 hover:border-primary-orange transition-all duration-300"
+              >
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3, repeat: 1 }}
+                  className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 shadow-md`}
+                >
                   <service.icon className="text-white text-xl" />
-                </div>
-                <h3 className="text-lg font-poppins font-semibold text-gray-800 mb-2">
+                </motion.div>
+                <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-              </Card>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

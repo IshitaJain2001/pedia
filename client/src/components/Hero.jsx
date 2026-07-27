@@ -1,7 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
 import Button from './Button';
 
 const Hero = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 100]);
+
   const scrollToSection = (id) => {
     const element = document.querySelector(id);
     if (element) {
@@ -9,8 +14,21 @@ const Hero = () => {
     }
   };
 
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const x = (clientX / windowWidth - 0.5) * 20;
+    const y = (clientY / windowHeight - 0.5) * 20;
+    setMousePosition({ x, y });
+  };
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section 
+      id="home" 
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-background-warm"
+      onMouseMove={handleMouseMove}
+    >
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -21,38 +39,76 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
+            {/* Hospital Name */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-bold text-gray-900 leading-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-bold text-gray-900 leading-tight mb-4"
             >
-              Caring Little Hearts,
+              Dr Syed's
               <br />
-              <span className="text-gradient">Growing Healthy Smiles.</span>
+              <span className="text-gradient">Al-Sageer Clinic</span>
             </motion.h1>
 
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg sm:text-xl text-gray-700 mb-8 max-w-xl mx-auto lg:mx-0"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-xl sm:text-2xl font-poppins font-semibold text-primary-orange mb-4"
             >
-              Providing compassionate pediatric care for newborns, infants, toddlers, children, and adolescents.
+              A Clinic of Pediatrics & Neonatology
             </motion.p>
 
+            {/* Under Patronage */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-6"
             >
-              <Button onClick={() => scrollToSection('#appointment')}>
-                Book Appointment
-              </Button>
-              <Button variant="secondary" onClick={() => scrollToSection('#contact')}>
-                Contact Us
-              </Button>
+              <p className="text-sm text-gray-600 mb-1">Under the Patronage of</p>
+              <p className="text-base font-semibold text-gray-800">Prof. Dr. S. Z. Mehdi, MD, FRCP</p>
+            </motion.div>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg sm:text-xl text-gray-700 italic mb-8 max-w-xl mx-auto lg:mx-0"
+            >
+              "Caring Little Hearts, Growing Healthy Smiles."
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-base sm:text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0"
+            >
+              Providing compassionate pediatric care for newborns, infants, toddlers, children, and adolescents with professional expertise.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button onClick={() => scrollToSection('#appointment')}>
+                  Book Appointment
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="secondary" onClick={() => scrollToSection('#general-query')}>
+                  General Query
+                </Button>
+              </motion.div>
             </motion.div>
 
             {/* Trust Badges */}
@@ -60,36 +116,31 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-12 flex flex-wrap gap-6 justify-center lg:justify-start"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
             >
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-12 bg-primary-mint rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-accent-coral" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              {[
+                { text: 'Child Friendly Clinic' },
+                { text: 'Experienced Pediatrician' },
+                { text: 'Vaccination & Neonatal Care' },
+                { text: 'Emergency Consultation' }
+              ].map((badge, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
+                  className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-md border border-gray-200"
+                >
+                  <svg className="w-5 h-5 text-primary-orange" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Trusted Care</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-12 bg-primary-sky rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-primary-yellow" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Expert Doctors</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-12 bg-primary-peach rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-sm font-medium text-gray-700">24/7 Support</span>
-              </div>
+                  <span className="text-sm font-medium text-gray-700">{badge.text}</span>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* Right Illustration */}
+          {/* Right Column - Doctor Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -97,16 +148,42 @@ const Hero = () => {
             className="relative"
           >
             <div className="relative w-full max-w-lg mx-auto">
-              {/* Main Circle */}
-              <div className="w-80 h-80 sm:w-96 sm:h-96 mx-auto bg-gradient-to-br from-primary-sky to-primary-mint rounded-full flex items-center justify-center shadow-2xl">
-                <div className="text-center text-white p-8">
-                  <div className="text-6xl mb-4">
-                    👨‍⚕️
+              {/* Decorative shapes behind image */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-10 -right-10 w-32 h-32 bg-primary-orange/20 rounded-full blur-xl"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-amber/20 rounded-full blur-xl"
+              />
+              
+              {/* Main Image Container */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                style={{ y, x: mousePosition.x }}
+                className="relative z-10"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.02, 1] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-4 border border-gray-200"
+                >
+                  {/* Placeholder for doctor image */}
+                  <div className="w-full h-96 bg-gradient-to-br from-primary-orange/20 to-primary-amber/20 rounded-xl flex items-center justify-center">
+                    <div className="text-center">
+                      <svg className="w-24 h-24 text-primary-orange mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                      <p className="text-gray-700 font-medium">Doctor Image</p>
+                      <p className="text-sm text-gray-500">Please upload the doctor image</p>
+                    </div>
                   </div>
-                  <p className="text-2xl font-poppins font-bold">Happy Kids</p>
-                  <p className="text-lg">Healthy Families</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
