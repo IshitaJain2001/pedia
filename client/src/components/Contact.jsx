@@ -19,13 +19,13 @@ const Contact = () => {
       icon: FaEnvelope,
       title: 'Email',
       content: 'info@littlehearts.com',
-      color: 'bg-accent-coral',
+      color: 'bg-accent-mint',
     },
     {
       icon: FaClock,
       title: 'Working Hours',
       content: 'Mon - Sat: 8:00 AM - 8:00 PM\nEmergency: 24/7',
-      color: 'bg-accent-lavender',
+      color: 'bg-accent-teal',
     },
   ];
 

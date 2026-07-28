@@ -51,7 +51,7 @@ const Chatbot = () => {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary-orange to-primary-amber text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary-green to-primary-light text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
       >
         {isOpen ? <X size={24} className="text-white" /> : <MessageSquare size={24} className="text-white" />}
       </button>
@@ -60,7 +60,7 @@ const Chatbot = () => {
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary-orange to-primary-amber p-4 text-white">
+          <div className="bg-gradient-to-r from-primary-green to-primary-light p-4 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Bot size={24} className="text-white" />
@@ -88,7 +88,7 @@ const Chatbot = () => {
                 <div
                   className={`max-w-[80%] p-3 rounded-2xl ${
                     msg.type === 'user'
-                      ? 'bg-gradient-to-r from-primary-orange to-primary-amber text-white rounded-br-md'
+                      ? 'bg-gradient-to-r from-primary-green to-primary-light text-white rounded-br-md'
                       : 'bg-white text-gray-800 shadow-sm rounded-bl-md'
                   }`}
                 >
@@ -118,13 +118,13 @@ const Chatbot = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about clinic info..."
-                className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-orange/50"
+                className="flex-1 px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-green/50"
                 disabled={isLoading}
               />
               <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="bg-gradient-to-r from-primary-orange to-primary-amber text-white p-2 rounded-full hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-primary-green to-primary-light text-white p-2 rounded-full hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={20} className="text-white" />
               </button>

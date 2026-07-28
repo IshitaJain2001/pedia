@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const LoadingScreen = () => {
   return (
-    <div className="fixed inset-0 bg-background-warm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-background-green flex items-center justify-center z-50">
       <div className="text-center">
         {/* Animated Logo */}
         <motion.div
@@ -28,7 +28,7 @@ const LoadingScreen = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-2xl sm:text-3xl font-poppins font-semibold text-primary-orange"
+              className="text-2xl sm:text-3xl font-poppins font-semibold text-primary-green"
             >
               Al-Sageer Clinic
             </motion.h2>
@@ -53,12 +53,12 @@ const LoadingScreen = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border-4 border-primary-orange/20 rounded-full"
+            className="absolute inset-0 border-4 border-primary-green/20 rounded-full"
           />
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 border-4 border-t-primary-orange border-r-primary-orange border-b-transparent border-l-transparent rounded-full"
+            className="absolute inset-0 border-4 border-t-primary-green border-r-primary-green border-b-transparent border-l-transparent rounded-full"
           />
         </motion.div>
       </div>

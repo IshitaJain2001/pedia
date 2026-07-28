@@ -8,37 +8,37 @@ const WhyChooseUs = () => {
       icon: FaUserMd,
       title: 'Experienced Pediatrician',
       description: 'Our team of board-certified pediatricians has years of experience in child healthcare.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-green to-primary-light',
     },
     {
       icon: FaSyringe,
       title: 'Vaccination Services',
       description: 'Comprehensive immunization programs following WHO guidelines.',
-      color: 'from-primary-amber to-primary-olive',
+      color: 'from-primary-light to-primary-lime',
     },
     {
       icon: FaBaby,
       title: 'Neonatal Care',
       description: 'Specialized care for newborns and premature babies with expert monitoring.',
-      color: 'from-primary-olive to-primary-warm',
+      color: 'from-primary-lime to-primary-emerald',
     },
     {
       icon: FaAmbulance,
       title: 'Emergency Care',
       description: '24/7 emergency services with rapid response for urgent medical situations.',
-      color: 'from-primary-warm to-accent-coral',
+      color: 'from-primary-emerald to-accent-mint',
     },
     {
       icon: FaStethoscope,
       title: 'Growth Monitoring',
       description: 'Regular checkups and growth tracking to ensure healthy development.',
-      color: 'from-accent-coral to-accent-gold',
+      color: 'from-accent-mint to-accent-teal',
     },
     {
       icon: FaHeartbeat,
       title: 'Child Friendly Environment',
       description: 'Professional, welcoming spaces designed to make children feel comfortable and safe.',
-      color: 'from-accent-gold to-primary-orange',
+      color: 'from-accent-teal to-primary-green',
     },
   ];
 
@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section id="why-choose-us" className="py-20 bg-background-warm">
+    <section id="why-choose-us" className="py-20 bg-background-green">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,7 +93,7 @@ const WhyChooseUs = () => {
               <motion.div
                 whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-xl shadow-lg p-8 h-full border border-gray-200 hover:border-primary-orange transition-all duration-300"
+                className="bg-white rounded-xl shadow-lg p-8 h-full border border-gray-200 hover:border-primary-green transition-all duration-300"
               >
                 <motion.div
                   whileHover={{ rotate: 15 }}

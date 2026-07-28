@@ -37,34 +37,34 @@ const Statistics = () => {
       value: 5000,
       suffix: '+',
       label: 'Happy Families',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-green to-primary-light',
     },
     {
       icon: FaUserMd,
       value: 25,
       suffix: '+',
       label: 'Expert Doctors',
-      color: 'from-primary-amber to-primary-olive',
+      color: 'from-primary-light to-primary-lime',
     },
     {
       icon: FaCalendarAlt,
       value: 15,
       suffix: '+',
       label: 'Years Experience',
-      color: 'from-primary-olive to-primary-warm',
+      color: 'from-primary-lime to-primary-emerald',
     },
     {
       icon: FaClock,
       value: 24,
       suffix: 'x7',
       label: 'Emergency Care',
-      color: 'from-primary-warm to-accent-coral',
+      color: 'from-primary-emerald to-accent-mint',
     },
   ];
 
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-orange/10 to-primary-amber/10">
+    <section className="py-20 bg-gradient-to-br from-primary-green/10 to-primary-light/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

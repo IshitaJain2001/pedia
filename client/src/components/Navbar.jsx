@@ -10,7 +10,6 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
-    { name: 'Our Doctors', href: '#doctors' },
     { name: 'Services', href: '#services' },
     { name: 'General Query', href: '#general-query' },
     { name: 'Contact', href: '#contact' },
@@ -53,12 +52,12 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <FaHeartbeat className="text-2xl text-primary-orange" />
+              <FaHeartbeat className="text-2xl text-primary-green" />
               <div className="flex flex-col">
                 <span className="text-lg font-poppins font-bold text-gray-900 leading-tight">
                   Dr Syed's
                 </span>
-                <span className="text-sm font-poppins font-semibold text-primary-orange leading-tight">
+                <span className="text-sm font-poppins font-semibold text-primary-green leading-tight">
                   Al-Sageer Clinic
                 </span>
               </div>
@@ -67,7 +66,7 @@ const Navbar = () => {
             {/* Book Appointment Button */}
             <motion.button
               onClick={() => scrollToSection('#appointment')}
-              className="bg-gradient-to-r from-primary-orange to-primary-amber text-white font-semibold px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-primary-green to-primary-light text-white font-semibold px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -80,7 +79,7 @@ const Navbar = () => {
       {/* Mobile Menu Toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-20 left-4 z-50 p-3 bg-white rounded-lg border border-gray-200 text-primary-orange hover:bg-orange-50 transition-colors duration-300"
+        className="fixed top-20 left-4 z-50 p-3 bg-white rounded-lg border border-gray-200 text-primary-green hover:bg-green-50 transition-colors duration-300"
       >
         {isOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
       </button>
@@ -102,7 +101,7 @@ const Navbar = () => {
                   <li key={link.name}>
                     <button
                       onClick={() => scrollToSection(link.href)}
-                      className="w-full text-left px-4 py-3 text-gray-700 hover:text-primary-orange hover:bg-orange-50 rounded-lg transition-all duration-300 font-medium"
+                      className="w-full text-left px-4 py-3 text-gray-700 hover:text-primary-green hover:bg-orange-50 rounded-lg transition-all duration-300 font-medium"
                     >
                       {link.name}
                     </button>

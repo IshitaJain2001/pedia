@@ -8,22 +8,23 @@ export default {
     extend: {
       colors: {
         primary: {
-          olive: '#808000',
-          orange: '#FF8C00',
-          amber: '#FFBF00',
-          warm: '#D2691E',
-          cream: '#FFF8DC',
+          green: '#2E7D32',
+          light: '#4CAF50',
+          lime: '#8BC34A',
+          emerald: '#10B981',
+          dark: '#1B5E20',
+          cream: '#F1F8E9',
         },
         accent: {
-          gold: '#FFD700',
-          coral: '#FF7F50',
-          peach: '#FFDAB9',
-          brown: '#8B4513',
+          mint: '#69F0AE',
+          teal: '#26A69A',
+          sage: '#87CEEB',
+          forest: '#228B22',
         },
         background: {
-          warm: '#FFF5E6',
-          cream: '#FFFAF0',
-          light: '#FFF8DC',
+          green: '#F1F8E9',
+          cream: '#F9FBE7',
+          light: '#E8F5E9',
         }
       },
       fontFamily: {

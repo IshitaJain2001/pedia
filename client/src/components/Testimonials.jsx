@@ -69,7 +69,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-background-warm">
+    <section className="py-20 bg-background-green">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
@@ -91,17 +91,17 @@ const Testimonials = () => {
             >
               <Card className="p-8 sm:p-12">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary-orange to-primary-amber rounded-full flex items-center justify-center text-4xl mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary-green to-primary-light rounded-full flex items-center justify-center text-4xl mb-6">
                     {testimonials[currentIndex].avatar}
                   </div>
                   
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <FaStar key={i} className="text-primary-orange" />
+                      <FaStar key={i} className="text-primary-green" />
                     ))}
                   </div>
 
-                  <FaQuoteLeft className="text-primary-orange/30 text-4xl mb-4" />
+                  <FaQuoteLeft className="text-primary-green/30 text-4xl mb-4" />
                   
                   <p className="text-lg text-gray-700 mb-6 italic">
                     "{testimonials[currentIndex].text}"
@@ -111,7 +111,7 @@ const Testimonials = () => {
                     <h4 className="text-xl font-poppins font-semibold text-gray-900">
                       {testimonials[currentIndex].name}
                     </h4>
-                    <p className="text-primary-orange">
+                    <p className="text-primary-green">
                       {testimonials[currentIndex].child}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ const Testimonials = () => {
           <div className="flex justify-center items-center space-x-4 mt-8">
             <motion.button
               onClick={handlePrev}
-              className="w-12 h-12 bg-primary-orange text-white rounded-full flex items-center justify-center shadow-lg"
+              className="w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -137,7 +137,7 @@ const Testimonials = () => {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-primary-orange w-8' : 'bg-gray-300'
+                    index === currentIndex ? 'bg-primary-green w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -145,7 +145,7 @@ const Testimonials = () => {
 
             <motion.button
               onClick={handleNext}
-              className="w-12 h-12 bg-primary-orange text-white rounded-full flex items-center justify-center shadow-lg"
+              className="w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >

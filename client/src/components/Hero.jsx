@@ -26,7 +26,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-background-warm"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-background-green"
       onMouseMove={handleMouseMove}
     >
 
@@ -56,7 +56,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl sm:text-2xl font-poppins font-semibold text-primary-orange mb-4"
+              className="text-xl sm:text-2xl font-poppins font-semibold text-primary-green mb-4"
             >
               A Clinic of Pediatrics & Neonatology
             </motion.p>
@@ -131,7 +131,7 @@ const Hero = () => {
                   transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
                   className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-md border border-gray-200"
                 >
-                  <svg className="w-5 h-5 text-primary-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-primary-green" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-sm font-medium text-gray-700">{badge.text}</span>
@@ -152,12 +152,12 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-10 -right-10 w-32 h-32 bg-primary-orange/20 rounded-full blur-xl"
+                className="absolute -top-10 -right-10 w-32 h-32 bg-primary-green/20 rounded-full blur-xl"
               />
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-amber/20 rounded-full blur-xl"
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-light/20 rounded-full blur-xl"
               />
               
               {/* Main Image Container */}
@@ -172,9 +172,9 @@ const Hero = () => {
                   style={{ willChange: 'transform' }}
                 >
                   {/* Placeholder for doctor image */}
-                  <div className="w-full h-96 bg-gradient-to-br from-primary-orange/20 to-primary-amber/20 rounded-xl flex items-center justify-center">
+                  <div className="w-full h-96 bg-gradient-to-br from-primary-green/20 to-primary-light/20 rounded-xl flex items-center justify-center">
                     <div className="text-center">
-                      <svg className="w-24 h-24 text-primary-orange mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-24 h-24 text-primary-green mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                       </svg>
                       <p className="text-gray-700 font-medium">Doctor Image</p>

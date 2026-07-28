@@ -8,49 +8,49 @@ const Services = () => {
       icon: FaBabyCarriage,
       title: 'Newborn Care',
       description: 'Comprehensive care for newborns including checkups, feeding guidance, and developmental monitoring.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-green to-primary-light',
     },
     {
       icon: FaSyringe,
       title: 'Vaccination',
       description: 'Complete immunization schedule with safe and effective vaccines for all age groups.',
-      color: 'from-primary-amber to-primary-olive',
+      color: 'from-primary-light to-primary-lime',
     },
     {
       icon: FaAppleAlt,
       title: 'Nutrition Guidance',
       description: 'Expert advice on child nutrition, diet plans, and healthy eating habits.',
-      color: 'from-primary-olive to-primary-warm',
+      color: 'from-primary-lime to-primary-emerald',
     },
     {
       icon: FaChild,
       title: 'Child Development',
       description: 'Monitoring and support for physical, cognitive, and emotional development milestones.',
-      color: 'from-primary-warm to-accent-coral',
+      color: 'from-primary-emerald to-accent-mint',
     },
     {
       icon: FaStethoscope,
       title: 'General Consultation',
       description: 'Routine health checkups and consultations for common childhood illnesses.',
-      color: 'from-accent-coral to-primary-orange',
+      color: 'from-accent-mint to-primary-green',
     },
     {
       icon: FaAmbulance,
       title: 'Emergency Pediatrics',
       description: '24/7 emergency care for urgent medical situations with rapid response team.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-green to-primary-light',
     },
     {
       icon: FaChartLine,
       title: 'Growth Monitoring',
       description: 'Regular tracking of growth parameters with percentile-based assessments.',
-      color: 'from-primary-amber to-primary-olive',
+      color: 'from-primary-light to-primary-lime',
     },
     {
       icon: FaHeartbeat,
       title: 'Health Checkups',
       description: 'Comprehensive health screenings and preventive care programs.',
-      color: 'from-primary-olive to-primary-warm',
+      color: 'from-primary-lime to-primary-emerald',
     },
   ];
 
@@ -105,7 +105,7 @@ const Services = () => {
               <motion.div
                 whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                 transition={{ duration: 0.3 }}
-                className="bg-white rounded-xl shadow-lg p-6 h-full border border-gray-200 hover:border-primary-orange transition-all duration-300"
+                className="bg-white rounded-xl shadow-lg p-6 h-full border border-gray-200 hover:border-primary-green transition-all duration-300"
               >
                 <motion.div
                   whileHover={{ y: -5 }}

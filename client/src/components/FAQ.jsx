@@ -45,7 +45,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-orange/10 to-primary-amber/10">
+    <section className="py-20 bg-gradient-to-br from-primary-green/10 to-primary-light/10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ const FAQ = () => {
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <FaChevronDown className="text-primary-orange" />
+                    <FaChevronDown className="text-primary-green" />
                   </motion.div>
                 </motion.button>
 

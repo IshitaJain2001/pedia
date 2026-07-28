@@ -80,13 +80,13 @@ const AppointmentForm = () => {
                     },
                   })}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                    errors.parentName ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.parentName ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   placeholder=" "
                   animate={errors.parentName ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 />
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Parent Name *
                 </label>
                 {errors.parentName && (
@@ -112,13 +112,13 @@ const AppointmentForm = () => {
                     },
                   })}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                    errors.email ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.email ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   placeholder=" "
                   animate={errors.email ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 />
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Email *
                 </label>
                 {errors.email && (
@@ -144,13 +144,13 @@ const AppointmentForm = () => {
                     },
                   })}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   placeholder=" "
                   animate={errors.phone ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 />
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Phone Number *
                 </label>
                 {errors.phone && (
@@ -176,13 +176,13 @@ const AppointmentForm = () => {
                     },
                   })}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                    errors.childName ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.childName ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   placeholder=" "
                   animate={errors.childName ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 />
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Child Name *
                 </label>
                 {errors.childName && (
@@ -205,13 +205,13 @@ const AppointmentForm = () => {
                       required: 'Child age is required',
                     })}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                      errors.childAge ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                      errors.childAge ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                     }`}
                     placeholder=" "
                     animate={errors.childAge ? { x: [-10, 10, -10, 10, 0] } : {}}
                     transition={{ duration: 0.4 }}
                   />
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                     Child Age *
                   </label>
                   {errors.childAge && (
@@ -231,7 +231,7 @@ const AppointmentForm = () => {
                       required: 'Gender is required',
                     })}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
-                      errors.gender ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                      errors.gender ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                     }`}
                     animate={errors.gender ? { x: [-10, 10, -10, 10, 0] } : {}}
                     transition={{ duration: 0.4 }}
@@ -241,7 +241,7 @@ const AppointmentForm = () => {
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </motion.select>
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                     Gender *
                   </label>
                   {errors.gender && (
@@ -263,7 +263,7 @@ const AppointmentForm = () => {
                     required: 'Preferred doctor is required',
                   })}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
-                    errors.doctor ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.doctor ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   animate={errors.doctor ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
@@ -275,7 +275,7 @@ const AppointmentForm = () => {
                     </option>
                   ))}
                 </motion.select>
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Preferred Doctor *
                 </label>
                 {errors.doctor && (
@@ -299,12 +299,12 @@ const AppointmentForm = () => {
                     })}
                     min={new Date().toISOString().split('T')[0]}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
-                      errors.appointmentDate ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                      errors.appointmentDate ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                     }`}
                     animate={errors.appointmentDate ? { x: [-10, 10, -10, 10, 0] } : {}}
                     transition={{ duration: 0.4 }}
                   />
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                     Appointment Date *
                   </label>
                   {errors.appointmentDate && (
@@ -324,7 +324,7 @@ const AppointmentForm = () => {
                       required: 'Preferred time is required',
                     })}
                     className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
-                      errors.preferredTime ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                      errors.preferredTime ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                     }`}
                     animate={errors.preferredTime ? { x: [-10, 10, -10, 10, 0] } : {}}
                     transition={{ duration: 0.4 }}
@@ -338,7 +338,7 @@ const AppointmentForm = () => {
                     <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
                     <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
                   </motion.select>
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                     Preferred Time *
                   </label>
                   {errors.preferredTime && (
@@ -365,13 +365,13 @@ const AppointmentForm = () => {
                   })}
                   rows={4}
                   className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer resize-none ${
-                    errors.reason ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    errors.reason ? 'border-red-500' : 'border-gray-300 focus:border-primary-green focus:ring-2 focus:ring-primary-green/20'
                   }`}
                   placeholder=" "
                   animate={errors.reason ? { x: [-10, 10, -10, 10, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 />
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
                   Reason for Visit *
                 </label>
                 {errors.reason && (

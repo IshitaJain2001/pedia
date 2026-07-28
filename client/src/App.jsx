@@ -7,7 +7,6 @@ import Hero from './components/Hero';
 import AboutDoctor from './components/AboutDoctor';
 import WhyChooseUs from './components/WhyChooseUs';
 import Services from './components/Services';
-import Doctors from './components/Doctors';
 import Statistics from './components/Statistics';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
@@ -38,7 +37,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-background-warm">
+      <div className="min-h-screen bg-background-green">
         <ScrollProgress />
         <Navbar />
         <motion.div
@@ -51,7 +50,6 @@ function App() {
           <AboutDoctor />
           <WhyChooseUs />
           <Services />
-          <Doctors />
           <Statistics />
           <Testimonials />
           <FAQ />

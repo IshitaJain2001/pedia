@@ -6,7 +6,6 @@ const Footer = () => {
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
-    { name: 'Our Doctors', href: '#doctors' },
   ];
 
   const services = [
@@ -30,10 +29,10 @@ const Footer = () => {
           {/* About */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <FaHeartbeat className="text-3xl text-primary-orange" />
+              <FaHeartbeat className="text-3xl text-primary-green" />
               <div className="flex flex-col">
                 <span className="text-xl font-poppins font-bold">Dr Syed's</span>
-                <span className="text-lg font-poppins font-semibold text-primary-orange">Al-Sageer Clinic</span>
+                <span className="text-lg font-poppins font-semibold text-primary-green">Al-Sageer Clinic</span>
               </div>
             </div>
             <p className="text-gray-400 mb-6">
@@ -44,7 +43,7 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href="#"
-                  className="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-primary-orange hover:border-primary-orange transition-colors duration-300"
+                  className="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center hover:bg-primary-green hover:border-primary-green transition-colors duration-300"
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -62,11 +61,11 @@ const Footer = () => {
                 <li key={link.name}>
                   <motion.button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-400 hover:text-primary-orange transition-colors duration-300 relative group"
+                    className="text-gray-400 hover:text-primary-green transition-colors duration-300 relative group"
                     whileHover={{ x: 5 }}
                   >
                     {link.name}
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-orange transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-green transition-all duration-300 group-hover:w-full"></span>
                   </motion.button>
                 </li>
               ))}
@@ -81,11 +80,11 @@ const Footer = () => {
                 <li key={service.name}>
                   <motion.button
                     onClick={() => scrollToSection(service.href)}
-                    className="text-gray-400 hover:text-primary-orange transition-colors duration-300 relative group"
+                    className="text-gray-400 hover:text-primary-green transition-colors duration-300 relative group"
                     whileHover={{ x: 5 }}
                   >
                     {service.name}
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-orange transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-green transition-all duration-300 group-hover:w-full"></span>
                   </motion.button>
                 </li>
               ))}
@@ -97,15 +96,15 @@ const Footer = () => {
             <h3 className="text-xl font-poppins font-semibold mb-4 text-white">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-primary-orange mt-1" />
+                <FaMapMarkerAlt className="text-primary-green mt-1" />
                 <span className="text-gray-400">123 Healthcare Avenue, Medical City, MC 12345</span>
               </li>
               <li className="flex items-center space-x-3">
-                <FaPhone className="text-primary-orange" />
+                <FaPhone className="text-primary-green" />
                 <span className="text-gray-400">+1 (555) 123-4567</span>
               </li>
               <li className="flex items-center space-x-3">
-                <FaEnvelope className="text-primary-orange" />
+                <FaEnvelope className="text-primary-green" />
                 <span className="text-gray-400">info@alsyedclinic.com</span>
               </li>
             </ul>
@@ -114,22 +113,22 @@ const Footer = () => {
 
         {/* Appointment & Query Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-primary-orange transition-colors duration-300">
-            <FaCalendarAlt className="text-4xl text-primary-orange mx-auto mb-3" />
+          <div className="bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-primary-green transition-colors duration-300">
+            <FaCalendarAlt className="text-4xl text-primary-green mx-auto mb-3" />
             <h4 className="text-lg font-poppins font-semibold mb-2 text-white">Book Appointment</h4>
             <button
               onClick={() => scrollToSection('#appointment')}
-              className="text-primary-orange hover:text-white transition-colors duration-300 font-medium"
+              className="text-primary-green hover:text-white transition-colors duration-300 font-medium"
             >
               Schedule a Visit →
             </button>
           </div>
-          <div className="bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-primary-orange transition-colors duration-300">
-            <FaCommentDots className="text-4xl text-primary-amber mx-auto mb-3" />
+          <div className="bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-primary-green transition-colors duration-300">
+            <FaCommentDots className="text-4xl text-primary-light mx-auto mb-3" />
             <h4 className="text-lg font-poppins font-semibold mb-2 text-white">General Query</h4>
             <button
               onClick={() => scrollToSection('#general-query')}
-              className="text-primary-orange hover:text-white transition-colors duration-300 font-medium"
+              className="text-primary-green hover:text-white transition-colors duration-300 font-medium"
             >
               Ask a Question →
             </button>

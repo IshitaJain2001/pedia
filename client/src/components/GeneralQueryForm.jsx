@@ -39,7 +39,7 @@ const GeneralQueryForm = () => {
   };
 
   return (
-    <section id="general-query" className="py-20 bg-background-warm">
+    <section id="general-query" className="py-20 bg-background-green">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

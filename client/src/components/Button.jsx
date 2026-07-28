@@ -4,9 +4,9 @@ const Button = ({ children, variant = 'primary', className = '', isLoading = fal
   const baseStyles = 'font-semibold px-8 py-3 rounded-full transition-all duration-300 relative overflow-hidden';
   
   const variants = {
-    primary: 'bg-gradient-to-r from-primary-orange to-primary-amber text-white hover:shadow-lg',
-    secondary: 'bg-white text-primary-orange border-2 border-primary-orange hover:bg-primary-orange hover:text-white',
-    outline: 'bg-transparent text-primary-orange border-2 border-primary-orange hover:bg-primary-orange hover:text-white',
+    primary: 'bg-gradient-to-r from-primary-green to-primary-light text-white hover:shadow-lg',
+    secondary: 'bg-white text-primary-green border-2 border-primary-green hover:bg-primary-green hover:text-white',
+    outline: 'bg-transparent text-primary-green border-2 border-primary-green hover:bg-primary-green hover:text-white',
   };
 
   return (
