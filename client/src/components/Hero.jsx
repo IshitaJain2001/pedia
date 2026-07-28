@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { FaStar, FaBaby, FaHeart, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 
@@ -22,15 +22,37 @@ const itemVariants = {
 
 const Hero = () => {
   const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Ensure video plays on iOS / low-power mode devices
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay blocked — video stays hidden gracefully
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Fix React's muted prop bug — must set via DOM directly
+    video.muted = true;
+    video.volume = 0;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay blocked — handled gracefully, video stays paused
+      });
+    };
+
+    if (video.readyState >= 2) {
+      setVideoLoaded(true);
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', () => {
+        setVideoLoaded(true);
+        tryPlay();
       });
     }
+
+    return () => {
+      video.removeEventListener('loadeddata', tryPlay);
+    };
   }, []);
+
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -40,21 +62,26 @@ const Hero = () => {
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-18 pb-12 sm:pt-20 sm:pb-16"
+      style={{ isolation: 'isolate' }}
     >
-      {/* ── Video Background ── */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Hero background video — clinic busy scene */}
-        <motion.video
+      {/* ── Video Background Layer ── */}
+      {/* z-0: sits at base of section's own stacking context */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          overflow: 'hidden',
+        }}
+      >
+        {/* Plain <video> — NOT motion.video (avoids React muted prop bug + Framer forwarding issues) */}
+        <video
           ref={videoRef}
           src="/videos/pediatric_clinic_h.mp4"
           autoPlay
           loop
-          muted
           playsInline
           preload="auto"
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: 'absolute',
             inset: 0,
@@ -62,43 +89,56 @@ const Hero = () => {
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
+            opacity: videoLoaded ? 1 : 0,
+            transition: 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: 'scale(1)',
           }}
         />
 
-        {/* Dark blue gradient overlay — 45% opacity for text readability */}
+        {/* Dark blue gradient overlay — 45% opacity — keeps text crisp */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(135deg, rgba(10, 25, 50, 0.50) 0%, rgba(10, 30, 60, 0.42) 50%, rgba(5, 20, 40, 0.48) 100%)',
+              'linear-gradient(135deg, rgba(10,25,50,0.52) 0%, rgba(10,30,60,0.44) 50%, rgba(5,20,40,0.50) 100%)',
+            zIndex: 1,
           }}
         />
 
-        {/* Subtle blur layer — softens video without obscuring content */}
+        {/* Soft 2px blur layer — reduces video sharpness for readability */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             backdropFilter: 'blur(2px)',
             WebkitBackdropFilter: 'blur(2px)',
+            zIndex: 2,
           }}
         />
       </div>
 
-      {/* Decorative orbs — kept as subtle depth layers above video */}
-      <div className="absolute -top-20 -right-20 w-[480px] h-[480px] bg-primary-green/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -left-20 w-[360px] h-[360px] bg-accent-mint/10 rounded-full blur-3xl pointer-events-none" />
+      {/* ── Decorative Orbs — sit above video, below content ── */}
+      <div
+        style={{ position: 'absolute', top: '-80px', right: '-80px', width: '480px', height: '480px',
+          background: 'rgba(26,92,56,0.08)', borderRadius: '50%', filter: 'blur(60px)',
+          pointerEvents: 'none', zIndex: 1 }}
+      />
+      <div
+        style={{ position: 'absolute', bottom: 0, left: '-80px', width: '360px', height: '360px',
+          background: 'rgba(110,231,183,0.07)', borderRadius: '50%', filter: 'blur(60px)',
+          pointerEvents: 'none', zIndex: 1 }}
+      />
 
-      {/* Medical cross pattern — decorative */}
-      <svg className="absolute top-24 right-16 w-6 h-6 text-primary-green/15 hidden lg:block" fill="currentColor" viewBox="0 0 24 24">
+      {/* Medical cross — decorative */}
+      <svg style={{ position: 'absolute', top: '96px', right: '64px', width: '24px', height: '24px',
+        color: 'rgba(26,92,56,0.15)', display: 'none', zIndex: 2 }}
+        className="hidden lg:block" fill="currentColor" viewBox="0 0 24 24">
         <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM10 17H8V13H4V11H8V7H10V11H14V13H10V17Z"/>
       </svg>
-      <svg className="absolute bottom-32 left-14 w-5 h-5 text-primary-green/10 hidden lg:block" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM10 17H8V13H4V11H8V7H10V11H14V13H10V17Z"/>
-      </svg>
 
-      <div className="section-container relative z-10 w-full">
+      {/* ── All Content — z-index 10, sits above everything ── */}
+      <div className="section-container w-full" style={{ position: 'relative', zIndex: 10 }}>
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* ── Left: Content ── */}
@@ -108,7 +148,7 @@ const Hero = () => {
             animate="visible"
             className="text-center lg:text-left order-2 lg:order-1"
           >
-            {/* Badge — text colors updated for video bg contrast */}
+            {/* Badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-5 sm:mb-6">
               <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white bg-white/15 backdrop-blur-sm border border-white/30 rounded-full pl-3 pr-4 py-1.5">
                 <HiSparkles className="text-accent-amber text-sm" />
@@ -219,7 +259,7 @@ const Hero = () => {
                     </div>
                     <div className="text-center px-4 relative">
                       <p className="text-base font-poppins font-semibold text-neutral-700">Dr. Syed</p>
-                      <p className="text-xs text-neutral-500 mt-0.5">Pediatrician & Neonatologist</p>
+                      <p className="text-xs text-neutral-500 mt-0.5">Pediatrician &amp; Neonatologist</p>
                     </div>
                   </div>
 

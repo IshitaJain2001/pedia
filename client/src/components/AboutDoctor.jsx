@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { FaCheckCircle, FaAward, FaUserMd } from 'react-icons/fa';
 import { MdScience } from 'react-icons/md';
 
@@ -13,37 +13,64 @@ const specialInterests = [
 
 const credentials = [
   { icon: FaAward,   text: 'Board-Certified Pediatrician & Neonatologist' },
-  { icon: FaUserMd, text: '15+ Years Clinical Experience' },
+  { icon: FaUserMd,  text: '15+ Years Clinical Experience' },
   { icon: MdScience, text: 'Expert in Newborn & High-Risk Neonatal Care' },
 ];
 
 const AboutDoctor = () => {
   const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Fix React's muted prop bug — must be set directly on DOM element
+    video.muted = true;
+    video.volume = 0;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
         // Autoplay blocked gracefully
       });
+    };
+
+    if (video.readyState >= 2) {
+      setVideoLoaded(true);
+      tryPlay();
+    } else {
+      const onLoaded = () => {
+        setVideoLoaded(true);
+        tryPlay();
+      };
+      video.addEventListener('loadeddata', onLoaded);
+      return () => video.removeEventListener('loadeddata', onLoaded);
     }
   }, []);
-  return (
-    <section id="about" className="py-20 sm:py-24 relative overflow-hidden">
 
-      {/* ── Video Background — About Section ── */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* About section background video — Dr. Syed examining patient */}
-        <motion.video
+  return (
+    <section
+      id="about"
+      className="py-20 sm:py-24 relative overflow-hidden"
+      style={{ isolation: 'isolate' }}
+    >
+      {/* ── Video Background Layer ── */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          overflow: 'hidden',
+        }}
+      >
+        {/* Plain <video> — NOT motion.video (avoids muted prop bug) */}
+        <video
           ref={videoRef}
           src="/videos/ek_chhoti_si_sec_ki_video_b.mp4"
           autoPlay
           loop
-          muted
           playsInline
           preload="auto"
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: 'absolute',
             inset: 0,
@@ -51,24 +78,37 @@ const AboutDoctor = () => {
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center top',
+            opacity: videoLoaded ? 1 : 0,
+            transition: 'opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         />
 
-        {/* Soft white/blue overlay — keeps text perfectly readable without hiding video */}
+        {/* Soft white/blue overlay — content remains perfectly readable */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(240,250,255,0.86) 40%, rgba(232,245,255,0.84) 100%)',
+              'linear-gradient(160deg, rgba(255,255,255,0.90) 0%, rgba(240,250,255,0.88) 40%, rgba(232,245,255,0.86) 100%)',
+            zIndex: 1,
           }}
         />
       </div>
 
-      {/* Subtle decorative blob — unchanged */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-primary-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      {/* Subtle decorative blob — unchanged, sits above video layer */}
+      <div
+        style={{
+          position: 'absolute', top: 0, right: 0,
+          width: '320px', height: '320px',
+          background: 'rgba(240,251,244,1)',
+          borderRadius: '50%', filter: 'blur(60px)',
+          transform: 'translate(33%, -50%)',
+          pointerEvents: 'none', zIndex: 2,
+        }}
+      />
 
-      <div className="section-container relative z-10">
+      {/* ── All content — above video and overlay ── */}
+      <div className="section-container" style={{ position: 'relative', zIndex: 10 }}>
 
         {/* Section Header */}
         <motion.div
