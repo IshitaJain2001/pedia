@@ -105,19 +105,19 @@ const Services = () => {
               <motion.div
                 whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                 transition={{ duration: 0.3 }}
-                className={`bg-gradient-to-br ${service.color} rounded-xl shadow-lg p-6 h-full border border-white/20 hover:border-white/40 transition-all duration-300`}
+                className="bg-white rounded-xl shadow-lg p-6 h-full border border-gray-200 hover:border-primary-orange transition-all duration-300"
               >
                 <motion.div
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.3, repeat: 1 }}
-                  className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 shadow-md"
+                  className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 shadow-md`}
                 >
                   <service.icon className="text-white text-xl" />
                 </motion.div>
-                <h3 className="text-lg font-poppins font-semibold text-white mb-2">
+                <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-white/90 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
