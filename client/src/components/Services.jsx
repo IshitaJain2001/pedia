@@ -14,25 +14,25 @@ const Services = () => {
       icon: FaSyringe,
       title: 'Vaccination',
       description: 'Complete immunization schedule with safe and effective vaccines for all age groups.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-amber to-primary-olive',
     },
     {
       icon: FaAppleAlt,
       title: 'Nutrition Guidance',
       description: 'Expert advice on child nutrition, diet plans, and healthy eating habits.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-olive to-primary-warm',
     },
     {
       icon: FaChild,
       title: 'Child Development',
       description: 'Monitoring and support for physical, cognitive, and emotional development milestones.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-warm to-accent-coral',
     },
     {
       icon: FaStethoscope,
       title: 'General Consultation',
       description: 'Routine health checkups and consultations for common childhood illnesses.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-accent-coral to-primary-orange',
     },
     {
       icon: FaAmbulance,
@@ -44,13 +44,13 @@ const Services = () => {
       icon: FaChartLine,
       title: 'Growth Monitoring',
       description: 'Regular tracking of growth parameters with percentile-based assessments.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-amber to-primary-olive',
     },
     {
       icon: FaHeartbeat,
       title: 'Health Checkups',
       description: 'Comprehensive health screenings and preventive care programs.',
-      color: 'from-primary-orange to-primary-amber',
+      color: 'from-primary-olive to-primary-warm',
     },
   ];
 
