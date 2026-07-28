@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { FaHeartbeat, FaUserMd, FaCalendarAlt, FaClock } from 'react-icons/fa';
 
@@ -9,107 +8,90 @@ const StatCounter = ({ end, duration = 2, suffix = '' }) => {
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (isInView) {
-      let startTime;
-      const animate = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-        
-        // Easing function
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        setCount(Math.floor(easeOutQuart * end));
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-      requestAnimationFrame(animate);
-    }
+    if (!isInView) return;
+    let startTime;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const ease = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(ease * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
   }, [isInView, end, duration]);
 
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
+const stats = [
+  { icon: FaHeartbeat,   value: 5000, suffix: '+', label: 'Happy Families',   desc: 'Trusted by families across the region' },
+  { icon: FaUserMd,      value: 25,   suffix: '+', label: 'Expert Doctors',    desc: 'Specialist & experienced clinical team' },
+  { icon: FaCalendarAlt, value: 15,   suffix: '+', label: 'Years Experience',  desc: 'Delivering quality pediatric care' },
+  { icon: FaClock,       value: 24,   suffix: '/7', label: 'Emergency Care',   desc: 'Round-the-clock availability' },
+];
+
 const Statistics = () => {
-  const stats = [
-    {
-      icon: FaHeartbeat,
-      value: 5000,
-      suffix: '+',
-      label: 'Happy Families',
-      color: 'from-primary-green to-primary-light',
-    },
-    {
-      icon: FaUserMd,
-      value: 25,
-      suffix: '+',
-      label: 'Expert Doctors',
-      color: 'from-primary-light to-primary-lime',
-    },
-    {
-      icon: FaCalendarAlt,
-      value: 15,
-      suffix: '+',
-      label: 'Years Experience',
-      color: 'from-primary-lime to-primary-emerald',
-    },
-    {
-      icon: FaClock,
-      value: 24,
-      suffix: 'x7',
-      label: 'Emergency Care',
-      color: 'from-primary-emerald to-accent-mint',
-    },
-  ];
-
-
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-green/10 to-primary-light/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 sm:py-24 bg-mesh-dark relative overflow-hidden">
+
+      {/* Decorative orbs */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-primary-green/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary-light/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="section-container relative z-10">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-accent-mint bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-4">
+            By The Numbers
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-bold text-white leading-tight mb-4">
             Our Impact
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Numbers that reflect our commitment to pediatric healthcare excellence
+          <div className="w-16 h-0.5 bg-accent-mint rounded-full mx-auto mb-4" />
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Numbers that reflect our unwavering commitment to pediatric healthcare excellence
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {stats.map((stat, index) => (
+        {/* Stats grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          {stats.map((stat, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
             >
-              <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-8 text-center hover:shadow-2xl transition-all duration-300">
-                <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.25 }}
+                className="glass-dark rounded-2xl p-7 text-center group cursor-default h-full"
+              >
+                {/* Icon */}
+                <div className="w-14 h-14 bg-gradient-to-br from-primary-green to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-green group-hover:shadow-green-lg transition-shadow duration-300">
                   <stat.icon className="text-white text-2xl" />
                 </div>
-                <div className="text-4xl sm:text-5xl font-poppins font-bold text-gradient mb-2">
+
+                {/* Counter */}
+                <div className="text-4xl sm:text-5xl font-poppins font-bold text-white mb-2">
                   <StatCounter end={stat.value} duration={2} suffix={stat.suffix} />
                 </div>
-                <p className="text-gray-600 font-medium">
-                  {stat.label}
-                </p>
-              </div>
+
+                {/* Label */}
+                <p className="text-accent-mint font-semibold text-sm mb-1.5">{stat.label}</p>
+                <p className="text-neutral-500 text-xs leading-relaxed">{stat.desc}</p>
+              </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

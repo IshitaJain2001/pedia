@@ -1,125 +1,139 @@
 import { motion } from 'framer-motion';
-import { FaBabyCarriage, FaSyringe, FaAppleAlt, FaChild, FaStethoscope, FaAmbulance, FaChartLine, FaHeartbeat } from 'react-icons/fa';
-import Card from './Card';
+import {
+  FaBabyCarriage, FaSyringe, FaAppleAlt, FaChild,
+  FaStethoscope, FaAmbulance, FaChartLine, FaHeartbeat,
+} from 'react-icons/fa';
+import { FiArrowRight } from 'react-icons/fi';
+
+const services = [
+  {
+    icon: FaBabyCarriage,
+    title: 'Newborn Care',
+    description: 'Comprehensive care for newborns including checkups, feeding guidance, and developmental monitoring.',
+    gradient: 'from-primary-green to-primary-light',
+    accent: 'border-t-primary-green',
+  },
+  {
+    icon: FaSyringe,
+    title: 'Vaccination',
+    description: 'Complete immunization schedule with safe and effective vaccines for all age groups.',
+    gradient: 'from-emerald-600 to-emerald-400',
+    accent: 'border-t-emerald-500',
+  },
+  {
+    icon: FaAppleAlt,
+    title: 'Nutrition Guidance',
+    description: 'Expert advice on child nutrition, diet plans, and healthy eating habits for every stage.',
+    gradient: 'from-teal-600 to-teal-400',
+    accent: 'border-t-teal-500',
+  },
+  {
+    icon: FaChild,
+    title: 'Child Development',
+    description: 'Monitoring and support for physical, cognitive, and emotional development milestones.',
+    gradient: 'from-green-700 to-green-500',
+    accent: 'border-t-green-600',
+  },
+  {
+    icon: FaStethoscope,
+    title: 'General Consultation',
+    description: 'Routine health checkups and consultations for common childhood illnesses and concerns.',
+    gradient: 'from-primary-light to-accent-mint',
+    accent: 'border-t-primary-light',
+  },
+  {
+    icon: FaAmbulance,
+    title: 'Emergency Pediatrics',
+    description: '24/7 emergency care for urgent medical situations with a rapid-response clinical team.',
+    gradient: 'from-primary-green to-primary-light',
+    accent: 'border-t-primary-green',
+  },
+  {
+    icon: FaChartLine,
+    title: 'Growth Monitoring',
+    description: 'Regular tracking of height, weight, and growth parameters with percentile-based assessments.',
+    gradient: 'from-emerald-600 to-emerald-400',
+    accent: 'border-t-emerald-500',
+  },
+  {
+    icon: FaHeartbeat,
+    title: 'Health Checkups',
+    description: 'Comprehensive health screenings, preventive care programs, and wellness evaluations.',
+    gradient: 'from-teal-600 to-teal-400',
+    accent: 'border-t-teal-500',
+  },
+];
+
+const containerVariants = {
+  hidden:  { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
+};
+
+const itemVariants = {
+  hidden:  { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
 
 const Services = () => {
-  const services = [
-    {
-      icon: FaBabyCarriage,
-      title: 'Newborn Care',
-      description: 'Comprehensive care for newborns including checkups, feeding guidance, and developmental monitoring.',
-      color: 'from-primary-green to-primary-light',
-    },
-    {
-      icon: FaSyringe,
-      title: 'Vaccination',
-      description: 'Complete immunization schedule with safe and effective vaccines for all age groups.',
-      color: 'from-primary-light to-primary-lime',
-    },
-    {
-      icon: FaAppleAlt,
-      title: 'Nutrition Guidance',
-      description: 'Expert advice on child nutrition, diet plans, and healthy eating habits.',
-      color: 'from-primary-lime to-primary-emerald',
-    },
-    {
-      icon: FaChild,
-      title: 'Child Development',
-      description: 'Monitoring and support for physical, cognitive, and emotional development milestones.',
-      color: 'from-primary-emerald to-accent-mint',
-    },
-    {
-      icon: FaStethoscope,
-      title: 'General Consultation',
-      description: 'Routine health checkups and consultations for common childhood illnesses.',
-      color: 'from-accent-mint to-primary-green',
-    },
-    {
-      icon: FaAmbulance,
-      title: 'Emergency Pediatrics',
-      description: '24/7 emergency care for urgent medical situations with rapid response team.',
-      color: 'from-primary-green to-primary-light',
-    },
-    {
-      icon: FaChartLine,
-      title: 'Growth Monitoring',
-      description: 'Regular tracking of growth parameters with percentile-based assessments.',
-      color: 'from-primary-light to-primary-lime',
-    },
-    {
-      icon: FaHeartbeat,
-      title: 'Health Checkups',
-      description: 'Comprehensive health screenings and preventive care programs.',
-      color: 'from-primary-lime to-primary-emerald',
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 sm:py-24 bg-white relative overflow-hidden">
+
+      {/* Decorative */}
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary-50 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+      <div className="section-container relative z-10">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
-            Our Services
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive pediatric healthcare services designed for your child's well-being
+          <span className="section-tag">What We Offer</span>
+          <h2 className="section-heading">Our Services</h2>
+          <div className="section-divider" />
+          <p className="section-subheading">
+            Comprehensive pediatric healthcare services designed for your child's complete well-being
           </p>
         </motion.div>
 
+        {/* Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants}>
+          {services.map((service, i) => (
+            <motion.div key={i} variants={itemVariants}>
               <motion.div
-                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-                transition={{ duration: 0.3 }}
-                className="bg-white rounded-xl shadow-lg p-6 h-full border border-gray-200 hover:border-primary-green transition-all duration-300"
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.25 }}
+                className="card card-hover h-full group overflow-hidden"
               >
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.3, repeat: 1 }}
-                  className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 shadow-md`}
-                >
-                  <service.icon className="text-white text-xl" />
-                </motion.div>
-                <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
+                {/* Top accent line */}
+                <div className={`h-1 w-full bg-gradient-to-r ${service.gradient}`} />
+
+                <div className="p-5 sm:p-6">
+                  {/* Icon */}
+                  <div className={`icon-box bg-gradient-to-br ${service.gradient} mb-4 shadow-soft`}>
+                    <service.icon className="text-white text-lg" />
+                  </div>
+
+                  <h3 className="text-base font-poppins font-semibold text-neutral-900 mb-2 group-hover:text-primary-green transition-colors duration-200">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+
+                  <div className="flex items-center gap-1 text-xs font-semibold text-primary-green opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    Learn More <FiArrowRight className="text-xs" />
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           ))}

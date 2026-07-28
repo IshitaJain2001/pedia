@@ -1,155 +1,166 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import Card from './Card';
+
+const testimonials = [
+  {
+    name:   'Sarah Ahmed',
+    child:  'Parent of Aisha, 3 yrs',
+    rating: 5,
+    text:   'Dr. Syed is truly amazing with children! My daughter was terrified of doctors, but he made her feel completely at ease. The clinic environment is so child-friendly and warm.',
+    avatar: '👩',
+    color:  'from-pink-400 to-rose-500',
+  },
+  {
+    name:   'Mohammed Khan',
+    child:  'Parent of Omar, 5 yrs',
+    rating: 5,
+    text:   'We have been bringing our son since he was born. The personalized care and attention to detail is simply exceptional. He always takes time to answer every single question.',
+    avatar: '👨',
+    color:  'from-blue-400 to-indigo-500',
+  },
+  {
+    name:   'Fatima Ali',
+    child:  'Parent of Zara, 2 yrs',
+    rating: 5,
+    text:   'The emergency team saved us when my daughter had a severe allergic reaction. The rapid response and professional care was outstanding. Forever grateful to Dr. Syed and his team.',
+    avatar: '👩',
+    color:  'from-violet-400 to-purple-500',
+  },
+  {
+    name:   'Hassan Malik',
+    child:  'Parent of Yusuf, 4 yrs',
+    rating: 5,
+    text:   'Best pediatric clinic in the area! Friendly staff, modern facilities, and my kids actually look forward to their checkups now — that alone says everything!',
+    avatar: '👨',
+    color:  'from-amber-400 to-orange-500',
+  },
+  {
+    name:   'Ayesha Rahman',
+    child:  'Parent of Noor, 1 yr',
+    rating: 5,
+    text:   "The newborn care program was incredibly helpful for us as first-time parents. Dr. Syed's guidance and support during those first few months was truly invaluable.",
+    avatar: '👩',
+    color:  'from-teal-400 to-emerald-500',
+  },
+];
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const total = testimonials.length;
 
-  const testimonials = [
-    {
-      name: 'Sarah Ahmed',
-      child: 'Aisha, 3 years old',
-      rating: 5,
-      text: 'Dr. Syed is amazing with children! My daughter was so scared of doctors, but he made her feel completely comfortable. The clinic environment is so child-friendly and colorful.',
-      avatar: '👩',
-    },
-    {
-      name: 'Mohammed Khan',
-      child: 'Omar, 5 years old',
-      rating: 5,
-      text: 'We have been bringing our son to Dr. Syed since he was born. The personalized care and attention to detail is exceptional. He always takes time to answer all our questions.',
-      avatar: '👨',
-    },
-    {
-      name: 'Fatima Ali',
-      child: 'Zara, 2 years old',
-      rating: 5,
-      text: 'The emergency care team saved us when my daughter had a severe allergic reaction. Quick response and professional care. Forever grateful to Dr. Syed and his team.',
-      avatar: '👩',
-    },
-    {
-      name: 'Hassan Malik',
-      child: 'Yusuf, 4 years old',
-      rating: 5,
-      text: 'Best pediatric clinic in the area! The staff is friendly, the facilities are modern and clean, and most importantly, my kids actually look forward to their checkups now.',
-      avatar: '👨',
-    },
-    {
-      name: 'Ayesha Rahman',
-      child: 'Noor, 1 year old',
-      rating: 5,
-      text: 'The newborn care program was incredibly helpful for us as first-time parents. Dr. Syed\'s guidance and support during those first few months was invaluable.',
-      avatar: '👩',
-    },
-  ];
+  const next = () => setCurrent((p) => (p + 1) % total);
+  const prev = () => setCurrent((p) => (p - 1 + total) % total);
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const handleNext = () => {
-    nextTestimonial();
-  };
-
-  const handlePrev = () => {
-    prevTestimonial();
-  };
-
-  // Auto-slide every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextTestimonial();
-    }, 5000);
-    return () => clearInterval(interval);
+    const id = setInterval(next, 5500);
+    return () => clearInterval(id);
   }, []);
 
-  return (
-    <section className="py-20 bg-background-green">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
-            Parent Testimonials
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Hear what families have to say about their experience with Dr. Syed
-          </p>
-        </div>
+  const t = testimonials[current];
 
-        <div className="relative max-w-4xl mx-auto">
+  return (
+    <section className="py-20 sm:py-24 bg-neutral-50 relative overflow-hidden">
+
+      {/* Decorative */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-primary-50 rounded-full blur-3xl translate-x-1/3 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-50 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+      <div className="section-container relative z-10">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="section-tag">Testimonials</span>
+          <h2 className="section-heading">What Parents Say</h2>
+          <div className="section-divider" />
+          <p className="section-subheading">
+            Hear from families who trust us with their children's health and well-being
+          </p>
+        </motion.div>
+
+        {/* Carousel */}
+        <div className="max-w-3xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
+              key={current}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Card className="p-8 sm:p-12">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary-green to-primary-light rounded-full flex items-center justify-center text-4xl mb-6">
-                    {testimonials[currentIndex].avatar}
-                  </div>
-                  
-                  <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <FaStar key={i} className="text-primary-green" />
-                    ))}
-                  </div>
+              <div className="card p-8 sm:p-10 relative">
 
-                  <FaQuoteLeft className="text-primary-green/30 text-4xl mb-4" />
-                  
-                  <p className="text-lg text-gray-700 mb-6 italic">
-                    "{testimonials[currentIndex].text}"
-                  </p>
+                {/* Large quote icon */}
+                <FaQuoteLeft className="absolute top-6 right-8 text-5xl text-primary-50 text-neutral-100 pointer-events-none" />
 
-                  <div className="border-t border-gray-200 pt-6 w-full">
-                    <h4 className="text-xl font-poppins font-semibold text-gray-900">
-                      {testimonials[currentIndex].name}
-                    </h4>
-                    <p className="text-primary-green">
-                      {testimonials[currentIndex].child}
-                    </p>
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <FaStar key={i} className="text-accent-amber text-sm" />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-base sm:text-lg text-neutral-700 leading-relaxed mb-8 italic relative">
+                  "{t.text}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-neutral-100">
+                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-2xl flex-shrink-0 shadow-soft`}>
+                    {t.avatar}
+                  </div>
+                  <div>
+                    <p className="font-poppins font-semibold text-neutral-900">{t.name}</p>
+                    <p className="text-sm text-neutral-500">{t.child}</p>
                   </div>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-center items-center space-x-4 mt-8">
+          {/* Navigation */}
+          <div className="flex items-center justify-center gap-5 mt-8">
             <motion.button
-              onClick={handlePrev}
-              className="w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center shadow-lg"
+              onClick={prev}
+              className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 shadow-soft hover:bg-primary-green hover:text-white hover:border-primary-green transition-all duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Previous"
             >
-              <FaChevronLeft />
+              <FaChevronLeft className="text-xs" />
             </motion.button>
 
-            <div className="flex space-x-2">
-              {testimonials.map((_, index) => (
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, i) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-primary-green w-8' : 'bg-gray-300'
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? 'w-6 h-2.5 bg-primary-green'
+                      : 'w-2.5 h-2.5 bg-neutral-300 hover:bg-neutral-400'
                   }`}
+                  aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
             </div>
 
             <motion.button
-              onClick={handleNext}
-              className="w-12 h-12 bg-primary-green text-white rounded-full flex items-center justify-center shadow-lg"
+              onClick={next}
+              className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center text-neutral-600 shadow-soft hover:bg-primary-green hover:text-white hover:border-primary-green transition-all duration-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Next"
             >
-              <FaChevronRight />
+              <FaChevronRight className="text-xs" />
             </motion.button>
           </div>
         </div>

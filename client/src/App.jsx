@@ -35,7 +35,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-background-green">
+      <div className="min-h-screen bg-white">
         <ScrollProgress />
         <Navbar />
         <motion.div
@@ -57,7 +57,25 @@ function App() {
         </motion.div>
         <ScrollToTop />
         <FloatingButtons />
-        <Toaster position="top-right" />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '14px',
+              borderRadius: '12px',
+              boxShadow: '0 4px 24px -4px rgba(0,0,0,0.12)',
+            },
+            success: {
+              style: { background: '#F0FBF4', color: '#1A5C38', border: '1px solid #BBF7D0' },
+              iconTheme: { primary: '#1A5C38', secondary: '#F0FBF4' },
+            },
+            error: {
+              style: { background: '#FEF2F2', color: '#991B1B', border: '1px solid #FECACA' },
+            },
+          }}
+        />
       </div>
     </Router>
   );

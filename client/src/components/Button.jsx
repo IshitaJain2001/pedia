@@ -1,30 +1,28 @@
 import { motion } from 'framer-motion';
 
 const Button = ({ children, variant = 'primary', className = '', isLoading = false, ...props }) => {
-  const baseStyles = 'font-semibold px-8 py-3 rounded-full transition-all duration-300 relative overflow-hidden';
-  
-  const variants = {
-    primary: 'bg-gradient-to-r from-primary-green to-primary-light text-white hover:shadow-lg',
-    secondary: 'bg-white text-primary-green border-2 border-primary-green hover:bg-primary-green hover:text-white',
-    outline: 'bg-transparent text-primary-green border-2 border-primary-green hover:bg-primary-green hover:text-white',
-  };
+  const variantClass = {
+    primary:   'btn-primary',
+    secondary: 'btn-outline',
+    outline:   'btn-outline',
+  }[variant] || 'btn-primary';
 
   return (
     <motion.button
-      whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(255, 140, 0, 0.4)" }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={!isLoading ? { scale: 1.03, y: -2 } : {}}
+      whileTap={!isLoading ? { scale: 0.97 } : {}}
       disabled={isLoading}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
+      className={`${variantClass} disabled:opacity-60 disabled:cursor-not-allowed ${className}`}
       {...props}
     >
       {isLoading ? (
-        <motion.span
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="inline-block"
-        >
-          ⏳
-        </motion.span>
+        <span className="flex items-center gap-2">
+          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+          </svg>
+          Loading…
+        </span>
       ) : (
         children
       )}
