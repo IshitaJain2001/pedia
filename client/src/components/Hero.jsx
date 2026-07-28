@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import { FaStar, FaBaby, FaHeart, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 
@@ -20,6 +21,16 @@ const itemVariants = {
 };
 
 const Hero = () => {
+  const videoRef = useRef(null);
+
+  // Ensure video plays on iOS / low-power mode devices
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay blocked — video stays hidden gracefully
+      });
+    }
+  }, []);
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -30,13 +41,54 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-18 pb-12 sm:pt-20 sm:pb-16"
     >
-      {/* ── Background ── */}
-      <div className="absolute inset-0 bg-mesh-green -z-10" />
+      {/* ── Video Background ── */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Hero background video — clinic busy scene */}
+        <motion.video
+          ref={videoRef}
+          src="/videos/pediatric_clinic_h.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
 
-      {/* Decorative orbs */}
-      <div className="absolute -top-20 -right-20 w-[480px] h-[480px] bg-primary-green/6 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -left-20 w-[360px] h-[360px] bg-accent-mint/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-100/40 rounded-full blur-3xl pointer-events-none" />
+        {/* Dark blue gradient overlay — 45% opacity for text readability */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(135deg, rgba(10, 25, 50, 0.50) 0%, rgba(10, 30, 60, 0.42) 50%, rgba(5, 20, 40, 0.48) 100%)',
+          }}
+        />
+
+        {/* Subtle blur layer — softens video without obscuring content */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backdropFilter: 'blur(2px)',
+            WebkitBackdropFilter: 'blur(2px)',
+          }}
+        />
+      </div>
+
+      {/* Decorative orbs — kept as subtle depth layers above video */}
+      <div className="absolute -top-20 -right-20 w-[480px] h-[480px] bg-primary-green/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 -left-20 w-[360px] h-[360px] bg-accent-mint/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Medical cross pattern — decorative */}
       <svg className="absolute top-24 right-16 w-6 h-6 text-primary-green/15 hidden lg:block" fill="currentColor" viewBox="0 0 24 24">
@@ -56,9 +108,9 @@ const Hero = () => {
             animate="visible"
             className="text-center lg:text-left order-2 lg:order-1"
           >
-            {/* Badge */}
+            {/* Badge — text colors updated for video bg contrast */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-5 sm:mb-6">
-              <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary-green bg-primary-50 border border-primary-100 rounded-full pl-3 pr-4 py-1.5">
+              <span className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-white bg-white/15 backdrop-blur-sm border border-white/30 rounded-full pl-3 pr-4 py-1.5">
                 <HiSparkles className="text-accent-amber text-sm" />
                 Trusted Pediatric Care Since 2010
               </span>
@@ -69,15 +121,15 @@ const Hero = () => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-[1.1] mb-3 sm:mb-4"
             >
-              <span className="text-neutral-900">Dr. Syed's</span>
+              <span className="text-white drop-shadow-sm">Dr. Syed's</span>
               <br />
-              <span className="gradient-text">Al-Sageer Clinic</span>
+              <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg md:text-xl font-poppins font-semibold text-neutral-500 mb-4 sm:mb-5"
+              className="text-base sm:text-lg md:text-xl font-poppins font-semibold text-white/80 mb-4 sm:mb-5"
             >
               A Clinic of Pediatrics &amp; Neonatology
             </motion.p>
@@ -85,7 +137,7 @@ const Hero = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-sm sm:text-base text-neutral-500 mb-7 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              className="text-sm sm:text-base text-white/70 mb-7 sm:mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
             >
               Providing compassionate pediatric and newborn care with over 15 years of experience. Expert consultations, vaccinations, developmental care, and neonatal services — all under one roof.
             </motion.p>
@@ -127,7 +179,7 @@ const Hero = () => {
 
               <motion.button
                 onClick={() => window.open('https://wa.me/919876543210', '_blank')}
-                className="btn-outline text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2 w-full sm:w-auto rounded-full font-semibold border-2 border-white/70 text-white hover:bg-white hover:text-primary-green transition-all duration-300"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
               >

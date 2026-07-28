@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import { FaCheckCircle, FaAward, FaUserMd } from 'react-icons/fa';
 import { MdScience } from 'react-icons/md';
 
@@ -17,10 +18,54 @@ const credentials = [
 ];
 
 const AboutDoctor = () => {
-  return (
-    <section id="about" className="py-20 sm:py-24 bg-white relative overflow-hidden">
+  const videoRef = useRef(null);
 
-      {/* Subtle decorative blob */}
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay blocked gracefully
+      });
+    }
+  }, []);
+  return (
+    <section id="about" className="py-20 sm:py-24 relative overflow-hidden">
+
+      {/* ── Video Background — About Section ── */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* About section background video — Dr. Syed examining patient */}
+        <motion.video
+          ref={videoRef}
+          src="/videos/ek_chhoti_si_sec_ki_video_b.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+          }}
+        />
+
+        {/* Soft white/blue overlay — keeps text perfectly readable without hiding video */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(240,250,255,0.86) 40%, rgba(232,245,255,0.84) 100%)',
+          }}
+        />
+      </div>
+
+      {/* Subtle decorative blob — unchanged */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-primary-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
       <div className="section-container relative z-10">
