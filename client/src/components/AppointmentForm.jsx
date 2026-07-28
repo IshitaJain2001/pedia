@@ -43,31 +43,22 @@ const AppointmentForm = () => {
   };
 
   return (
-    <section id="appointment" className="py-20 bg-white">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Card>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-2">
             Book an Appointment
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Schedule a visit with Dr. Syed for your child's healthcare needs
+          <p className="text-sm text-gray-600">
+            Schedule a visit with Dr. Syed
           </p>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Card>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Parent Name */}
               <div className="relative">
                 <motion.input
@@ -226,6 +217,9 @@ const AppointmentForm = () => {
                 </div>
 
                 <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Gender *
+                  </label>
                   <motion.select
                     {...register('gender', {
                       required: 'Gender is required',
@@ -241,9 +235,6 @@ const AppointmentForm = () => {
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                   </motion.select>
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
-                    Gender *
-                  </label>
                   {errors.gender && (
                     <motion.p
                       initial={{ opacity: 0, y: -10 }}
@@ -258,6 +249,9 @@ const AppointmentForm = () => {
 
               {/* Preferred Doctor */}
               <div className="relative">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Preferred Doctor *
+                </label>
                 <motion.select
                   {...register('doctor', {
                     required: 'Preferred doctor is required',
@@ -275,9 +269,6 @@ const AppointmentForm = () => {
                     </option>
                   ))}
                 </motion.select>
-                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
-                  Preferred Doctor *
-                </label>
                 {errors.doctor && (
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
@@ -319,6 +310,9 @@ const AppointmentForm = () => {
                 </div>
 
                 <div className="relative">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Preferred Time *
+                  </label>
                   <motion.select
                     {...register('preferredTime', {
                       required: 'Preferred time is required',
@@ -330,17 +324,9 @@ const AppointmentForm = () => {
                     transition={{ duration: 0.4 }}
                   >
                     <option value="">Select Time</option>
-                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
-                    <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
-                    <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
-                    <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+                    <option value="6:30 PM - 7:00 PM">6:30 PM - 7:00 PM</option>
+                    <option value="7:00 PM - 7:30 PM">7:00 PM - 7:30 PM</option>
                   </motion.select>
-                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-green bg-white px-1">
-                    Preferred Time *
-                  </label>
                   {errors.preferredTime && (
                     <motion.p
                       initial={{ opacity: 0, y: -10 }}
@@ -395,9 +381,6 @@ const AppointmentForm = () => {
               </Button>
             </form>
           </Card>
-        </motion.div>
-      </div>
-    </section>
   );
 };
 

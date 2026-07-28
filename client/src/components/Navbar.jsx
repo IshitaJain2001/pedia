@@ -11,9 +11,8 @@ const Navbar = () => {
     { name: 'About Us', href: '#about' },
     { name: 'Why Choose Us', href: '#why-choose-us' },
     { name: 'Services', href: '#services' },
-    { name: 'General Query', href: '#general-query' },
+    { name: 'Book Appointment', href: '#forms' },
     { name: 'Contact', href: '#contact' },
-    { name: 'How To Reach Us', href: '#how-to-reach' },
   ];
 
   const scrollToSection = (id) => {
@@ -34,28 +33,32 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Bar - Logo and Book Appointment */}
+      {/* Premium Navbar */}
       <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/95 backdrop-blur-md shadow-lg'
+          isScrolled 
+            ? 'bg-white/95 backdrop-blur-lg shadow-md border-b border-gray-100' 
+            : 'bg-white/80 backdrop-blur-md border-b border-gray-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <motion.div
-              className="flex items-center space-x-2 cursor-pointer"
+              className="flex items-center space-x-3 cursor-pointer"
               onClick={() => scrollToSection('#home')}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <FaHeartbeat className="text-2xl text-primary-green" />
+              <div className="w-12 h-12 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-lg shadow-primary-green/20">
+                <FaHeartbeat className="text-white text-xl" />
+              </div>
               <div className="flex flex-col">
-                <span className="text-lg font-poppins font-bold text-gray-900 leading-tight">
-                  Dr Syed's
+                <span className="text-xl font-poppins font-bold text-[#1C2333] leading-tight">
+                  Dr. Syed's
                 </span>
                 <span className="text-sm font-poppins font-semibold text-primary-green leading-tight">
                   Al-Sageer Clinic
@@ -63,73 +66,82 @@ const Navbar = () => {
               </div>
             </motion.div>
 
-            {/* Book Appointment Button */}
-            <motion.button
-              onClick={() => scrollToSection('#appointment')}
-              className="bg-gradient-to-r from-primary-green to-primary-light text-white font-semibold px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <motion.button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm font-medium text-gray-600 hover:text-primary-green transition-colors duration-200 relative group"
+                  whileHover={{ y: -1 }}
+                >
+                  {link.name}
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-green transition-all duration-300 group-hover:w-full" />
+                </motion.button>
+              ))}
+              <motion.button
+                onClick={() => scrollToSection('#forms')}
+                className="bg-gradient-to-r from-primary-green to-primary-light text-white font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-primary-green/30 hover:shadow-xl hover:shadow-primary-green/40 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Book Appointment
+              </motion.button>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
             >
-              Book Appointment
-            </motion.button>
+              {isOpen ? <FaTimes className="text-xl text-gray-700" /> : <FaBars className="text-xl text-gray-700" />}
+            </button>
           </div>
         </div>
       </motion.div>
 
-      {/* Mobile Menu Toggle */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-20 left-4 z-50 p-3 bg-white rounded-lg border border-gray-200 text-primary-green hover:bg-green-50 transition-colors duration-300"
-      >
-        {isOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
-      </button>
-
-      {/* Left Sidebar */}
-      <AnimatePresence>
-        <motion.aside
-          initial={{ x: '-100%' }}
-          animate={{ x: isOpen ? 0 : '-100%' }}
-          exit={{ x: '-100%' }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed top-16 left-0 h-[calc(100vh-4rem)] w-64 bg-white border-r border-gray-200 z-40"
-        >
-          <div className="flex flex-col h-full">
-            {/* Navigation Links */}
-            <nav className="flex-1 overflow-y-auto py-6">
-              <ul className="space-y-2 px-4">
-                {navLinks.map((link) => (
-                  <li key={link.name}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="w-full text-left px-4 py-3 text-gray-700 hover:text-primary-green hover:bg-orange-50 rounded-lg transition-all duration-300 font-medium"
-                    >
-                      {link.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Footer in Sidebar */}
-            <div className="p-6 border-t border-gray-200">
-              <p className="text-sm text-gray-500">
-                © {new Date().getFullYear()} Dr Syed's Al-Sageer Clinic
-              </p>
-            </div>
-          </div>
-        </motion.aside>
-      </AnimatePresence>
-
-      {/* Overlay for all screens */}
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/50 z-30"
-          />
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            />
+            <motion.aside
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl pt-24 px-6"
+            >
+              <nav className="space-y-2">
+                {navLinks.map((link) => (
+                  <motion.button
+                    key={link.name}
+                    onClick={() => scrollToSection(link.href)}
+                    className="w-full text-left px-4 py-3 text-gray-700 hover:text-primary-green hover:bg-green-50 rounded-xl transition-all duration-200 font-medium"
+                    whileHover={{ x: 4 }}
+                  >
+                    {link.name}
+                  </motion.button>
+                ))}
+              </nav>
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <motion.button
+                  onClick={() => scrollToSection('#forms')}
+                  className="w-full bg-gradient-to-r from-primary-green to-primary-light text-white font-semibold px-6 py-3 rounded-xl shadow-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Book Appointment
+                </motion.button>
+              </div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </>

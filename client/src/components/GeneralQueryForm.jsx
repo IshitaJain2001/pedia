@@ -39,31 +39,22 @@ const GeneralQueryForm = () => {
   };
 
   return (
-    <section id="general-query" className="py-20 bg-background-green">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Card>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
-          <h2 className="text-4xl sm:text-5xl font-poppins font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-2">
             General Query
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have a question regarding your child's health? Send us your query and we'll get back to you shortly.
+          <p className="text-sm text-gray-600">
+            Have a question? Send us a message
           </p>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Card>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Full Name */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -209,9 +200,6 @@ const GeneralQueryForm = () => {
               </Button>
             </form>
           </Card>
-        </motion.div>
-      </div>
-    </section>
   );
 };
 

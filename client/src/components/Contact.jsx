@@ -7,25 +7,25 @@ const Contact = () => {
       icon: FaMapMarkerAlt,
       title: 'Address',
       content: '123 Healthcare Avenue, Medical City, MC 12345',
-      color: 'bg-primary-sky',
+      color: 'bg-primary-green',
     },
     {
       icon: FaPhone,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
-      color: 'bg-primary-mint',
+      content: '+91 98765 43210',
+      color: 'bg-primary-light',
     },
     {
       icon: FaEnvelope,
       title: 'Email',
       content: 'info@littlehearts.com',
-      color: 'bg-accent-mint',
+      color: 'bg-primary-lime',
     },
     {
       icon: FaClock,
       title: 'Working Hours',
-      content: 'Mon - Sat: 8:00 AM - 8:00 PM\nEmergency: 24/7',
-      color: 'bg-accent-teal',
+      content: 'Mon, Tue, Thu, Fri: 6:30 PM - 7:30 PM\nEmergency: 24/7',
+      color: 'bg-primary-emerald',
     },
   ];
 

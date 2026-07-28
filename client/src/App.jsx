@@ -11,12 +11,10 @@ import Statistics from './components/Statistics';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
-import GeneralQueryForm from './components/GeneralQueryForm';
-import AppointmentForm from './components/AppointmentForm';
+import FormsSection from './components/FormsSection';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingButtons from './components/FloatingButtons';
-import Chatbot from './components/Chatbot';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollProgress from './components/ScrollProgress';
 
@@ -44,7 +42,7 @@ function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="mt-16"
+          className="mt-20"
         >
           <Hero />
           <AboutDoctor />
@@ -53,14 +51,12 @@ function App() {
           <Statistics />
           <Testimonials />
           <FAQ />
-          <AppointmentForm />
-          <GeneralQueryForm />
+          <FormsSection />
           <Contact />
           <Footer />
         </motion.div>
         <ScrollToTop />
         <FloatingButtons />
-        <Chatbot />
         <Toaster position="top-right" />
       </div>
     </Router>
