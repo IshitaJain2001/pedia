@@ -53,7 +53,7 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary-orange to-primary-amber text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
       >
-        {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
+        {isOpen ? <X size={24} className="text-white" /> : <MessageSquare size={24} className="text-white" />}
       </button>
 
       {/* Chat Window */}
@@ -63,7 +63,7 @@ const Chatbot = () => {
           <div className="bg-gradient-to-r from-primary-orange to-primary-amber p-4 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Bot size={24} />
+                <Bot size={24} className="text-white" />
                 <div>
                   <h3 className="font-semibold">Clinic Assistant</h3>
                   <p className="text-xs opacity-90">Online</p>
@@ -73,7 +73,7 @@ const Chatbot = () => {
                 onClick={() => setIsOpen(false)}
                 className="bg-gray-900 text-white hover:bg-gray-800 p-2 rounded-full transition-colors"
               >
-                <X size={24} />
+                <X size={24} className="text-white" />
               </button>
             </div>
           </div>
@@ -126,7 +126,7 @@ const Chatbot = () => {
                 disabled={isLoading || !input.trim()}
                 className="bg-gradient-to-r from-primary-orange to-primary-amber text-white p-2 rounded-full hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={20} />
+                <Send size={20} className="text-white" />
               </button>
             </div>
           </div>

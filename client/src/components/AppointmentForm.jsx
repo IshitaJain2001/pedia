@@ -69,37 +69,40 @@ const AppointmentForm = () => {
           <Card>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Parent Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Parent Name *
-                </label>
-                <input
+              <div className="relative">
+                <motion.input
                   type="text"
                   {...register('parentName', {
                     required: 'Parent name is required',
                     minLength: {
                       value: 2,
-                      message: 'Name must be at least 2 characters',
-                    },
-                    maxLength: {
-                      value: 100,
-                      message: 'Name cannot exceed 100 characters',
+                      message: 'Parent name must be at least 2 characters',
                     },
                   })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter parent's full name"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                    errors.parentName ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  placeholder=" "
+                  animate={errors.parentName ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 />
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Parent Name *
+                </label>
                 {errors.parentName && (
-                  <p className="mt-1 text-sm text-red-500">{errors.parentName.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.parentName.message}
+                  </motion.p>
                 )}
               </div>
 
               {/* Email */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
+              <div className="relative">
+                <motion.input
                   type="email"
                   {...register('email', {
                     required: 'Email is required',
@@ -108,42 +111,62 @@ const AppointmentForm = () => {
                       message: 'Please provide a valid email',
                     },
                   })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter your email"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                    errors.email ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  placeholder=" "
+                  animate={errors.email ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 />
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Email *
+                </label>
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.email.message}
+                  </motion.p>
                 )}
               </div>
 
               {/* Phone */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
+              <div className="relative">
+                <motion.input
                   type="tel"
                   {...register('phone', {
                     required: 'Phone number is required',
                     pattern: {
-                      value: /^[\d\s\-\+\(\)]{10,}$/,
-                      message: 'Please provide a valid phone number',
+                      value: /^[0-9]{10}$/,
+                      message: 'Please provide a valid 10-digit phone number',
                     },
                   })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter your phone number"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                    errors.phone ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  placeholder=" "
+                  animate={errors.phone ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 />
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Phone Number *
+                </label>
                 {errors.phone && (
-                  <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.phone.message}
+                  </motion.p>
                 )}
               </div>
 
               {/* Child Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Child Name *
-                </label>
-                <input
+              <div className="relative">
+                <motion.input
                   type="text"
                   {...register('childName', {
                     required: 'Child name is required',
@@ -151,69 +174,99 @@ const AppointmentForm = () => {
                       value: 2,
                       message: 'Child name must be at least 2 characters',
                     },
-                    maxLength: {
-                      value: 100,
-                      message: 'Child name cannot exceed 100 characters',
-                    },
                   })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter child's full name"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                    errors.childName ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  placeholder=" "
+                  animate={errors.childName ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 />
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Child Name *
+                </label>
                 {errors.childName && (
-                  <p className="mt-1 text-sm text-red-500">{errors.childName.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.childName.message}
+                  </motion.p>
                 )}
               </div>
 
               {/* Child Age and Gender */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Child Age *
-                  </label>
-                  <input
+                <div className="relative">
+                  <motion.input
                     type="text"
                     {...register('childAge', {
                       required: 'Child age is required',
                     })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                    placeholder="e.g., 3 years"
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                      errors.childAge ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    }`}
+                    placeholder=" "
+                    animate={errors.childAge ? { x: [-10, 10, -10, 10, 0] } : {}}
+                    transition={{ duration: 0.4 }}
                   />
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                    Child Age *
+                  </label>
                   {errors.childAge && (
-                    <p className="mt-1 text-sm text-red-500">{errors.childAge.message}</p>
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm mt-1"
+                    >
+                      {errors.childAge.message}
+                    </motion.p>
                   )}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Gender *
-                  </label>
-                  <select
+                <div className="relative">
+                  <motion.select
                     {...register('gender', {
                       required: 'Gender is required',
                     })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none bg-white"
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
+                      errors.gender ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    }`}
+                    animate={errors.gender ? { x: [-10, 10, -10, 10, 0] } : {}}
+                    transition={{ duration: 0.4 }}
                   >
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
-                  </select>
+                  </motion.select>
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                    Gender *
+                  </label>
                   {errors.gender && (
-                    <p className="mt-1 text-sm text-red-500">{errors.gender.message}</p>
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm mt-1"
+                    >
+                      {errors.gender.message}
+                    </motion.p>
                   )}
                 </div>
               </div>
 
               {/* Preferred Doctor */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Doctor *
-                </label>
-                <select
+              <div className="relative">
+                <motion.select
                   {...register('doctor', {
                     required: 'Preferred doctor is required',
                   })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none bg-white"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
+                    errors.doctor ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  animate={errors.doctor ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 >
                   <option value="">Select a Doctor</option>
                   {doctors.map((doctor) => (
@@ -221,40 +274,60 @@ const AppointmentForm = () => {
                       {doctor}
                     </option>
                   ))}
-                </select>
+                </motion.select>
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Preferred Doctor *
+                </label>
                 {errors.doctor && (
-                  <p className="mt-1 text-sm text-red-500">{errors.doctor.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.doctor.message}
+                  </motion.p>
                 )}
               </div>
 
               {/* Appointment Date and Time */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Appointment Date *
-                  </label>
-                  <input
+                <div className="relative">
+                  <motion.input
                     type="date"
                     {...register('appointmentDate', {
                       required: 'Appointment date is required',
                     })}
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer ${
+                      errors.appointmentDate ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    }`}
+                    animate={errors.appointmentDate ? { x: [-10, 10, -10, 10, 0] } : {}}
+                    transition={{ duration: 0.4 }}
                   />
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                    Appointment Date *
+                  </label>
                   {errors.appointmentDate && (
-                    <p className="mt-1 text-sm text-red-500">{errors.appointmentDate.message}</p>
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm mt-1"
+                    >
+                      {errors.appointmentDate.message}
+                    </motion.p>
                   )}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Preferred Time *
-                  </label>
-                  <select
+                <div className="relative">
+                  <motion.select
                     {...register('preferredTime', {
                       required: 'Preferred time is required',
                     })}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none bg-white"
+                    className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer bg-white ${
+                      errors.preferredTime ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                    }`}
+                    animate={errors.preferredTime ? { x: [-10, 10, -10, 10, 0] } : {}}
+                    transition={{ duration: 0.4 }}
                   >
                     <option value="">Select Time</option>
                     <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
@@ -264,41 +337,57 @@ const AppointmentForm = () => {
                     <option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
                     <option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
                     <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
-                  </select>
+                  </motion.select>
+                  <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                    Preferred Time *
+                  </label>
                   {errors.preferredTime && (
-                    <p className="mt-1 text-sm text-red-500">{errors.preferredTime.message}</p>
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm mt-1"
+                    >
+                      {errors.preferredTime.message}
+                    </motion.p>
                   )}
                 </div>
               </div>
 
               {/* Reason for Visit */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Reason for Visit *
-                </label>
-                <textarea
+              <div className="relative">
+                <motion.textarea
                   {...register('reason', {
                     required: 'Reason for visit is required',
                     minLength: {
                       value: 10,
                       message: 'Reason must be at least 10 characters',
                     },
-                    maxLength: {
-                      value: 500,
-                      message: 'Reason cannot exceed 500 characters',
-                    },
                   })}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none resize-none"
-                  placeholder="Describe the reason for your visit"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-all duration-300 peer resize-none ${
+                    errors.reason ? 'border-red-500' : 'border-gray-300 focus:border-primary-orange focus:ring-2 focus:ring-primary-orange/20'
+                  }`}
+                  placeholder=" "
+                  animate={errors.reason ? { x: [-10, 10, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 />
+                <label className="absolute left-4 top-3 text-gray-500 transition-all duration-300 pointer-events-none peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary-orange bg-white px-1">
+                  Reason for Visit *
+                </label>
                 {errors.reason && (
-                  <p className="mt-1 text-sm text-red-500">{errors.reason.message}</p>
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    {errors.reason.message}
+                  </motion.p>
                 )}
               </div>
 
               <Button
                 type="submit"
+                isLoading={isSubmitting}
                 disabled={isSubmitting}
                 className="w-full"
               >

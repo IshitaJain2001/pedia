@@ -162,15 +162,14 @@ const Hero = () => {
               
               {/* Main Image Container */}
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                style={{ y, x: mousePosition.x }}
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                style={{ x: mousePosition.x }}
                 className="relative z-10"
               >
                 <motion.div
-                  animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="relative rounded-2xl overflow-hidden shadow-2xl bg-white p-4 border border-gray-200"
+                  style={{ willChange: 'transform' }}
                 >
                   {/* Placeholder for doctor image */}
                   <div className="w-full h-96 bg-gradient-to-br from-primary-orange/20 to-primary-amber/20 rounded-xl flex items-center justify-center">
