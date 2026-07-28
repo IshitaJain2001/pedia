@@ -112,7 +112,7 @@ const Services = () => {
                   transition={{ duration: 0.3, repeat: 1 }}
                   className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center mb-4 shadow-md`}
                 >
-                  <service.icon className="text-white text-xl" />
+                  <service.icon className="text-gray-900 text-xl" />
                 </motion.div>
                 <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-2">
                   {service.title}
