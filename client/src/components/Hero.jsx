@@ -146,7 +146,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="relative order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
+            <div className="relative w-full max-w-[290px] sm:max-w-[350px] lg:max-w-[400px]">
 
               {/* Main floating card */}
               <motion.div
@@ -157,7 +157,7 @@ const Hero = () => {
                 <div className="bg-white rounded-3xl shadow-card-lg p-4 sm:p-5 border border-neutral-100">
 
                   {/* Clinic video in card */}
-                  <div className="w-full h-[220px] sm:h-[280px] lg:h-[320px] rounded-2xl relative overflow-hidden bg-neutral-900">
+                  <div className="w-full h-[190px] sm:h-[250px] lg:h-[320px] rounded-2xl relative overflow-hidden bg-neutral-900">
                     <video
                       ref={cardVideoRef}
                       src="https://res.cloudinary.com/dxqn9ka7p/video/upload/v1785326757/ek_chhoti_si_sec_ki_video_b_uubsrg.mp4"
