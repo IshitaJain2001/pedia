@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-28 sm:pt-32 pb-12 lg:pt-20 lg:pb-0"
+      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-4 pb-12 lg:pt-20 lg:pb-0"
       style={{ isolation: 'isolate' }}
     >
       {/* ── Static Gradient Background (replaces video) ── */}
@@ -144,7 +144,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative order-1 lg:order-2 flex justify-center pt-4 lg:pt-0"
+            className="relative order-1 lg:order-2 flex justify-center"
           >
             <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
 
