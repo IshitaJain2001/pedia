@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaHeartbeat } from 'react-icons/fa';
+import { MdLocalHospital } from 'react-icons/md';
 
 const LoadingScreen = () => {
   return (
@@ -21,9 +21,9 @@ const LoadingScreen = () => {
           <motion.div
             animate={{ scale: [1, 1.12, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-20 h-20 bg-gradient-to-br from-primary-green to-primary-light rounded-3xl flex items-center justify-center shadow-green"
+            className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-green"
           >
-            <FaHeartbeat className="text-white text-4xl" />
+            <MdLocalHospital className="text-white text-4xl" />
           </motion.div>
           {/* Pulse ring */}
           <span className="absolute inset-0 rounded-3xl pulse-ring pointer-events-none" />
@@ -35,14 +35,14 @@ const LoadingScreen = () => {
           transition={{ delay: 0.25, duration: 0.5 }}
           className="text-3xl sm:text-4xl font-poppins font-bold text-neutral-900 leading-tight"
         >
-          Dr. Syed's
+          Dr. S. Mashhood Abbas's
         </motion.h1>
 
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.38, duration: 0.5 }}
-          className="text-2xl sm:text-3xl font-poppins font-semibold text-primary-green mt-1"
+          className="text-2xl sm:text-3xl font-poppins font-semibold mt-1" style={{ color: '#60A5FA' }}
         >
           Al-Sageer Clinic
         </motion.h2>

@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
-import { FaStar, FaBaby, FaHeart, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
+import { useRef, useEffect } from 'react';
+import { FaStar, FaBaby, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
+import { MdLocalHospital } from 'react-icons/md';
 
 const trustMetrics = [
   { icon: FaBaby,        value: '5000+',  label: 'Happy Families' },
-  { icon: FaHeart,       value: '15+',    label: 'Years Experience' },
+  { icon: MdLocalHospital, value: '15+',  label: 'Years Experience' },
   { icon: FaStethoscope, value: 'Expert', label: 'Pediatrician' },
   { icon: FaAmbulance,   value: '24×7',   label: 'Emergency' },
 ];
@@ -21,36 +22,14 @@ const itemVariants = {
 };
 
 const Hero = () => {
-  const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const cardVideoRef = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
+    const video = cardVideoRef.current;
     if (!video) return;
-
-    // Fix React's muted prop bug — must set via DOM directly
     video.muted = true;
     video.volume = 0;
-
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // Autoplay blocked — handled gracefully, video stays paused
-      });
-    };
-
-    if (video.readyState >= 2) {
-      setVideoLoaded(true);
-      tryPlay();
-    } else {
-      video.addEventListener('loadeddata', () => {
-        setVideoLoaded(true);
-        tryPlay();
-      });
-    }
-
-    return () => {
-      video.removeEventListener('loadeddata', tryPlay);
-    };
+    video.play().catch(() => {});
   }, []);
 
   const scrollToSection = (id) => {
@@ -64,59 +43,15 @@ const Hero = () => {
       className="relative min-h-screen flex items-center overflow-hidden pt-18 pb-12 sm:pt-20 sm:pb-16"
       style={{ isolation: 'isolate' }}
     >
-      {/* ── Video Background Layer ── */}
-      {/* z-0: sits at base of section's own stacking context */}
+      {/* ── Static Gradient Background (replaces video) ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
+          background: 'linear-gradient(135deg, #0A1932 0%, #0D2040 35%, #0A1C38 65%, #081528 100%)',
           zIndex: 0,
-          overflow: 'hidden',
         }}
-      >
-        {/* Plain <video> — NOT motion.video (avoids React muted prop bug + Framer forwarding issues) */}
-        <video
-          ref={videoRef}
-          src="/videos/pediatric_clinic_h.mp4"
-          autoPlay
-          loop
-          playsInline
-          preload="auto"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            opacity: videoLoaded ? 1 : 0,
-            transition: 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1)',
-            transform: 'scale(1)',
-          }}
-        />
-
-        {/* Dark blue gradient overlay — 45% opacity — keeps text crisp */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(135deg, rgba(10,25,50,0.52) 0%, rgba(10,30,60,0.44) 50%, rgba(5,20,40,0.50) 100%)',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Soft 2px blur layer — reduces video sharpness for readability */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backdropFilter: 'blur(2px)',
-            WebkitBackdropFilter: 'blur(2px)',
-            zIndex: 2,
-          }}
-        />
-      </div>
+      />
 
       {/* ── Decorative Orbs — sit above video, below content ── */}
       <div
@@ -161,9 +96,9 @@ const Hero = () => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-poppins font-bold leading-[1.1] mb-3 sm:mb-4"
             >
-              <span className="text-white drop-shadow-sm">Dr. Syed's</span>
+              <span className="text-white drop-shadow-sm">Dr. S. Mashhood Abbas's</span>
               <br />
-              <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
+              <span style={{ background: 'linear-gradient(135deg, #93C5FD 0%, #60A5FA 50%, #3B82F6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -193,8 +128,8 @@ const Hero = () => {
                   whileHover={{ y: -4, boxShadow: '0 8px 24px -4px rgba(26,92,56,0.12)' }}
                   className="bg-white rounded-xl sm:rounded-2xl px-3 py-4 text-center border border-neutral-100 shadow-card cursor-default"
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-50 rounded-xl flex items-center justify-center mx-auto mb-2">
-                    <metric.icon className="text-primary-green text-base sm:text-lg" />
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <metric.icon className="text-blue-600 text-base sm:text-lg" />
                   </div>
                   <p className="text-lg sm:text-xl font-poppins font-bold text-neutral-900">{metric.value}</p>
                   <p className="text-[10px] sm:text-xs text-neutral-500 mt-0.5">{metric.label}</p>
@@ -246,27 +181,35 @@ const Hero = () => {
               >
                 <div className="bg-white rounded-3xl shadow-card-lg p-5 sm:p-6 border border-neutral-100">
 
-                  {/* Doctor image placeholder */}
-                  <div className="w-full h-[280px] sm:h-[340px] lg:h-[390px] bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-                    {/* Decorative circles */}
-                    <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary-green/10 rounded-full" />
-                    <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent-mint/15 rounded-full" />
-
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-2xl shadow-card flex items-center justify-center">
-                      <svg className="w-10 h-10 sm:w-12 sm:h-12 text-primary-green" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="text-center px-4 relative">
-                      <p className="text-base font-poppins font-semibold text-neutral-700">Dr. Syed</p>
-                      <p className="text-xs text-neutral-500 mt-0.5">Pediatrician &amp; Neonatologist</p>
+                  {/* Clinic video in card */}
+                  <div className="w-full h-[280px] sm:h-[340px] lg:h-[390px] rounded-2xl relative overflow-hidden bg-neutral-900">
+                    <video
+                      ref={cardVideoRef}
+                      src="/videos/ek_chhoti_si_sec_ki_video_b.mp4"
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        display: 'block',
+                      }}
+                    />
+                    {/* Subtle gradient at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className="absolute bottom-3 left-0 right-0 text-center px-3">
+                      <p className="font-poppins font-semibold text-white text-sm drop-shadow">Dr. S. Mashhood Abbas</p>
+                      <p className="text-[11px] text-white/80 drop-shadow">Pediatrician &amp; Neonatologist</p>
                     </div>
                   </div>
 
                   {/* Bottom doctor name strip */}
                   <div className="mt-4 flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-poppins font-semibold text-neutral-900">Dr. Syed's Al-Sageer Clinic</p>
+                      <p className="text-sm font-poppins font-semibold text-neutral-900">Dr. S. Mashhood Abbas's Al-Sageer Clinic</p>
                       <p className="text-xs text-neutral-500 mt-0.5">Mon, Tue, Thu, Fri • 6:30 – 7:30 PM</p>
                     </div>
                     <div className="flex items-center gap-1 bg-primary-50 rounded-lg px-2.5 py-1.5">

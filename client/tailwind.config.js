@@ -26,6 +26,22 @@ export default {
           dark:    '#0F3D24',
           cream:   '#F0FBF4',
         },
+        // Primary blue — used for icons per client feedback
+        blue: {
+          50:  '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
+          icon: '#2563EB',
+          light: '#60A5FA',
+          pale:  '#EFF6FF',
+        },
         accent: {
           amber:  '#F59E0B',
           amber2: '#FBBF24',

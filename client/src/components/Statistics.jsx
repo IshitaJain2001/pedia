@@ -76,7 +76,7 @@ const Statistics = () => {
                 className="glass-dark rounded-2xl p-7 text-center group cursor-default h-full"
               >
                 {/* Icon */}
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-green to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-green group-hover:shadow-green-lg transition-shadow duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-green group-hover:shadow-green-lg transition-shadow duration-300">
                   <stat.icon className="text-white text-2xl" />
                 </div>
 

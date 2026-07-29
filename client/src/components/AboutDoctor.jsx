@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
 import { FaCheckCircle, FaAward, FaUserMd } from 'react-icons/fa';
 import { MdScience } from 'react-icons/md';
 
@@ -18,35 +17,6 @@ const credentials = [
 ];
 
 const AboutDoctor = () => {
-  const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Fix React's muted prop bug — must be set directly on DOM element
-    video.muted = true;
-    video.volume = 0;
-
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // Autoplay blocked gracefully
-      });
-    };
-
-    if (video.readyState >= 2) {
-      setVideoLoaded(true);
-      tryPlay();
-    } else {
-      const onLoaded = () => {
-        setVideoLoaded(true);
-        tryPlay();
-      };
-      video.addEventListener('loadeddata', onLoaded);
-      return () => video.removeEventListener('loadeddata', onLoaded);
-    }
-  }, []);
 
   return (
     <section
@@ -54,46 +24,15 @@ const AboutDoctor = () => {
       className="py-20 sm:py-24 relative overflow-hidden"
       style={{ isolation: 'isolate' }}
     >
-      {/* ── Video Background Layer ── */}
+      {/* ── Static Light Blue/White Gradient Background (replaces video) ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
+          background: 'linear-gradient(160deg, #ffffff 0%, #f0faff 40%, #e8f5ff 100%)',
           zIndex: 0,
-          overflow: 'hidden',
         }}
-      >
-        {/* Plain <video> — NOT motion.video (avoids muted prop bug) */}
-        <video
-          ref={videoRef}
-          src="/videos/ek_chhoti_si_sec_ki_video_b.mp4"
-          autoPlay
-          loop
-          playsInline
-          preload="auto"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center top',
-            opacity: videoLoaded ? 1 : 0,
-            transition: 'opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1)',
-          }}
-        />
-
-        {/* Soft white/blue overlay — content remains perfectly readable */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(160deg, rgba(255,255,255,0.90) 0%, rgba(240,250,255,0.88) 40%, rgba(232,245,255,0.86) 100%)',
-            zIndex: 1,
-          }}
-        />
-      </div>
+      />
 
       {/* Subtle decorative blob — unchanged, sits above video layer */}
       <div
@@ -119,7 +58,7 @@ const AboutDoctor = () => {
           className="text-center mb-14 sm:mb-16"
         >
           <span className="section-tag">Meet The Doctor</span>
-          <h2 className="section-heading">About Dr. Syed</h2>
+          <h2 className="section-heading">About Us</h2>
           <div className="section-divider" />
           <p className="section-subheading">
             Dedicated to providing exceptional care for children of all ages with compassion and expertise
@@ -136,31 +75,36 @@ const AboutDoctor = () => {
             transition={{ duration: 0.65 }}
             className="relative flex justify-center order-2 lg:order-1"
           >
-            <div className="relative w-full max-w-[380px]">
+            <div className="relative w-full max-w-[400px]">
               {/* Background accent */}
               <div className="absolute inset-4 bg-primary-50 rounded-3xl rotate-3" />
 
-              {/* Card */}
-              <div className="relative bg-white rounded-3xl shadow-card-lg border border-neutral-100 p-5 -rotate-1 hover:rotate-0 transition-transform duration-500">
-                <div className="w-full h-72 sm:h-80 bg-gradient-to-br from-primary-50 via-primary-100 to-primary-200/50 rounded-2xl flex flex-col items-center justify-center gap-3 relative overflow-hidden">
-                  <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-primary-green/10 rounded-full" />
-                  <div className="w-20 h-20 bg-white rounded-2xl shadow-card flex items-center justify-center">
-                    <svg className="w-11 h-11 text-primary-green" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="text-center">
-                    <p className="font-poppins font-semibold text-neutral-800">Dr. Syed</p>
-                    <p className="text-xs text-neutral-500">Upload doctor photo here</p>
+              {/* Card — overflow-hidden clips the image to rounded corners, no top padding */}
+              <div className="relative bg-white rounded-3xl shadow-card-lg border border-neutral-100 overflow-hidden transition-transform duration-500">
+
+                {/* Image — flush to top, full width, taller */}
+                <div className="w-full h-96 sm:h-[420px] relative bg-neutral-100">
+                  <img
+                    src="/videos/WhatsApp Image 2026-07-29 at 10.40.56 AM.jpeg"
+                    alt="Dr. S. Mashhood Abbas — Pediatrician & Neonatologist"
+                    className="w-full h-full object-cover"
+                    style={{ display: 'block', objectPosition: 'center 5%' }}
+                  />
+                  {/* Gradient at bottom for name readability */}
+                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+                  {/* Name overlay */}
+                  <div className="absolute bottom-4 left-0 right-0 text-center px-3">
+                    <p className="font-poppins font-semibold text-white text-sm drop-shadow-md">Dr. S. Mashhood Abbas</p>
+                    <p className="text-[11px] text-white/85 drop-shadow">Pediatrician &amp; Neonatologist</p>
                   </div>
                 </div>
 
                 {/* Credentials chip */}
-                <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
-                  <span className="inline-flex items-center gap-1.5 bg-primary-50 text-primary-green text-xs font-semibold border border-primary-100 px-3 py-1.5 rounded-full">
+                <div className="flex items-center justify-center gap-2 px-5 py-4 flex-wrap">
+                  <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 text-xs font-semibold border border-blue-100 px-3 py-1.5 rounded-full">
                     <FaCheckCircle className="text-xs" /> Certified Pediatrician
                   </span>
-                  <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100 px-3 py-1.5 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100 px-3 py-1.5 rounded-full">
                     <FaCheckCircle className="text-xs" /> Neonatologist
                   </span>
                 </div>
@@ -176,15 +120,15 @@ const AboutDoctor = () => {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="order-1 lg:order-2"
           >
-            <h3 className="text-2xl sm:text-3xl font-poppins font-bold text-neutral-900 mb-1">Dr. Syed</h3>
+            <h3 className="text-2xl sm:text-3xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
             <p className="text-primary-green font-semibold text-base mb-5">Pediatrician &amp; Neonatologist</p>
 
             {/* Credential badges */}
             <div className="space-y-3 mb-6">
               {credentials.map((c, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-primary-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <c.icon className="text-primary-green text-sm" />
+                  <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <c.icon className="text-blue-600 text-sm" />
                   </div>
                   <span className="text-sm text-neutral-700 font-medium">{c.text}</span>
                 </div>
@@ -192,7 +136,7 @@ const AboutDoctor = () => {
             </div>
 
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-7">
-              Dr. Syed has over 15 years of experience in Pediatrics and Neonatology. With a passion for providing compassionate care to children of all ages, he has helped countless families navigate their children's health journeys with expertise and empathy — from routine wellness visits to complex neonatal cases.
+              The clinic is dedicated to providing compassionate, evidence-based pediatric and neonatal care for newborns, infants, children, and adolescents. Our mission is to ensure every child receives personalized medical attention in a safe, welcoming, and child-friendly environment while supporting parents at every step of their healthcare journey.
             </p>
 
             {/* Special Interests */}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FaHeartbeat, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { MdLocalHospital } from 'react-icons/md';
 
 const quickLinks = [
   { name: 'Home',         href: '#home' },
@@ -45,12 +46,12 @@ const Footer = () => {
           {/* ── Brand Column ── */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-green">
-                <FaHeartbeat className="text-white text-lg" />
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-green">
+                <MdLocalHospital className="text-white text-lg" />
               </div>
               <div>
-                <p className="text-base font-poppins font-bold text-white leading-none">Dr. Syed's</p>
-                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Al-Sageer Clinic</p>
+                <p className="text-base font-poppins font-bold text-white leading-none">Dr. S. Mashhood Abbas's</p>
+                <p className="text-sm font-poppins font-semibold mt-0.5" style={{ color: '#60A5FA' }}>Al-Sageer Clinic</p>
               </div>
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
@@ -138,7 +139,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-neutral-500 text-center sm:text-left">
-            © {new Date().getFullYear()} Dr. Syed's Al-Sageer Clinic. All rights reserved.
+            © {new Date().getFullYear()} Dr. S. Mashhood Abbas's Al-Sageer Clinic. All rights reserved.
           </p>
           <p className="text-xs text-neutral-600 text-center sm:text-right">
             Made with ❤️ for the health of every child

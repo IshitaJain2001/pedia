@@ -7,28 +7,28 @@ const contactInfo = [
     title: 'Address',
     content: '123 Healthcare Avenue, Medical City, MC 12345',
     sub: 'Find us on the map',
-    gradient: 'from-primary-green to-primary-light',
+    gradient: 'from-blue-600 to-blue-400',
   },
   {
     icon: FaPhone,
     title: 'Phone',
     content: '+91 98765 43210',
     sub: 'Call us anytime',
-    gradient: 'from-emerald-600 to-emerald-400',
+    gradient: 'from-blue-700 to-blue-500',
   },
   {
     icon: FaEnvelope,
     title: 'Email',
     content: 'info@alsyedclinic.com',
     sub: 'We reply within 24 hours',
-    gradient: 'from-teal-600 to-teal-400',
+    gradient: 'from-blue-500 to-blue-300',
   },
   {
     icon: FaClock,
     title: 'Working Hours',
     content: 'Mon, Tue, Thu, Fri',
     sub: '6:30 PM – 7:30 PM | Emergency: 24/7',
-    gradient: 'from-green-700 to-green-500',
+    gradient: 'from-blue-800 to-blue-600',
   },
 ];
 
@@ -112,7 +112,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Dr. Syed's Al-Sageer Clinic Location"
+                title="Dr. S. Mashhood Abbas's Al-Sageer Clinic Location"
               />
             </div>
           </motion.div>

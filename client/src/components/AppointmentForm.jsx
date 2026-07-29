@@ -55,7 +55,7 @@ const FloatInput = ({ label, icon: Icon, error, children, ...rest }) => (
   </div>
 );
 
-const doctors = ['Dr. Syed — Pediatrician & Neonatologist'];
+const doctors = ['Dr. S. Mashhood Abbas — Pediatrician & Neonatologist'];
 
 const AppointmentForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

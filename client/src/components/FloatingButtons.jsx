@@ -64,7 +64,7 @@ const FloatingButtons = () => {
           href="tel:+919876543210"
           onMouseEnter={() => setHoveredCall(true)}
           onMouseLeave={() => setHoveredCall(false)}
-          className="w-12 h-12 sm:w-13 sm:h-13 bg-primary-green text-white rounded-full shadow-green flex items-center justify-center"
+          className="w-12 h-12 sm:w-13 sm:h-13 bg-blue-600 text-white rounded-full shadow-green flex items-center justify-center"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.93 }}
           aria-label="Call us"
