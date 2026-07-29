@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaAward, FaUserMd } from 'react-icons/fa';
 import { MdScience } from 'react-icons/md';
@@ -17,6 +18,14 @@ const credentials = [
 ];
 
 const AboutDoctor = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section
@@ -120,8 +129,12 @@ const AboutDoctor = () => {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="order-2 lg:order-2"
           >
-            <h3 className="hidden lg:block text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
-            <p className="hidden lg:block text-primary-green font-semibold text-sm mb-3">Pediatrician &amp; Neonatologist</p>
+            {!isMobile && (
+              <>
+                <h3 className="text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
+                <p className="text-primary-green font-semibold text-sm mb-3">Pediatrician &amp; Neonatologist</p>
+              </>
+            )}
 
             {/* Credential badges */}
             <div className="space-y-2 mb-4">
