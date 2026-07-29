@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen min-h-[600px] max-h-[900px] flex items-center overflow-hidden pt-20 pb-6 sm:pb-10"
+      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-24 pb-12 lg:pt-20 lg:pb-0"
       style={{ isolation: 'isolate' }}
     >
       {/* ── Static Gradient Background (replaces video) ── */}

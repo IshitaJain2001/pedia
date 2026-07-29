@@ -36,7 +36,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-10 sm:py-12 bg-white relative h-screen min-h-[600px] max-h-[900px] flex items-center overflow-hidden"
+      className="py-12 lg:py-0 bg-white relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden"
     >
       {/* Decorative */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-primary-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -104,7 +104,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="w-full h-full"
+            className="w-full h-[320px] lg:h-full"
           >
             <div className="rounded-3xl overflow-hidden shadow-card-lg border border-neutral-100 h-full">
               <iframe

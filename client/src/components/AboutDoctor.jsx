@@ -21,7 +21,7 @@ const AboutDoctor = () => {
   return (
     <section
       id="about"
-      className="py-10 sm:py-12 relative h-screen min-h-[600px] max-h-[900px] flex items-center overflow-hidden"
+      className="py-12 lg:py-0 relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden"
       style={{ isolation: 'isolate' }}
     >
       {/* ── Static Light Blue/White Gradient Background (replaces video) ── */}
