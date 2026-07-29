@@ -73,7 +73,7 @@ const AboutDoctor = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="relative flex justify-center order-2 lg:order-1"
+            className="relative flex justify-center order-1 lg:order-1"
           >
             <div className="relative w-full max-w-[320px]">
               {/* Background accent */}
@@ -118,7 +118,7 @@ const AboutDoctor = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="order-1 lg:order-2"
+            className="order-2 lg:order-2"
           >
             <h3 className="text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
             <p className="text-primary-green font-semibold text-sm mb-3">Pediatrician &amp; Neonatologist</p>
