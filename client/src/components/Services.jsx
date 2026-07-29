@@ -99,42 +99,34 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Grid */}
+        {/* Points Layout instead of Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 sm:gap-y-8 max-w-6xl mx-auto"
         >
           {services.map((service, i) => (
-            <motion.div key={i} variants={itemVariants}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.25 }}
-                className="card card-hover h-full group overflow-hidden"
-              >
-                {/* Top accent line */}
-                <div className={`h-1 w-full bg-gradient-to-r ${service.gradient}`} />
-
-                <div className="p-5 sm:p-6">
-                  {/* Icon */}
-                  <div className={`icon-box bg-gradient-to-br ${service.gradient} mb-4 shadow-soft`}>
-                    <service.icon className="text-white text-lg" />
-                  </div>
-
-                  <h3 className="text-base font-poppins font-semibold text-neutral-900 mb-2 group-hover:text-primary-green transition-colors duration-200">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-
-                  <div className="flex items-center gap-1 text-xs font-semibold text-primary-green opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    Learn More <FiArrowRight className="text-xs" />
-                  </div>
-                </div>
-              </motion.div>
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="flex items-start gap-4 p-2 group hover:translate-x-1 transition-transform duration-200"
+            >
+              {/* Icon Point */}
+              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="text-lg" />
+              </div>
+              
+              {/* Content */}
+              <div>
+                <h3 className="text-base sm:text-lg font-poppins font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors duration-200">
+                  {service.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mt-1">
+                  {service.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

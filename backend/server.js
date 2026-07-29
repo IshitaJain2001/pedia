@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', require('./routes/generalQueryRoutes'));
 app.use('/api', require('./routes/appointmentRoutes'));
 app.use('/api', require('./routes/chatbotRoutes'));
+app.use('/api', require('./routes/adminRoutes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

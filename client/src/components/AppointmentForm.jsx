@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -6,7 +6,7 @@ import axios from 'axios';
 import { FaUser, FaEnvelope, FaPhone, FaBaby, FaCalendarAlt, FaClock, FaStethoscope, FaUserMd } from 'react-icons/fa';
 
 /* ── Reusable floating-label input ── */
-const FloatInput = ({ label, icon: Icon, error, children, ...rest }) => (
+const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, ref) => (
   <div className="relative">
     {children ? (
       /* For select / textarea */
@@ -37,6 +37,7 @@ const FloatInput = ({ label, icon: Icon, error, children, ...rest }) => (
             </div>
           )}
           <input
+            ref={ref}
             className={`form-input ${Icon ? 'pl-10' : ''} ${error ? '!border-red-400 !ring-red-100' : ''}`}
             {...rest}
           />
@@ -53,7 +54,9 @@ const FloatInput = ({ label, icon: Icon, error, children, ...rest }) => (
       </div>
     )}
   </div>
-);
+));
+
+FloatInput.displayName = 'FloatInput';
 
 const doctors = ['Dr. S. Mashhood Abbas — Pediatrician & Neonatologist'];
 

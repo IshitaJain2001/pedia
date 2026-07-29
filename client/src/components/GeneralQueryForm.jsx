@@ -1,205 +1,199 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import Card from './Card';
-import Button from './Button';
+import { FaUser, FaEnvelope, FaPhone, FaBaby, FaPen, FaComment } from 'react-icons/fa';
+
+/* ── Reusable float input for enquiry form ── */
+const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, ref) => (
+  <div className="relative">
+    {children ? (
+      /* For select / textarea */
+      <div>
+        <label className="block text-xs font-semibold text-neutral-600 mb-1.5">
+          {label} <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          {Icon && (
+            <div className="absolute left-3.5 top-3.5 text-blue-600 text-sm pointer-events-none z-10">
+              <Icon />
+            </div>
+          )}
+          {children}
+        </div>
+        {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      </div>
+    ) : (
+      /* For text input */
+      <div>
+        <label className="block text-xs font-semibold text-neutral-600 mb-1.5">
+          {label} <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          {Icon && (
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 text-sm pointer-events-none">
+              <Icon />
+            </div>
+          )}
+          <input
+            ref={ref}
+            className={`form-input ${Icon ? 'pl-10' : ''} ${error ? '!border-red-400 !ring-red-100' : ''}`}
+            {...rest}
+          />
+        </div>
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-red-500 text-xs mt-1"
+          >
+            {error}
+          </motion.p>
+        )}
+      </div>
+    )}
+  </div>
+));
+
+FloatInput.displayName = 'FloatInput';
 
 const GeneralQueryForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    console.log('Submitting query data:', data);
     try {
       const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/general-query', data);
-      console.log('Query response:', response.data);
       if (response.data.success) {
-        toast.success('Your query has been submitted successfully!');
+        toast.success('Your query has been submitted successfully!', { duration: 4000 });
         reset();
       } else {
-        toast.error(response.data.message || 'Submission failed');
+        toast.error(response.data.message || 'Submission failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error submitting query:', error);
-      console.error('Error response:', error.response);
-      toast.error(
-        error.response?.data?.message || error.message || 'Failed to submit query. Please try again.'
-      );
+      toast.error(error.response?.data?.message || 'Failed to submit query. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <Card>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+    <div className="card p-6 sm:p-8 shadow-card-lg">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+
+        {/* Full Name */}
+        <FloatInput
+          label="Full Name"
+          icon={FaUser}
+          placeholder="e.g. Sarah Ahmed"
+          error={errors.name?.message}
+          {...register('name', {
+            required: 'Name is required',
+            minLength: { value: 2, message: 'Name must be at least 2 characters' },
+          })}
+        />
+
+        {/* Email + Phone — 2 col on sm+ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <FloatInput
+            label="Email Address"
+            icon={FaEnvelope}
+            type="email"
+            placeholder="you@example.com"
+            error={errors.email?.message}
+            {...register('email', {
+              required: 'Email is required',
+              pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email address' },
+            })}
+          />
+          <FloatInput
+            label="Phone Number"
+            icon={FaPhone}
+            type="tel"
+            placeholder="10-digit mobile number"
+            error={errors.phone?.message}
+            {...register('phone', {
+              required: 'Phone number is required',
+              pattern: { value: /^[0-9]{10}$/, message: 'Enter a valid 10-digit number' },
+            })}
+          />
+        </div>
+
+        {/* Child's Age */}
+        <FloatInput
+          label="Child's Age"
+          icon={FaBaby}
+          placeholder="e.g. 3 years, 6 months"
+          error={errors.childAge?.message}
+          {...register('childAge', {
+            required: "Child's age is required",
+          })}
+        />
+
+        {/* Subject */}
+        <FloatInput
+          label="Subject"
+          icon={FaPen}
+          placeholder="e.g. Query about vaccinations"
+          error={errors.subject?.message}
+          {...register('subject', {
+            required: 'Subject is required',
+            minLength: { value: 3, message: 'Subject must be at least 3 characters' },
+          })}
+        />
+
+        {/* Message */}
+        <div>
+          <label className="block text-xs font-semibold text-neutral-600 mb-1.5">
+            Your Message <span className="text-red-500">*</span>
+          </label>
+          <div className="relative">
+            <FaComment className="absolute left-3.5 top-3.5 text-blue-600 text-sm pointer-events-none" />
+            <textarea
+              rows={4}
+              placeholder="How can we help you? Describe your query in detail…"
+              className={`form-input pl-10 resize-none ${errors.message ? '!border-red-400 !ring-red-100' : ''}`}
+              {...register('message', {
+                required: 'Message is required',
+                minLength: { value: 10, message: 'Message must be at least 10 characters' },
+              })}
+            />
+          </div>
+          {errors.message && (
+            <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="text-red-500 text-xs mt-1">
+              {errors.message.message}
+            </motion.p>
+          )}
+        </div>
+
+        {/* Submit */}
+        <motion.button
+          type="submit"
+          disabled={isSubmitting}
+          className="btn-primary w-full justify-center py-4 text-base disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+          whileHover={!isSubmitting ? { scale: 1.02, y: -2 } : {}}
+          whileTap={!isSubmitting ? { scale: 0.98 } : {}}
         >
-          <h2 className="text-2xl sm:text-3xl font-poppins font-bold text-gray-900 mb-2">
-            General Query
-          </h2>
-          <p className="text-sm text-gray-600">
-            Have a question? Send us a message
-          </p>
-        </motion.div>
-              {/* Full Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  {...register('name', {
-                    required: 'Name is required',
-                    minLength: {
-                      value: 2,
-                      message: 'Name must be at least 2 characters',
-                    },
-                    maxLength: {
-                      value: 100,
-                      message: 'Name cannot exceed 100 characters',
-                    },
-                  })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter your full name"
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
-                )}
-              </div>
+          {isSubmitting ? (
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+              </svg>
+              Submitting…
+            </span>
+          ) : (
+            'Submit Enquiry'
+          )}
+        </motion.button>
 
-              {/* Email */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^\S+@\S+\.\S+$/,
-                      message: 'Please provide a valid email',
-                    },
-                  })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter your email"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
-                )}
-              </div>
-
-              {/* Phone Number */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  {...register('phone', {
-                    required: 'Phone number is required',
-                    pattern: {
-                      value: /^[\d\s\-\+\(\)]{10,}$/,
-                      message: 'Please provide a valid phone number',
-                    },
-                  })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter your phone number"
-                />
-                {errors.phone && (
-                  <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
-                )}
-              </div>
-
-              {/* Child's Age */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Child's Age *
-                </label>
-                <input
-                  type="text"
-                  {...register('childAge', {
-                    required: 'Child age is required',
-                  })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="e.g., 3 years, 6 months"
-                />
-                {errors.childAge && (
-                  <p className="mt-1 text-sm text-red-500">{errors.childAge.message}</p>
-                )}
-              </div>
-
-              {/* Subject */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  {...register('subject', {
-                    required: 'Subject is required',
-                    maxLength: {
-                      value: 200,
-                      message: 'Subject cannot exceed 200 characters',
-                    },
-                  })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none"
-                  placeholder="Enter the subject of your query"
-                />
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
-                )}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  {...register('message', {
-                    required: 'Message is required',
-                    minLength: {
-                      value: 10,
-                      message: 'Message must be at least 10 characters',
-                    },
-                    maxLength: {
-                      value: 1000,
-                      message: 'Message cannot exceed 1000 characters',
-                    },
-                  })}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary-sky focus:border-transparent transition-all duration-300 outline-none resize-none"
-                  placeholder="Enter your message"
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
-                )}
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full"
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit Query'}
-              </Button>
-            </form>
-          </Card>
+        <p className="text-center text-xs text-neutral-400 mt-3">
+          Our team will review your enquiry and get back to you as soon as possible.
+        </p>
+      </form>
+    </div>
   );
 };
 

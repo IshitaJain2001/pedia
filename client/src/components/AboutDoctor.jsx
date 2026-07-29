@@ -4,10 +4,10 @@ import { MdScience } from 'react-icons/md';
 
 const specialInterests = [
   { label: 'Child Growth & Development',   color: 'bg-primary-50 text-primary-green border-primary-100' },
-  { label: 'General Pediatrics',            color: 'bg-emerald-50 text-emerald-700 border-emerald-100' },
-  { label: 'Behavioural Disorders',         color: 'bg-teal-50 text-teal-700 border-teal-100' },
-  { label: 'Neonatal & Newborn Care',       color: 'bg-green-50 text-green-700 border-green-100' },
-  { label: 'Vaccination & Immunization',    color: 'bg-lime-50 text-lime-700 border-lime-100' },
+  { label: 'General Pediatrics',            color: 'bg-blue-50 text-blue-700 border-blue-100' },
+  { label: 'Behavioural Disorders',         color: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
+  { label: 'Neonatal & Newborn Care',       color: 'bg-sky-50 text-sky-700 border-sky-100' },
+  { label: 'Vaccination & Immunization',    color: 'bg-cyan-50 text-cyan-700 border-cyan-100' },
 ];
 
 const credentials = [
@@ -21,7 +21,7 @@ const AboutDoctor = () => {
   return (
     <section
       id="about"
-      className="py-20 sm:py-24 relative overflow-hidden"
+      className="py-10 sm:py-12 relative h-screen min-h-[600px] max-h-[900px] flex items-center overflow-hidden"
       style={{ isolation: 'isolate' }}
     >
       {/* ── Static Light Blue/White Gradient Background (replaces video) ── */}
@@ -55,17 +55,17 @@ const AboutDoctor = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14 sm:mb-16"
+          className="text-center mb-6 sm:mb-8"
         >
-          <span className="section-tag">Meet The Doctor</span>
-          <h2 className="section-heading">About Us</h2>
-          <div className="section-divider" />
-          <p className="section-subheading">
+          <span className="section-tag mb-2">Meet The Doctor</span>
+          <h2 className="section-heading mb-2 text-2xl sm:text-3xl lg:text-4xl">About Us</h2>
+          <div className="section-divider mb-3" />
+          <p className="section-subheading text-xs sm:text-sm max-w-2xl mx-auto">
             Dedicated to providing exceptional care for children of all ages with compassion and expertise
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* ── Left: Doctor Image ── */}
           <motion.div
@@ -75,7 +75,7 @@ const AboutDoctor = () => {
             transition={{ duration: 0.65 }}
             className="relative flex justify-center order-2 lg:order-1"
           >
-            <div className="relative w-full max-w-[400px]">
+            <div className="relative w-full max-w-[320px]">
               {/* Background accent */}
               <div className="absolute inset-4 bg-primary-50 rounded-3xl rotate-3" />
 
@@ -83,9 +83,9 @@ const AboutDoctor = () => {
               <div className="relative bg-white rounded-3xl shadow-card-lg border border-neutral-100 overflow-hidden transition-transform duration-500">
 
                 {/* Image — flush to top, full width, taller */}
-                <div className="w-full h-96 sm:h-[420px] relative bg-neutral-100">
+                <div className="w-full h-80 sm:h-[350px] relative bg-neutral-100">
                   <img
-                    src="/videos/WhatsApp Image 2026-07-29 at 10.40.56 AM.jpeg"
+                    src="https://res.cloudinary.com/dxqn9ka7p/image/upload/v1785326786/WhatsApp_Image_2026-07-29_at_10.40.56_AM_mpfwsy.jpg"
                     alt="Dr. S. Mashhood Abbas — Pediatrician & Neonatologist"
                     className="w-full h-full object-cover"
                     style={{ display: 'block', objectPosition: 'center 5%' }}
@@ -100,7 +100,7 @@ const AboutDoctor = () => {
                 </div>
 
                 {/* Credentials chip */}
-                <div className="flex items-center justify-center gap-2 px-5 py-4 flex-wrap">
+                <div className="flex items-center justify-center gap-2 px-4 py-3 flex-wrap">
                   <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 text-xs font-semibold border border-blue-100 px-3 py-1.5 rounded-full">
                     <FaCheckCircle className="text-xs" /> Certified Pediatrician
                   </span>
@@ -120,33 +120,33 @@ const AboutDoctor = () => {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="order-1 lg:order-2"
           >
-            <h3 className="text-2xl sm:text-3xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
-            <p className="text-primary-green font-semibold text-base mb-5">Pediatrician &amp; Neonatologist</p>
+            <h3 className="text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
+            <p className="text-primary-green font-semibold text-sm mb-3">Pediatrician &amp; Neonatologist</p>
 
             {/* Credential badges */}
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2 mb-4">
               {credentials.map((c, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <c.icon className="text-blue-600 text-sm" />
+                <div key={i} className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <c.icon className="text-blue-600 text-xs" />
                   </div>
-                  <span className="text-sm text-neutral-700 font-medium">{c.text}</span>
+                  <span className="text-xs sm:text-sm text-neutral-700 font-medium">{c.text}</span>
                 </div>
               ))}
             </div>
 
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-7">
+            <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-4">
               The clinic is dedicated to providing compassionate, evidence-based pediatric and neonatal care for newborns, infants, children, and adolescents. Our mission is to ensure every child receives personalized medical attention in a safe, welcoming, and child-friendly environment while supporting parents at every step of their healthcare journey.
             </p>
 
             {/* Special Interests */}
-            <div className="mb-7">
-              <h4 className="text-base font-poppins font-semibold text-neutral-900 mb-3">Special Interests</h4>
-              <div className="flex flex-wrap gap-2">
+            <div className="mb-4">
+              <h4 className="text-xs sm:text-sm font-poppins font-semibold text-neutral-900 mb-2">Special Interests</h4>
+              <div className="flex flex-wrap gap-1.5">
                 {specialInterests.map((item, i) => (
                   <span
                     key={i}
-                    className={`text-xs font-medium border rounded-full px-3 py-1.5 ${item.color}`}
+                    className={`text-[10px] sm:text-xs font-medium border rounded-full px-2.5 py-1 ${item.color}`}
                   >
                     {item.label}
                   </span>
@@ -159,7 +159,7 @@ const AboutDoctor = () => {
                 const el = document.querySelector('#forms');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="btn-primary text-sm px-6 py-3"
+              className="btn-primary text-xs sm:text-sm px-5 py-2.5"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
             >

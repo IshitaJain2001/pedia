@@ -141,9 +141,6 @@ const Footer = () => {
           <p className="text-xs text-neutral-500 text-center sm:text-left">
             © {new Date().getFullYear()} Dr. S. Mashhood Abbas's Al-Sageer Clinic. All rights reserved.
           </p>
-          <p className="text-xs text-neutral-600 text-center sm:text-right">
-            Made with ❤️ for the health of every child
-          </p>
         </div>
       </div>
     </footer>

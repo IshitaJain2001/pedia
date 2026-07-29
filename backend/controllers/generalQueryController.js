@@ -57,3 +57,32 @@ exports.getGeneralQueries = async (req, res) => {
     });
   }
 };
+
+// @desc    Delete a general query (Admin)
+// @route   DELETE /api/general-query/:id
+// @access  Private/Admin
+exports.deleteGeneralQuery = async (req, res) => {
+  try {
+    const query = await GeneralQuery.findByIdAndDelete(req.params.id);
+
+    if (!query) {
+      return res.status(404).json({
+        success: false,
+        message: 'Query not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Query deleted successfully'
+    });
+  } catch (error) {
+    console.error('Error deleting query:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while deleting query',
+      error: error.message
+    });
+  }
+};
+
