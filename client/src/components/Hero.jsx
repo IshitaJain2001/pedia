@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { FaStar, FaBaby, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 import { MdLocalHospital } from 'react-icons/md';
@@ -20,16 +20,29 @@ const itemVariants = {
   hidden:  { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
-
-const Hero = () => {
-  const cardVideoRef = useRef(null);
+const Hero = () => {
+  const videoRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    const video = cardVideoRef.current;
+    const video = videoRef.current;
     if (!video) return;
     video.muted = true;
     video.volume = 0;
-    video.play().catch(() => {});
+
+    const tryPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 2) {
+      setVideoLoaded(true);
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', () => {
+        setVideoLoaded(true);
+        tryPlay();
+      });
+    }
   }, []);
 
   const scrollToSection = (id) => {
@@ -43,15 +56,57 @@ const Hero = () => {
       className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-4 pb-12 lg:pt-0 lg:pb-0"
       style={{ isolation: 'isolate' }}
     >
-      {/* ── Static Gradient Background (replaces video) ── */}
+      {/* ── Video Background Layer ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(135deg, #0A1932 0%, #0D2040 35%, #0A1C38 65%, #081528 100%)',
           zIndex: 0,
+          overflow: 'hidden',
         }}
-      />
+      >
+        <video
+          ref={videoRef}
+          src="https://res.cloudinary.com/dxqn9ka7p/video/upload/v1785429226/pediatric_clinic_h_jshji1.mp4"
+          autoPlay
+          loop
+          playsInline
+          muted
+          preload="auto"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            opacity: videoLoaded ? 1 : 0,
+            transition: 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+        />
+
+        {/* Left-to-right gradient overlay — keeps left side text readable while keeping right side video clear */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to right, rgba(8,35,20,0.88) 0%, rgba(8,35,20,0.65) 45%, rgba(8,35,20,0.15) 100%)',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Soft 2px blur layer — reduces video sharpness for readability */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backdropFilter: 'blur(1px)',
+            WebkitBackdropFilter: 'blur(1px)',
+            zIndex: 2,
+          }}
+        />
+      </div>
 
       {/* ── Decorative Orbs — sit above video, below content ── */}
       <div
@@ -74,14 +129,14 @@ const Hero = () => {
 
       {/* ── All Content — z-index 10, sits above everything ── */}
       <div className="section-container w-full" style={{ position: 'relative', zIndex: 10 }}>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="flex flex-col items-center lg:items-start justify-center lg:justify-start text-center lg:text-left max-w-7xl mx-auto">
 
           {/* ── Left: Content ── */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="text-center lg:text-left order-2 lg:order-1"
+            className="text-center lg:text-left max-w-2xl lg:max-w-xl flex flex-col items-center lg:items-start"
           >
             {/* Badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-3 sm:mb-4">
@@ -98,7 +153,7 @@ const Hero = () => {
             >
               <span className="text-white drop-shadow-sm">Dr. S. Mashhood Abbas's</span>
               <br />
-              <span style={{ background: 'linear-gradient(135deg, #93C5FD 0%, #60A5FA 50%, #3B82F6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
+              <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -120,7 +175,7 @@ const Hero = () => {
             {/* Trust Metrics */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 sm:mb-5"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 sm:mb-5 w-full"
             >
               {trustMetrics.map((metric, i) => (
                 <motion.div
@@ -128,8 +183,8 @@ const Hero = () => {
                   whileHover={{ y: -4, boxShadow: '0 8px 24px -4px rgba(26,92,56,0.12)' }}
                   className="bg-white rounded-xl sm:rounded-2xl px-2 py-2.5 text-center border border-neutral-100 shadow-card cursor-default"
                 >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-1.5">
-                    <metric.icon className="text-blue-600 text-xs sm:text-sm" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary-50 rounded-xl flex items-center justify-center mx-auto mb-1.5">
+                    <metric.icon className="text-primary-green text-xs sm:text-sm" />
                   </div>
                   <p className="text-base sm:text-lg font-poppins font-bold text-neutral-900">{metric.value}</p>
                   <p className="text-[9px] sm:text-xs text-neutral-500 mt-0.5">{metric.label}</p>
@@ -137,75 +192,6 @@ const Hero = () => {
               ))}
             </motion.div>
 
-          </motion.div>
-
-          {/* ── Right: Doctor Card ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative order-1 lg:order-2 flex justify-center"
-          >
-            <div className="relative w-full max-w-[290px] sm:max-w-[350px] lg:max-w-[400px]">
-
-              {/* Main floating card */}
-              <motion.div
-                animate={{ y: [-6, 6, -6] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative"
-              >
-                <div className="bg-white rounded-3xl shadow-card-lg p-4 sm:p-5 border border-neutral-100">
-
-                  {/* Clinic video in card */}
-                  <div className="w-full h-[190px] sm:h-[250px] lg:h-[320px] rounded-2xl relative overflow-hidden bg-neutral-900">
-                    <video
-                      ref={cardVideoRef}
-                      src="https://res.cloudinary.com/dxqn9ka7p/video/upload/v1785326757/ek_chhoti_si_sec_ki_video_b_uubsrg.mp4"
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="auto"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center',
-                        display: 'block',
-                      }}
-                    />
-                    {/* Subtle gradient at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/50 to-transparent" />
-                    <div className="absolute bottom-3 left-0 right-0 text-center px-3">
-                      <p className="font-poppins font-semibold text-white text-sm drop-shadow">Dr. S. Mashhood Abbas</p>
-                      <p className="text-[11px] text-white/80 drop-shadow">Pediatrician &amp; Neonatologist</p>
-                    </div>
-                  </div>
-
-                  {/* Bottom doctor name strip */}
-                  <div className="mt-3">
-                    <p className="text-[10px] sm:text-xs text-neutral-500 mt-0.5">Mon, Tue, Thu, Fri • 6:30 – 7:30 PM</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating badge — Available (Dynamic based on Mon, Tue, Thu, Fri availability) */}
-              {[1, 2, 4, 5].includes(new Date().getDay()) && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8, duration: 0.4 }}
-                  className="absolute -top-3 -left-4 sm:-top-4 sm:-left-5 glass rounded-2xl shadow-card px-3 sm:px-4 py-2 sm:py-3 border border-white/80"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 bg-primary-green rounded-full animate-pulse flex-shrink-0" />
-                    <div>
-                      <p className="text-xs font-semibold text-neutral-800 leading-none">Available Today</p>
-                      <p className="text-[10px] text-neutral-500 mt-0.5">Evening Clinic Open</p>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </div>
           </motion.div>
         </div>
       </div>

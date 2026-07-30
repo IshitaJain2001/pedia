@@ -16,7 +16,7 @@ const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, 
         </label>
         <div className="relative">
           {Icon && (
-            <div className="absolute left-3.5 top-3.5 text-blue-600 text-sm pointer-events-none z-10">
+            <div className="absolute left-3.5 top-3.5 text-primary-green text-sm pointer-events-none z-10">
               <Icon />
             </div>
           )}
@@ -32,7 +32,7 @@ const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, 
         </label>
         <div className="relative">
           {Icon && (
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-600 text-sm pointer-events-none">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-primary-green text-sm pointer-events-none">
               <Icon />
             </div>
           )}
@@ -150,7 +150,7 @@ const GeneralQueryForm = () => {
             Your Message <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <FaComment className="absolute left-3.5 top-3.5 text-blue-600 text-sm pointer-events-none" />
+            <FaComment className="absolute left-3.5 top-3.5 text-primary-green text-sm pointer-events-none" />
             <textarea
               rows={4}
               placeholder="How can we help you? Describe your query in detail…"

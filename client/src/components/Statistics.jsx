@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
-import { FaHeartbeat, FaUserMd, FaCalendarAlt, FaClock } from 'react-icons/fa';
+import { FaHeartbeat, FaCalendarAlt, FaClock } from 'react-icons/fa';
 
 const StatCounter = ({ end, duration = 2, suffix = '' }) => {
   const [count, setCount] = useState(0);
@@ -25,7 +25,6 @@ const StatCounter = ({ end, duration = 2, suffix = '' }) => {
 
 const stats = [
   { icon: FaHeartbeat,   value: 5000, suffix: '+', label: 'Happy Families',   desc: 'Trusted by families across the region' },
-  { icon: FaUserMd,      value: 25,   suffix: '+', label: 'Expert Doctors',    desc: 'Specialist & experienced clinical team' },
   { icon: FaCalendarAlt, value: 15,   suffix: '+', label: 'Years Experience',  desc: 'Delivering quality pediatric care' },
   { icon: FaClock,       value: 24,   suffix: '/7', label: 'Emergency Care',   desc: 'Round-the-clock availability' },
 ];
@@ -61,7 +60,7 @@ const Statistics = () => {
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 max-w-5xl mx-auto">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -76,7 +75,7 @@ const Statistics = () => {
                 className="glass-dark rounded-2xl p-7 text-center group cursor-default h-full"
               >
                 {/* Icon */}
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-green group-hover:shadow-green-lg transition-shadow duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary-green to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-green group-hover:shadow-green-lg transition-shadow duration-300">
                   <stat.icon className="text-white text-2xl" />
                 </div>
 

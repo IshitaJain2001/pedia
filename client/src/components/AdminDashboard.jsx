@@ -247,7 +247,7 @@ const AdminDashboard = () => {
     switch (status) {
       case 'Confirmed': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Pending':   return 'bg-amber-50 text-amber-700 border-amber-100';
-      case 'Completed': return 'bg-blue-50 text-blue-700 border-blue-100';
+      case 'Completed': return 'bg-primary-50 text-primary-700 border-primary-100';
       case 'Cancelled': return 'bg-rose-50 text-rose-700 border-rose-100';
       default:          return 'bg-neutral-50 text-neutral-700 border-neutral-100';
     }
@@ -257,13 +257,13 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-neutral-50 p-4 sm:p-6 lg:p-8 font-inter relative overflow-hidden text-neutral-800">
       
       {/* Orbs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
       {/* Header */}
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between bg-white border border-neutral-100 shadow-card rounded-3xl p-5 mb-6 sm:mb-8 gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-lg">
+          <div className="w-12 h-12 bg-primary-50 text-primary-green rounded-2xl flex items-center justify-center font-bold text-lg">
             A
           </div>
           <div>
@@ -289,7 +289,7 @@ const AdminDashboard = () => {
 
       {loading ? (
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center py-20 relative z-10">
-          <svg className="w-12 h-12 animate-spin text-blue-600 mb-4" fill="none" viewBox="0 0 24 24">
+          <svg className="w-12 h-12 animate-spin text-primary-green mb-4" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
           </svg>
@@ -306,7 +306,7 @@ const AdminDashboard = () => {
                 <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Queries</p>
                 <p className="text-2xl font-poppins font-bold text-neutral-900 mt-1">{stats.totalQueries}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-primary-50 text-primary-green rounded-xl flex items-center justify-center">
                 <FaQuestionCircle size={18} />
               </div>
             </motion.div>
@@ -317,7 +317,7 @@ const AdminDashboard = () => {
                 <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Appointments</p>
                 <p className="text-2xl font-poppins font-bold text-neutral-900 mt-1">{stats.totalAppointments}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-primary-50 text-primary-green rounded-xl flex items-center justify-center">
                 <FaCalendarCheck size={18} />
               </div>
             </motion.div>
@@ -355,14 +355,14 @@ const AdminDashboard = () => {
               <div className="flex gap-1.5 p-1 bg-neutral-100 rounded-2xl w-full md:w-auto">
                 <button
                   onClick={() => handleTabChange('appointments')}
-                  className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all w-full md:w-auto ${activeTab === 'appointments' ? 'bg-white text-blue-600 shadow-sm' : 'text-neutral-500 hover:text-neutral-700'}`}
+                  className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all w-full md:w-auto ${activeTab === 'appointments' ? 'bg-white text-primary-green shadow-sm' : 'text-neutral-500 hover:text-neutral-700'}`}
                 >
                   <FaCalendarCheck size={14} />
                   <span>Appointments</span>
                 </button>
                 <button
                   onClick={() => handleTabChange('queries')}
-                  className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all w-full md:w-auto ${activeTab === 'queries' ? 'bg-white text-blue-600 shadow-sm' : 'text-neutral-500 hover:text-neutral-700'}`}
+                  className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all w-full md:w-auto ${activeTab === 'queries' ? 'bg-white text-primary-green shadow-sm' : 'text-neutral-500 hover:text-neutral-700'}`}
                 >
                   <FaQuestionCircle size={14} />
                   <span>General Queries</span>
@@ -379,7 +379,7 @@ const AdminDashboard = () => {
                     <select
                       value={statusFilter}
                       onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-                      className="pl-9 pr-4 py-2.5 text-sm font-medium border border-neutral-200 rounded-xl outline-none focus:border-blue-500 bg-white transition-all"
+                      className="pl-9 pr-4 py-2.5 text-sm font-medium border border-neutral-200 rounded-xl outline-none focus:border-primary-green bg-white transition-all"
                     >
                       <option value="All">All Statuses</option>
                       <option value="Pending">Pending</option>
@@ -398,7 +398,7 @@ const AdminDashboard = () => {
                     placeholder="Search records…"
                     value={searchTerm}
                     onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-                    className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-200 rounded-xl outline-none focus:border-blue-500 transition-all placeholder-neutral-400"
+                    className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-200 rounded-xl outline-none focus:border-primary-green transition-all placeholder-neutral-400"
                   />
                 </div>
               </div>
@@ -459,7 +459,7 @@ const AdminDashboard = () => {
                               <div className="flex items-center justify-end gap-2">
                                 <button
                                   onClick={() => setSelectedRecord({ type: 'appointment', ...appt })}
-                                  className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors"
+                                  className="w-8 h-8 rounded-lg bg-primary-50 text-primary-green flex items-center justify-center hover:bg-primary-100 transition-colors"
                                   title="View Details"
                                 >
                                   <FaEye size={12} />
@@ -521,7 +521,7 @@ const AdminDashboard = () => {
                               <div className="flex items-center justify-end gap-2">
                                 <button
                                   onClick={() => setSelectedRecord({ type: 'query', ...query })}
-                                  className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors"
+                                  className="w-8 h-8 rounded-lg bg-primary-50 text-primary-green flex items-center justify-center hover:bg-primary-100 transition-colors"
                                   title="View Details"
                                 >
                                   <FaEye size={12} />
@@ -572,7 +572,7 @@ const AdminDashboard = () => {
                     <button
                       key={i}
                       onClick={() => handlePageChange(i + 1)}
-                      className={`w-8 h-8 text-xs font-bold rounded-lg transition-all ${currentPage === i + 1 ? 'bg-blue-600 text-white shadow-sm' : 'border border-neutral-200 text-neutral-600 hover:bg-neutral-50'}`}
+                      className={`w-8 h-8 text-xs font-bold rounded-lg transition-all ${currentPage === i + 1 ? 'bg-primary-green text-white shadow-sm' : 'border border-neutral-200 text-neutral-600 hover:bg-neutral-50'}`}
                     >
                       {i + 1}
                     </button>
@@ -607,7 +607,7 @@ const AdminDashboard = () => {
               {/* Modal Header */}
               <div className="p-6 border-b border-neutral-100 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedRecord.type === 'query' ? 'bg-blue-50 text-blue-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedRecord.type === 'query' ? 'bg-primary-50 text-primary-green' : 'bg-emerald-50 text-emerald-600'}`}>
                     {selectedRecord.type === 'query' ? <FaQuestionCircle size={14} /> : <FaCalendarCheck size={14} />}
                   </div>
                   <h3 className="font-poppins font-bold text-neutral-900 text-lg">
@@ -628,7 +628,7 @@ const AdminDashboard = () => {
                   /* Query details views */
                   <div className="space-y-4.5">
                     <div className="flex gap-3">
-                      <FaUser className="text-blue-500 mt-1 flex-shrink-0" />
+                      <FaUser className="text-primary-green mt-1 flex-shrink-0" />
                       <div>
                         <p className="text-[10px] text-neutral-400 uppercase font-semibold">User Full Name</p>
                         <p className="font-semibold text-neutral-800">{selectedRecord.name}</p>
@@ -637,14 +637,14 @@ const AdminDashboard = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="flex gap-3">
-                        <FaPhone className="text-blue-500 mt-1 flex-shrink-0" />
+                        <FaPhone className="text-primary-green mt-1 flex-shrink-0" />
                         <div>
                           <p className="text-[10px] text-neutral-400 uppercase font-semibold">Phone Number</p>
                           <p className="font-semibold text-neutral-800">{selectedRecord.phone}</p>
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <FaBaby className="text-blue-500 mt-1 flex-shrink-0" />
+                        <FaBaby className="text-primary-green mt-1 flex-shrink-0" />
                         <div>
                           <p className="text-[10px] text-neutral-400 uppercase font-semibold">Child Age</p>
                           <p className="font-semibold text-neutral-800">{selectedRecord.childAge}</p>
@@ -653,7 +653,7 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className="flex gap-3">
-                      <FaEnvelope className="text-blue-500 mt-1 flex-shrink-0" />
+                      <FaEnvelope className="text-primary-green mt-1 flex-shrink-0" />
                       <div>
                         <p className="text-[10px] text-neutral-400 uppercase font-semibold">Email Address</p>
                         <p className="font-medium text-neutral-700">{selectedRecord.email}</p>
@@ -661,7 +661,7 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className="flex gap-3">
-                      <FaFileMedical className="text-blue-500 mt-1 flex-shrink-0" />
+                      <FaFileMedical className="text-primary-green mt-1 flex-shrink-0" />
                       <div>
                         <p className="text-[10px] text-neutral-400 uppercase font-semibold">Query Subject</p>
                         <p className="font-semibold text-neutral-800 leading-tight">{selectedRecord.subject}</p>

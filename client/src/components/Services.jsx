@@ -1,135 +1,171 @@
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import {
   FaBabyCarriage, FaSyringe, FaAppleAlt, FaChild,
   FaStethoscope, FaAmbulance, FaChartLine, FaHeartbeat,
 } from 'react-icons/fa';
-import { FiArrowRight } from 'react-icons/fi';
 
 const services = [
   {
     icon: FaBabyCarriage,
     title: 'Newborn Care',
-    description: 'Comprehensive care for newborns including checkups, feeding guidance, and developmental monitoring.',
-    gradient: 'from-blue-600 to-blue-400',
-    accent: 'border-t-blue-600',
+    shortDesc: 'Wellness checkups & feeding guidance.',
   },
   {
     icon: FaSyringe,
     title: 'Vaccination',
-    description: 'Complete immunization schedule with safe and effective vaccines for all age groups.',
-    gradient: 'from-blue-700 to-blue-500',
-    accent: 'border-t-blue-500',
+    shortDesc: 'WHO-approved safe immunizations.',
   },
   {
     icon: FaAppleAlt,
     title: 'Nutrition Guidance',
-    description: 'Expert advice on child nutrition, diet plans, and healthy eating habits for every stage.',
-    gradient: 'from-blue-500 to-blue-300',
-    accent: 'border-t-blue-400',
+    shortDesc: 'Expert diets & healthy eating.',
   },
   {
     icon: FaChild,
     title: 'Child Development',
-    description: 'Monitoring and support for physical, cognitive, and emotional development milestones.',
-    gradient: 'from-blue-800 to-blue-600',
-    accent: 'border-t-blue-700',
+    shortDesc: 'Milestone support & monitoring.',
   },
   {
     icon: FaStethoscope,
     title: 'General Consultation',
-    description: 'Routine health checkups and consultations for common childhood illnesses and concerns.',
-    gradient: 'from-blue-600 to-blue-400',
-    accent: 'border-t-blue-500',
+    shortDesc: 'Routine care & common illnesses.',
   },
   {
     icon: FaAmbulance,
     title: 'Emergency Pediatrics',
-    description: '24/7 emergency care for urgent medical situations with a rapid-response clinical team.',
-    gradient: 'from-blue-700 to-blue-500',
-    accent: 'border-t-blue-600',
+    shortDesc: 'Rapid care for urgent needs.',
   },
   {
     icon: FaChartLine,
     title: 'Growth Monitoring',
-    description: 'Regular tracking of height, weight, and growth parameters with percentile-based assessments.',
-    gradient: 'from-blue-500 to-blue-300',
-    accent: 'border-t-blue-400',
+    shortDesc: 'Height & weight assessments.',
   },
   {
     icon: FaHeartbeat,
     title: 'Health Checkups',
-    description: 'Comprehensive health screenings, preventive care programs, and wellness evaluations.',
-    gradient: 'from-blue-600 to-blue-500',
-    accent: 'border-t-blue-500',
+    shortDesc: 'Preventive screening & wellness.',
   },
 ];
 
 const containerVariants = {
   hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
+  visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
 };
 
 const itemVariants = {
-  hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  hidden:  { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const Services = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.volume = 0;
+    video.play().catch(() => {});
+  }, []);
+
   return (
-    <section id="services" className="py-20 sm:py-24 bg-white relative overflow-hidden">
+    <section
+      id="services"
+      className="py-12 lg:py-0 bg-white relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden"
+    >
+
+      {/* ── Video Background Layer ── */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          overflow: 'hidden',
+        }}
+      >
+        <video
+          ref={videoRef}
+          src="https://res.cloudinary.com/dxqn9ka7p/video/upload/v1785326757/ek_chhoti_si_sec_ki_video_b_uubsrg.mp4"
+          autoPlay
+          loop
+          playsInline
+          muted
+          preload="auto"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+        {/* Left-to-right white gradient overlay — solid white on left for text contrast, completely transparent on right for full video clarity */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 70%)',
+            zIndex: 1,
+          }}
+        />
+      </div>
 
       {/* Decorative */}
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary-50 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary-50/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 w-full">
+        <div className="max-w-xl lg:max-w-xl xl:max-w-2xl text-left mr-auto flex flex-col items-start">
+          
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-left mb-6 sm:mb-8"
+          >
+            <span className="section-tag mb-2">What We Offer</span>
+            <h2 className="section-heading mb-2 text-2xl sm:text-3xl lg:text-4xl">Our Services</h2>
+            <div className="section-divider mb-3 ml-0" style={{ marginInlineStart: 0 }} />
+            <p className="text-xs sm:text-sm text-neutral-700 font-medium max-w-xl leading-relaxed">
+              Comprehensive pediatric healthcare services designed for your child's complete well-being
+            </p>
+          </motion.div>
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <span className="section-tag">What We Offer</span>
-          <h2 className="section-heading">Our Services</h2>
-          <div className="section-divider" />
-          <p className="section-subheading">
-            Comprehensive pediatric healthcare services designed for your child's complete well-being
-          </p>
-        </motion.div>
-
-        {/* Points Layout instead of Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 sm:gap-y-8 max-w-6xl mx-auto"
-        >
-          {services.map((service, i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="flex items-start gap-4 p-2 group hover:translate-x-1 transition-transform duration-200"
-            >
-              {/* Icon Point */}
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="text-lg" />
-              </div>
-              
-              {/* Content */}
-              <div>
-                <h3 className="text-base sm:text-lg font-poppins font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors duration-200">
-                  {service.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed mt-1">
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          {/* Points Layout in Left Column */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 w-full"
+          >
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="flex items-start gap-2.5 group hover:translate-x-1 transition-transform duration-200"
+              >
+                {/* Icon Point */}
+                <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0 text-primary-green group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="text-sm" />
+                </div>
+                
+                {/* Content */}
+                <div>
+                  <h3 className="text-xs sm:text-sm font-poppins font-semibold text-neutral-900 group-hover:text-primary-green transition-colors duration-200">
+                    {service.title}
+                  </h3>
+                  <p className="text-[10px] sm:text-xs text-neutral-600 leading-normal mt-0.5 font-medium">
+                    {service.shortDesc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

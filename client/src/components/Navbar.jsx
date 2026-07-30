@@ -58,12 +58,12 @@ const Navbar = () => {
               className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-primary-green rounded-xl p-1"
               aria-label="Go to home"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-green flex-shrink-0 group-hover:shadow-green-lg transition-shadow duration-300">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-green flex-shrink-0 group-hover:shadow-green-lg transition-shadow duration-300">
                 <MdLocalHospital className="text-white text-lg sm:text-xl" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-base sm:text-lg font-poppins font-bold text-neutral-900">Dr. S. Mashhood Abbas's</span>
-                <span className="text-xs sm:text-sm font-poppins font-semibold" style={{ color: '#60A5FA' }}>Al-Sageer Clinic</span>
+                <span className="text-xs sm:text-sm font-poppins font-semibold" style={{ color: '#2E7D52' }}>Al-Sageer Clinic</span>
               </div>
             </button>
 
@@ -152,12 +152,12 @@ const Navbar = () => {
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-neutral-100">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center">
+                  <div className="w-9 h-9 bg-gradient-to-br from-primary-green to-primary-light rounded-lg flex items-center justify-center">
                     <MdLocalHospital className="text-white text-base" />
                   </div>
                   <div>
                     <p className="text-sm font-poppins font-bold text-neutral-900 leading-none">Dr. S. Mashhood Abbas's</p>
-                    <p className="text-xs font-poppins font-semibold" style={{ color: '#60A5FA' }}>Al-Sageer Clinic</p>
+                    <p className="text-xs font-poppins font-semibold" style={{ color: '#2E7D52' }}>Al-Sageer Clinic</p>
                   </div>
                 </div>
                 <button

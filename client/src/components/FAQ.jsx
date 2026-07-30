@@ -13,15 +13,11 @@ const faqs = [
   },
   {
     question: "What should I bring for my child's first visit?",
-    answer: "Please bring your child's immunization records, any previous medical records, insurance information, and a list of current medications if applicable.",
+    answer: "Please bring your child's immunization records, any previous medical records, and a list of current medications if applicable.",
   },
   {
     question: 'Do you offer vaccination services?',
     answer: 'Yes, we offer comprehensive vaccination services following the recommended immunization schedule. Our team ensures a comfortable experience for children during vaccinations.',
-  },
-  {
-    question: 'What insurance plans do you accept?',
-    answer: 'We accept most major insurance plans. Please contact our front desk to verify your specific insurance coverage before your visit.',
   },
   {
     question: 'Do you have emergency services?',

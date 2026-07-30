@@ -43,8 +43,8 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4 relative overflow-hidden font-inter">
       {/* Decorative Orbs */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-80 h-80 bg-primary-50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ const AdminLogin = () => {
         {!denied ? (
           <div className="text-center">
             {/* Shield Icon */}
-            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-blue-600">
+            <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary-green">
               <FaUserShield size={32} />
             </div>
 

@@ -21,7 +21,7 @@ const LoadingScreen = () => {
           <motion.div
             animate={{ scale: [1, 1.12, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl flex items-center justify-center shadow-green"
+            className="w-20 h-20 bg-gradient-to-br from-primary-green to-primary-light rounded-3xl flex items-center justify-center shadow-green"
           >
             <MdLocalHospital className="text-white text-4xl" />
           </motion.div>
@@ -42,7 +42,7 @@ const LoadingScreen = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.38, duration: 0.5 }}
-          className="text-2xl sm:text-3xl font-poppins font-semibold mt-1" style={{ color: '#60A5FA' }}
+          className="text-2xl sm:text-3xl font-poppins font-semibold mt-1" style={{ color: '#2E7D52' }}
         >
           Al-Sageer Clinic
         </motion.h2>

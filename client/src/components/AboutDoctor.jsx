@@ -5,7 +5,7 @@ import { MdScience } from 'react-icons/md';
 
 const specialInterests = [
   { label: 'Child Growth & Development',   color: 'bg-primary-50 text-primary-green border-primary-100' },
-  { label: 'General Pediatrics',            color: 'bg-blue-50 text-blue-700 border-blue-100' },
+  { label: 'General Pediatrics',            color: 'bg-primary-50 text-primary-700 border-primary-100' },
   { label: 'Behavioural Disorders',         color: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
   { label: 'Neonatal & Newborn Care',       color: 'bg-sky-50 text-sky-700 border-sky-100' },
   { label: 'Vaccination & Immunization',    color: 'bg-cyan-50 text-cyan-700 border-cyan-100' },
@@ -14,7 +14,7 @@ const specialInterests = [
 const credentials = [
   { icon: FaAward,   text: 'Board-Certified Pediatrician & Neonatologist' },
   { icon: FaUserMd,  text: '15+ Years Clinical Experience' },
-  { icon: MdScience, text: 'Expert in Newborn & High-Risk Neonatal Care' },
+  { icon: MdScience, text: 'Expert in High-Risk Neonatal Care' },
 ];
 
 const AboutDoctor = () => {
@@ -33,12 +33,12 @@ const AboutDoctor = () => {
       className="py-12 lg:py-0 relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden"
       style={{ isolation: 'isolate' }}
     >
-      {/* ── Static Light Blue/White Gradient Background (replaces video) ── */}
+      {/* ── Static Light Green/White Gradient Background (replaces video) ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(160deg, #ffffff 0%, #f0faff 40%, #e8f5ff 100%)',
+          background: 'linear-gradient(160deg, #ffffff 0%, #f0fbf4 40%, #e8f5e9 100%)',
           zIndex: 0,
         }}
       />
@@ -110,10 +110,10 @@ const AboutDoctor = () => {
 
                 {/* Credentials chip */}
                 <div className="flex items-center justify-center gap-2 px-4 py-3 flex-wrap">
-                  <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 text-xs font-semibold border border-blue-100 px-3 py-1.5 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 bg-primary-50 text-primary-green text-xs font-semibold border border-primary-100 px-3 py-1.5 rounded-full">
                     <FaCheckCircle className="text-xs" /> Certified Pediatrician
                   </span>
-                  <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100 px-3 py-1.5 rounded-full">
+                  <span className="inline-flex items-center gap-1.5 bg-primary-50 text-primary-light text-xs font-semibold border border-primary-100 px-3 py-1.5 rounded-full">
                     <FaCheckCircle className="text-xs" /> Neonatologist
                   </span>
                 </div>
@@ -140,8 +140,8 @@ const AboutDoctor = () => {
             <div className="space-y-2 mb-4">
               {credentials.map((c, i) => (
                 <div key={i} className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <c.icon className="text-blue-600 text-xs" />
+                  <div className="w-8 h-8 bg-primary-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <c.icon className="text-primary-green text-xs" />
                   </div>
                   <span className="text-xs sm:text-sm text-neutral-700 font-medium">{c.text}</span>
                 </div>

@@ -90,7 +90,7 @@ function App() {
             },
             success: {
               iconTheme: {
-                primary: '#2563EB',
+                primary: '#1A5C38',
                 secondary: '#FFFFFF',
               },
             },

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { MdLocalHospital } from 'react-icons/md';
 
 const quickLinks = [
@@ -18,12 +18,7 @@ const services = [
   { name: 'Health Checkups',    href: '#services' },
 ];
 
-const socials = [
-  { Icon: FaFacebook,  href: '#', label: 'Facebook' },
-  { Icon: FaTwitter,   href: '#', label: 'Twitter' },
-  { Icon: FaInstagram, href: '#', label: 'Instagram' },
-  { Icon: FaLinkedin,  href: '#', label: 'LinkedIn' },
-];
+
 
 const scroll = (href) => {
   const el = document.querySelector(href);
@@ -46,32 +41,18 @@ const Footer = () => {
           {/* ── Brand Column ── */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center shadow-green">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-green">
                 <MdLocalHospital className="text-white text-lg" />
               </div>
               <div>
                 <p className="text-base font-poppins font-bold text-white leading-none">Dr. S. Mashhood Abbas's</p>
-                <p className="text-sm font-poppins font-semibold mt-0.5" style={{ color: '#60A5FA' }}>Al-Sageer Clinic</p>
+                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Al-Sageer Clinic</p>
               </div>
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
               A Clinic of Pediatrics &amp; Neonatology. Providing compassionate pediatric care for newborns, infants, toddlers, children, and adolescents.
             </p>
-            {/* Socials */}
-            <div className="flex gap-3">
-              {socials.map(({ Icon, href, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/6 border border-white/10 flex items-center justify-center text-neutral-400 hover:bg-primary-green hover:text-white hover:border-primary-green transition-all duration-200"
-                  whileHover={{ y: -3 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Icon className="text-sm" />
-                </motion.a>
-              ))}
-            </div>
+
           </div>
 
           {/* ── Quick Links ── */}
@@ -118,7 +99,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <FaMapMarkerAlt className="text-primary-400 text-xs" />
                 </div>
-                <span className="text-sm text-neutral-400 leading-relaxed">123 Healthcare Avenue, Medical City, MC 12345</span>
+                <span className="text-sm text-neutral-400 leading-relaxed">Dhul Siras, Dwarka, Delhi, 110077</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0">
@@ -130,7 +111,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0">
                   <FaEnvelope className="text-primary-400 text-xs" />
                 </div>
-                <span className="text-sm text-neutral-400">info@alsyedclinic.com</span>
+                <span className="text-sm text-neutral-400">drabbas10@gmail.com</span>
               </li>
             </ul>
           </div>

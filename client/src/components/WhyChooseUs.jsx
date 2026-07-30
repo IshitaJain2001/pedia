@@ -1,48 +1,27 @@
 import { motion } from 'framer-motion';
-import { FaUserMd, FaHeartbeat, FaAmbulance, FaSyringe, FaStethoscope, FaBaby } from 'react-icons/fa';
+import { FaUserMd, FaSyringe, FaBaby } from 'react-icons/fa';
 
 const features = [
   {
     icon: FaUserMd,
     title: 'Experienced Pediatrician',
     description: 'Board-certified pediatricians with years of experience delivering exceptional child healthcare.',
-    gradient: 'from-blue-600 to-blue-400',
-    bg: 'bg-blue-50',
+    gradient: 'from-primary-green to-primary-light',
+    bg: 'bg-primary-50',
   },
   {
     icon: FaSyringe,
     title: 'Vaccination Services',
     description: 'Comprehensive immunization programs following the latest WHO guidelines for all age groups.',
-    gradient: 'from-blue-700 to-blue-500',
-    bg: 'bg-blue-50',
+    gradient: 'from-emerald-600 to-emerald-400',
+    bg: 'bg-primary-50',
   },
   {
     icon: FaBaby,
     title: 'Neonatal Care',
     description: 'Specialized care for newborns and premature babies with round-the-clock expert monitoring.',
-    gradient: 'from-blue-500 to-blue-300',
-    bg: 'bg-blue-50',
-  },
-  {
-    icon: FaAmbulance,
-    title: 'Emergency Care',
-    description: '24/7 emergency pediatric services with rapid-response protocols and dedicated teams.',
-    gradient: 'from-blue-800 to-blue-600',
-    bg: 'bg-blue-50',
-  },
-  {
-    icon: FaStethoscope,
-    title: 'Growth Monitoring',
-    description: 'Regular checkups and percentile-based growth tracking to ensure healthy development.',
-    gradient: 'from-blue-500 to-blue-400',
-    bg: 'bg-blue-50',
-  },
-  {
-    icon: FaHeartbeat,
-    title: 'Child-Friendly Environment',
-    description: 'A welcoming, colorful space designed to make children feel comfortable, calm, and safe.',
-    gradient: 'from-blue-600 to-blue-500',
-    bg: 'bg-blue-50',
+    gradient: 'from-teal-600 to-teal-400',
+    bg: 'bg-primary-50',
   },
 ];
 

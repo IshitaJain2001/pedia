@@ -5,30 +5,30 @@ const contactInfo = [
   {
     icon: FaMapMarkerAlt,
     title: 'Address',
-    content: '123 Healthcare Avenue, Medical City, MC 12345',
+    content: 'Dhul Siras, Dwarka, Delhi, 110077',
     sub: 'Find us on the map',
-    gradient: 'from-blue-600 to-blue-400',
+    gradient: 'from-primary-green to-primary-light',
   },
   {
     icon: FaPhone,
     title: 'Phone',
     content: '+91 98765 43210',
     sub: 'Call us anytime',
-    gradient: 'from-blue-700 to-blue-500',
+    gradient: 'from-emerald-600 to-emerald-400',
   },
   {
     icon: FaEnvelope,
     title: 'Email',
-    content: 'info@alsyedclinic.com',
+    content: 'drabbas10@gmail.com',
     sub: 'We reply within 24 hours',
-    gradient: 'from-blue-500 to-blue-300',
+    gradient: 'from-teal-600 to-teal-400',
   },
   {
     icon: FaClock,
     title: 'Working Hours',
     content: 'Mon, Tue, Thu, Fri',
     sub: '6:30 PM – 7:30 PM | Emergency: 24/7',
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-green-700 to-green-500',
   },
 ];
 
@@ -108,7 +108,7 @@ const Contact = () => {
           >
             <div className="rounded-3xl overflow-hidden shadow-card-lg border border-neutral-100 h-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.4282348574163!2d-73.98691368459379!3d40.75387497932759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1625064500000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.97816035973!2d77.0296436!3d28.5639788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1af68fded9cd%3A0x8c4dc3a952fd727d!2sDhul%20Siras%2C%20Dwarka%2C%20Delhi%2C%20110077!5e0!3m2!1sen!2sin!4v1722370000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, display: 'block', minHeight: '280px' }}

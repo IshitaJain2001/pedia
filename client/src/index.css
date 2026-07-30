@@ -6,9 +6,9 @@
 
 /* ─── CSS Custom Properties ─── */
 :root {
-  --green:         #2563EB;
-  --green-light:   #3B82F6;
-  --green-pale:    #EFF6FF;
+  --green:         #1A5C38;
+  --green-light:   #2E7D52;
+  --green-pale:    #F0FBF4;
   --amber:         #F59E0B;
   --white:         #FFFFFF;
   --off-white:     #F8FAFA;
@@ -19,8 +19,8 @@
   --radius-card:   1.25rem;
   --radius-btn:    999px;
   --transition:    0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow-card:   0 4px 24px -4px rgba(37,99,235,0.08), 0 2px 8px -2px rgba(37,99,235,0.04);
-  --shadow-lg:     0 8px 40px -8px rgba(37,99,235,0.16), 0 4px 16px -4px rgba(37,99,235,0.08);
+  --shadow-card:   0 4px 24px -4px rgba(26,92,56,0.08), 0 2px 8px -2px rgba(26,92,56,0.04);
+  --shadow-lg:     0 8px 40px -8px rgba(26,92,56,0.16), 0 4px 16px -4px rgba(26,92,56,0.08);
 }
 
 /* ─── Base Layer ─── */
@@ -96,7 +96,7 @@
 
   .btn-outline:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 8px 24px -4px rgba(26, 92, 56, 0.3);
   }
 
   /* Cards */
@@ -111,7 +111,7 @@
   .card-hover:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
-    border-color: rgba(37, 99, 235, 0.15);
+    border-color: rgba(26, 92, 56, 0.15);
   }
 
   /* Glass effect */
@@ -128,7 +128,7 @@
 
   /* Text gradient */
   .text-gradient {
-    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%);
+    background: linear-gradient(135deg, #1A5C38 0%, #2E7D52 50%, #10B981 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -185,9 +185,9 @@
   }
 
   @keyframes pulseRing {
-    0%   { box-shadow: 0 0 0 0 rgba(37,99,235,0.5); }
-    70%  { box-shadow: 0 0 0 14px rgba(37,99,235,0); }
-    100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+    0%   { box-shadow: 0 0 0 0 rgba(26,92,56,0.5); }
+    70%  { box-shadow: 0 0 0 14px rgba(26,92,56,0); }
+    100% { box-shadow: 0 0 0 0 rgba(26,92,56,0); }
   }
 
   /* Container with max width and padding */
@@ -197,23 +197,23 @@
 
   /* Mesh gradient backgrounds */
   .bg-mesh-green {
-    background-color: #EFF6FF;
+    background-color: #F0FBF4;
     background-image:
-      radial-gradient(at 0% 0%, rgba(37,99,235,0.06) 0px, transparent 55%),
-      radial-gradient(at 100% 0%, rgba(59,130,246,0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(96,165,250,0.04) 0px, transparent 60%);
+      radial-gradient(at 0% 0%, rgba(26,92,56,0.06) 0px, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(46,125,82,0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(16,185,129,0.04) 0px, transparent 60%);
   }
 
   .bg-mesh-dark {
     background-color: #0F1923;
     background-image:
-      radial-gradient(at 0% 100%, rgba(37,99,235,0.3) 0px, transparent 55%),
-      radial-gradient(at 100% 0%, rgba(59,130,246,0.15) 0px, transparent 50%);
+      radial-gradient(at 0% 100%, rgba(26,92,56,0.3) 0px, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(46,125,82,0.15) 0px, transparent 50%);
   }
 
   /* Gradient text shorthand */
   .gradient-text {
-    background: linear-gradient(135deg, #2563EB, #60A5FA);
+    background: linear-gradient(135deg, #1A5C38, #10B981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -226,27 +226,27 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #EFF6FF;
+  background: #F0FBF4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #2563EB, #3B82F6);
+  background: linear-gradient(to bottom, #1A5C38, #2E7D52);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #1E3A8A, #2563EB);
+  background: linear-gradient(to bottom, #0F3D24, #1A5C38);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(37, 99, 235, 0.12);
+  background: rgba(26, 92, 56, 0.12);
   color: #0F1923;
 }
 
 /* ─── Focus Visible ─── */
 :focus-visible {
-  outline: 2px solid #2563EB;
+  outline: 2px solid #1A5C38;
   outline-offset: 2px;
   border-radius: 4px;
 }
