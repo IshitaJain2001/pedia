@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { MdLocalHospital } from 'react-icons/md';
+import logo from '../assets/logo.png';
 
 const NAV_LINKS = [
   { name: 'Home',             href: '#home' },
@@ -58,8 +58,8 @@ const Navbar = () => {
               className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-primary-green rounded-xl p-1"
               aria-label="Go to home"
             >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-green flex-shrink-0 group-hover:shadow-green-lg transition-shadow duration-300">
-                <MdLocalHospital className="text-white text-lg sm:text-xl" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white border border-neutral-100 rounded-xl flex items-center justify-center shadow-sm overflow-hidden flex-shrink-0 group-hover:shadow-md transition-shadow duration-300 p-0.5">
+                <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="text-base sm:text-lg font-poppins font-bold text-neutral-900">Dr. S. Mashhood Abbas's</span>
@@ -152,8 +152,8 @@ const Navbar = () => {
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-neutral-100">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 bg-gradient-to-br from-primary-green to-primary-light rounded-lg flex items-center justify-center">
-                    <MdLocalHospital className="text-white text-base" />
+                  <div className="w-9 h-9 bg-white border border-neutral-100 rounded-lg flex items-center justify-center overflow-hidden p-0.5 shadow-sm">
+                    <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-md" />
                   </div>
                   <div>
                     <p className="text-sm font-poppins font-bold text-neutral-900 leading-none">Dr. S. Mashhood Abbas's</p>

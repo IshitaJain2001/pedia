@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
-import { MdLocalHospital } from 'react-icons/md';
+import logo from '../assets/logo.png';
 
 const quickLinks = [
   { name: 'Home',         href: '#home' },
@@ -41,8 +41,8 @@ const Footer = () => {
           {/* ── Brand Column ── */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-green to-primary-light rounded-xl flex items-center justify-center shadow-green">
-                <MdLocalHospital className="text-white text-lg" />
+              <div className="w-10 h-10 bg-white border border-neutral-700 rounded-xl flex items-center justify-center overflow-hidden p-0.5 shadow-sm">
+                <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
                 <p className="text-base font-poppins font-bold text-white leading-none">Dr. S. Mashhood Abbas's</p>

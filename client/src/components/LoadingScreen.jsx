@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MdLocalHospital } from 'react-icons/md';
+import logo from '../assets/logo.png';
 
 const LoadingScreen = () => {
   return (
@@ -21,9 +21,9 @@ const LoadingScreen = () => {
           <motion.div
             animate={{ scale: [1, 1.12, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-20 h-20 bg-gradient-to-br from-primary-green to-primary-light rounded-3xl flex items-center justify-center shadow-green"
+            className="w-20 h-20 bg-white border border-neutral-100 rounded-3xl flex items-center justify-center shadow-md overflow-hidden p-1"
           >
-            <MdLocalHospital className="text-white text-4xl" />
+            <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-2xl" />
           </motion.div>
           {/* Pulse ring */}
           <span className="absolute inset-0 rounded-3xl pulse-ring pointer-events-none" />
