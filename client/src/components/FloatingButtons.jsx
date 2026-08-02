@@ -27,7 +27,7 @@ const FloatingButtons = () => {
         </AnimatePresence>
 
         <motion.a
-          href="https://wa.me/919315972558"
+          href="https://wa.me/918447269727"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setHoveredWa(true)}
