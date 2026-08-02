@@ -12,7 +12,7 @@ const contactInfo = [
   {
     icon: FaPhone,
     title: 'Phone',
-    content: '+91 98765 43210',
+    content: '+91 93159 72558',
     sub: 'Call us anytime',
     gradient: 'from-emerald-600 to-emerald-400',
   },
@@ -115,7 +115,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Dr. S. Mashhood Abbas's Al-Sageer Clinic Location"
+                title="Dr. Syed's Clinic Location"
               />
             </div>
           </motion.div>

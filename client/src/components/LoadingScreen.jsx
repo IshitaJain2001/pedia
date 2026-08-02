@@ -35,7 +35,7 @@ const LoadingScreen = () => {
           transition={{ delay: 0.25, duration: 0.5 }}
           className="text-3xl sm:text-4xl font-poppins font-bold text-neutral-900 leading-tight"
         >
-          Dr. S. Mashhood Abbas's
+          Dr. Syed's
         </motion.h1>
 
         <motion.h2
@@ -44,7 +44,7 @@ const LoadingScreen = () => {
           transition={{ delay: 0.38, duration: 0.5 }}
           className="text-2xl sm:text-3xl font-poppins font-semibold mt-1" style={{ color: '#2E7D52' }}
         >
-          Al-Sageer Clinic
+          Clinic
         </motion.h2>
 
         <motion.p

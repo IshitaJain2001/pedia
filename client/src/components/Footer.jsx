@@ -45,8 +45,8 @@ const Footer = () => {
                 <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div>
-                <p className="text-base font-poppins font-bold text-white leading-none">Dr. S. Mashhood Abbas's</p>
-                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Al-Sageer Clinic</p>
+                <p className="text-base font-poppins font-bold text-white leading-none">Dr. Syed's</p>
+                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Clinic</p>
               </div>
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
@@ -105,7 +105,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0">
                   <FaPhone className="text-primary-400 text-xs" />
                 </div>
-                <span className="text-sm text-neutral-400">+91 98765 43210</span>
+                <span className="text-sm text-neutral-400">+91 93159 72558</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/6 border border-white/10 flex items-center justify-center flex-shrink-0">
@@ -120,7 +120,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-neutral-500 text-center sm:text-left">
-            © {new Date().getFullYear()} Dr. S. Mashhood Abbas's Al-Sageer Clinic. All rights reserved.
+            © {new Date().getFullYear()} Dr. Syed's Clinic. All rights reserved.
           </p>
         </div>
       </div>

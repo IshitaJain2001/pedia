@@ -267,7 +267,7 @@ const AdminDashboard = () => {
             A
           </div>
           <div>
-            <h1 className="text-xl font-poppins font-bold text-neutral-900">Al-Sageer Clinic</h1>
+            <h1 className="text-xl font-poppins font-bold text-neutral-900">Dr. Syed's Clinic</h1>
             <p className="text-xs text-neutral-400 font-medium">Administration Dashboard</p>
           </div>
         </div>

@@ -27,7 +27,7 @@ const FloatingButtons = () => {
         </AnimatePresence>
 
         <motion.a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919315972558"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setHoveredWa(true)}
@@ -61,7 +61,7 @@ const FloatingButtons = () => {
         </AnimatePresence>
 
         <motion.a
-          href="tel:+919876543210"
+          href="tel:+919315972558"
           onMouseEnter={() => setHoveredCall(true)}
           onMouseLeave={() => setHoveredCall(false)}
           className="w-12 h-12 sm:w-13 sm:h-13 bg-primary-green text-white rounded-full shadow-green flex items-center justify-center"

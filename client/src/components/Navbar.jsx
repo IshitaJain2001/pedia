@@ -62,8 +62,8 @@ const Navbar = () => {
                 <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-base sm:text-lg font-poppins font-bold text-neutral-900">Dr. S. Mashhood Abbas's</span>
-                <span className="text-xs sm:text-sm font-poppins font-semibold" style={{ color: '#2E7D52' }}>Al-Sageer Clinic</span>
+                <span className="text-base sm:text-lg font-poppins font-bold text-neutral-900">Dr. Syed's</span>
+                <span className="text-xs sm:text-sm font-poppins font-semibold" style={{ color: '#2E7D52' }}>Clinic</span>
               </div>
             </button>
 
@@ -156,8 +156,8 @@ const Navbar = () => {
                     <img src={logo} alt="Al-Sageer Clinic Logo" className="w-full h-full object-contain rounded-md" />
                   </div>
                   <div>
-                    <p className="text-sm font-poppins font-bold text-neutral-900 leading-none">Dr. S. Mashhood Abbas's</p>
-                    <p className="text-xs font-poppins font-semibold" style={{ color: '#2E7D52' }}>Al-Sageer Clinic</p>
+                    <p className="text-sm font-poppins font-bold text-neutral-900 leading-none">Dr. Syed's</p>
+                    <p className="text-xs font-poppins font-semibold" style={{ color: '#2E7D52' }}>Clinic</p>
                   </div>
                 </div>
                 <button
