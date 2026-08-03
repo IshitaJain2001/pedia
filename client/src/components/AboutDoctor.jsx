@@ -95,7 +95,7 @@ const AboutDoctor = () => {
                 <div className="w-full h-80 sm:h-[350px] relative bg-neutral-100">
                   <img
                     src="https://res.cloudinary.com/dxqn9ka7p/image/upload/v1785326786/WhatsApp_Image_2026-07-29_at_10.40.56_AM_mpfwsy.jpg"
-                    alt="Dr. S. Mashhood Abbas — Pediatrician & Neonatologist"
+                    alt="Dr. Syed — Pediatrician & Neonatologist"
                     className="w-full h-full object-cover"
                     style={{ display: 'block', objectPosition: 'center 5%' }}
                   />
@@ -103,7 +103,7 @@ const AboutDoctor = () => {
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
                   {/* Name overlay */}
                   <div className="absolute bottom-4 left-0 right-0 text-center px-3">
-                    <p className="font-poppins font-semibold text-white text-sm drop-shadow-md">Dr. S. Mashhood Abbas</p>
+                    <p className="font-poppins font-semibold text-white text-sm drop-shadow-md">Dr. Syed</p>
                     <p className="text-[11px] text-white/85 drop-shadow">Pediatrician &amp; Neonatologist</p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ const AboutDoctor = () => {
           >
             {!isMobile && (
               <>
-                <h3 className="text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. S. Mashhood Abbas</h3>
+                <h3 className="text-xl sm:text-2xl font-poppins font-bold text-neutral-900 mb-1">Dr. Syed</h3>
                 <p className="text-primary-green font-semibold text-sm mb-3">Pediatrician &amp; Neonatologist</p>
               </>
             )}

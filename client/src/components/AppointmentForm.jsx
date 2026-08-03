@@ -58,7 +58,7 @@ const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, 
 
 FloatInput.displayName = 'FloatInput';
 
-const doctors = ['Dr. S. Mashhood Abbas — Pediatrician & Neonatologist'];
+const doctors = ['Dr. Syed — Pediatrician & Neonatologist'];
 
 const AppointmentForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);

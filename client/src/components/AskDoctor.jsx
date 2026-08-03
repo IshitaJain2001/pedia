@@ -28,7 +28,7 @@ const AskDoctor = () => {
           <h2 className="section-heading">Ask Your Doctor</h2>
           <div className="section-divider" />
           <p className="section-subheading">
-            Have a question or medical query? Send a message to Dr. S. Mashhood Abbas for expert guidance.
+            Have a question or medical query? Send a message to Dr. Syed for expert guidance.
           </p>
         </motion.div>
 

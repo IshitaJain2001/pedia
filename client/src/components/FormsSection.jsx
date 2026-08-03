@@ -28,7 +28,7 @@ const FormsSection = () => {
           <h2 className="section-heading">Schedule an Appointment</h2>
           <div className="section-divider" />
           <p className="section-subheading">
-            Schedule a visit with Dr. S. Mashhood Abbas for your child's healthcare needs — quick and easy
+            Schedule a visit with Dr. Syed for your child's healthcare needs — quick and easy
           </p>
         </motion.div>
 

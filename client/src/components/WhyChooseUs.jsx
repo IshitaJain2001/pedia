@@ -53,10 +53,10 @@ const WhyChooseUs = () => {
           className="text-center mb-14"
         >
           <span className="section-tag">Our Strengths</span>
-          <h2 className="section-heading">Why Choose Us</h2>
+          <h2 className="section-heading italic">Why Choose Us</h2>
           <div className="section-divider" />
           <p className="section-subheading">
-            We provide exceptional pediatric care with a focus on your child's comfort and well-being
+            We try to build an environment to help parents believe in good health practices and proper treatment.
           </p>
         </motion.div>
 

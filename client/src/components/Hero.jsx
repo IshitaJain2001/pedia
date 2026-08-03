@@ -89,7 +89,7 @@ const itemVariants = {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-poppins font-bold leading-[1.1] mb-2 sm:mb-3"
             >
               <span className="text-white drop-shadow-sm">Dr. Syed's </span>
-              <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Clinic</span>
+              <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Al-Sageer Clinic</span>
             </motion.h1>
 
             {/* Subtitle */}

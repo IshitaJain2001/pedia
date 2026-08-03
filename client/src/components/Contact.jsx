@@ -5,9 +5,10 @@ const contactInfo = [
   {
     icon: FaMapMarkerAlt,
     title: 'Address',
-    content: 'Dhul Siras, Dwarka, Delhi, 110077',
-    sub: 'Find us on the map',
+    content: 'Dr. Syed\'s Clinic, Dhul Siras, Dwarka, Delhi, 110077',
+    sub: 'Click to open in Google Maps',
     gradient: 'from-primary-green to-primary-light',
+    link: 'https://maps.app.goo.gl/MxHiSSRX4cczTmm78',
   },
   {
     icon: FaPhone,
@@ -70,18 +71,12 @@ const Contact = () => {
             transition={{ duration: 0.65 }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-3"
           >
-            {contactInfo.map((info, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-              >
+            {contactInfo.map((info, i) => {
+              const CardContent = (
                 <motion.div
-                  whileHover={{ y: -4 }}
+                  whileHover={info.link ? { y: -4, scale: 1.02 } : { y: -4 }}
                   transition={{ duration: 0.22 }}
-                  className="card p-4 sm:p-4.5 group h-full"
+                  className={`card p-4 sm:p-4.5 group h-full transition-all duration-300 ${info.link ? 'cursor-pointer hover:border-primary-green hover:shadow-lg' : ''}`}
                 >
                   <div className={`icon-box-sm bg-gradient-to-br ${info.gradient} mb-3 shadow-soft`}>
                     <info.icon className="text-white text-sm" />
@@ -94,8 +89,26 @@ const Contact = () => {
                   </p>
                   <p className="text-[10px] sm:text-xs text-neutral-500">{info.sub}</p>
                 </motion.div>
-              </motion.div>
-            ))}
+              );
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                >
+                  {info.link ? (
+                    <a href={info.link} target="_blank" rel="noopener noreferrer" className="block h-full">
+                      {CardContent}
+                    </a>
+                  ) : (
+                    CardContent
+                  )}
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           {/* ── Right: Map ── */}
@@ -108,7 +121,7 @@ const Contact = () => {
           >
             <div className="rounded-3xl overflow-hidden shadow-card-lg border border-neutral-100 h-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14013.97816035973!2d77.0296436!3d28.5639788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1af68fded9cd%3A0x8c4dc3a952fd727d!2sDhul%20Siras%2C%20Dwarka%2C%20Delhi%2C%20110077!5e0!3m2!1sen!2sin!4v1722370000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.454256247926!2d77.0379685!3d28.5670857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1af68fded9cd%3A0xbe052674e2d3ed73!2sDR.%20SYED&#39;S%20CLINIC!5e0!3m2!1sen!2sin!4v1722370000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0, display: 'block', minHeight: '280px' }}
