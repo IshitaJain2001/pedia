@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
 import { FaStar, FaBaby, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 import { MdLocalHospital } from 'react-icons/md';
@@ -21,30 +20,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 const Hero = () => {
-  const videoRef = useRef(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.volume = 0;
-
-    const tryPlay = () => {
-      video.play().catch(() => {});
-    };
-
-    if (video.readyState >= 2) {
-      setVideoLoaded(true);
-      tryPlay();
-    } else {
-      video.addEventListener('loadeddata', () => {
-        setVideoLoaded(true);
-        tryPlay();
-      });
-    }
-  }, []);
-
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -53,60 +28,22 @@ const itemVariants = {
   return (
     <section
       id="home"
-      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-4 pb-12 lg:pt-0 lg:pb-0"
+      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-4 pb-12 lg:pt-0 lg:pb-0 bg-gradient-to-br from-[#082011] via-[#14472A] to-[#05140A]"
       style={{ isolation: 'isolate' }}
     >
-      {/* ── Video Background Layer ── */}
+      {/* ── Background Pattern Overlay (Subtle noise/grid) ── */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
+          opacity: 0.03,
+          backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px), radial-gradient(#ffffff 1px, transparent 1px)`,
+          backgroundSize: '24px 24px',
+          backgroundPosition: '0 0, 12px 12px',
           zIndex: 0,
-          overflow: 'hidden',
         }}
-      >
-        <video
-          ref={videoRef}
-          src="https://res.cloudinary.com/dxqn9ka7p/video/upload/v1785429226/pediatric_clinic_h_jshji1.mp4"
-          autoPlay
-          loop
-          playsInline
-          muted
-          preload="auto"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            opacity: videoLoaded ? 1 : 0,
-            transition: 'opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1)',
-          }}
-        />
+      />
 
-        {/* Left-to-right gradient overlay — keeps left side text readable while keeping right side video clear */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to right, rgba(8,35,20,0.88) 0%, rgba(8,35,20,0.65) 45%, rgba(8,35,20,0.15) 100%)',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Soft 2px blur layer — reduces video sharpness for readability */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backdropFilter: 'blur(1px)',
-            WebkitBackdropFilter: 'blur(1px)',
-            zIndex: 2,
-          }}
-        />
-      </div>
 
       {/* ── Decorative Orbs — sit above video, below content ── */}
       <div
