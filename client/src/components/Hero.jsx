@@ -66,14 +66,14 @@ const itemVariants = {
 
       {/* ── All Content — z-index 10, sits above everything ── */}
       <div className="section-container w-full" style={{ position: 'relative', zIndex: 10 }}>
-        <div className="flex flex-col items-center lg:items-start justify-center lg:justify-start text-center lg:text-left max-w-7xl mx-auto">
+        <div className="flex flex-col items-center justify-center text-center max-w-7xl mx-auto">
 
-          {/* ── Left: Content ── */}
+          {/* ── Center Content ── */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="text-center lg:text-left max-w-2xl lg:max-w-xl flex flex-col items-center lg:items-start"
+            className="text-center max-w-3xl flex flex-col items-center"
           >
             {/* Badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-3 sm:mb-4">
@@ -88,8 +88,7 @@ const itemVariants = {
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-poppins font-bold leading-[1.1] mb-2 sm:mb-3"
             >
-              <span className="text-white drop-shadow-sm">Dr. Syed's</span>
-              <br />
+              <span className="text-white drop-shadow-sm">Dr. Syed's </span>
               <span style={{ background: 'linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #10B981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Clinic</span>
             </motion.h1>
 
@@ -104,7 +103,7 @@ const itemVariants = {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-xs sm:text-sm text-white/70 mb-4 sm:mb-5 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              className="text-xs sm:text-sm text-white/70 mb-4 sm:mb-5 max-w-xl mx-auto leading-relaxed"
             >
               Providing compassionate pediatric and newborn care with over 15 years of experience. Expert consultations, vaccinations, developmental care, and neonatal services — all under one roof.
             </motion.p>
