@@ -44,7 +44,7 @@ const LoadingScreen = () => {
           transition={{ delay: 0.38, duration: 0.5 }}
           className="text-2xl sm:text-3xl font-poppins font-semibold mt-1" style={{ color: '#2E7D52' }}
         >
-          Clinic
+          Al-Sageer Clinic
         </motion.h2>
 
         <motion.p
