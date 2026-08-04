@@ -46,7 +46,7 @@ const Footer = () => {
               </div>
               <div>
                 <p className="text-base font-poppins font-bold text-white leading-none">Dr. Syed's</p>
-                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Clinic</p>
+                <p className="text-sm font-poppins font-semibold text-primary-400 mt-0.5">Al-Sageer Clinic</p>
               </div>
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
