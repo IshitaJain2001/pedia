@@ -1,4 +1,5 @@
 const admin = require('../utils/firebaseAdmin');
+const jwt = require('jsonwebtoken');
 
 const AUTHORIZED_EMAILS = ['drabbas10@gmail.com', 'ishitajain385@gmail.com'];
 const PROJECT_ID = 'pedia-97ed4';
@@ -16,13 +17,21 @@ const adminAuth = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
     let decodedToken = null;
 
-    if (admin.isInitialized) {
+    // Try verifying local JWT first
+    try {
+      decodedToken = jwt.verify(token, process.env.JWT_SECRET || 'supersecretkeyforadminauthpediatric123');
+    } catch (err) {
+      // Not a valid local JWT, fall back to Firebase / manual parse
+    }
+
+    if (!decodedToken && admin.isInitialized) {
       try {
         decodedToken = await admin.auth().verifyIdToken(token);
       } catch (err) {
         console.warn('Firebase Admin verification failed, falling back to secure manual verification...', err.message);
       }
     }
+
 
     // Fallback/Secure manual JWT decoding and claims validation
     if (!decodedToken) {
