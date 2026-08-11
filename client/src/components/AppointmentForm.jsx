@@ -69,7 +69,7 @@ const AppointmentForm = () => {
     try {
       const res = await axios.post('https://pedia-backend-6blx.onrender.com/api/appointments', data);
       if (res.data.success) {
-        toast.success('Appointment booked successfully! We will confirm shortly.', { duration: 4000 });
+        toast.success('Appointment booked successfully! We will get back to you within 24 hours over the mail id or phone number provided by you.', { duration: 6000 });
         reset();
       } else {
         toast.error(res.data.message || 'Submission failed. Please try again.');

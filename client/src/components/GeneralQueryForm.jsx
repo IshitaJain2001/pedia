@@ -67,7 +67,7 @@ const GeneralQueryForm = () => {
     try {
       const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/general-query', data);
       if (response.data.success) {
-        toast.success('Your query has been submitted successfully!', { duration: 4000 });
+        toast.success('Your query has been submitted successfully! We will get back to you within 24 hours over the mail id or phone number provided by you.', { duration: 6000 });
         reset();
       } else {
         toast.error(response.data.message || 'Submission failed. Please try again.');
