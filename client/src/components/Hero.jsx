@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaStar, FaBaby, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck } from 'react-icons/fa';
+import { FaStar, FaBaby, FaStethoscope, FaAmbulance, FaWhatsapp, FaCalendarCheck, FaVideo, FaArrowRight } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 import { MdLocalHospital } from 'react-icons/md';
 
@@ -19,7 +19,8 @@ const itemVariants = {
   hidden:  { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
-const Hero = () => {
+
+const Hero = () => {
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +29,7 @@ const itemVariants = {
   return (
     <section
       id="home"
-      className="relative h-auto lg:h-screen lg:min-h-[600px] lg:max-h-[900px] flex items-center overflow-hidden pt-4 pb-12 lg:pt-0 lg:pb-0 bg-gradient-to-br from-[#082011] via-[#14472A] to-[#05140A]"
+      className="relative h-auto flex items-center overflow-hidden pt-8 pb-14 lg:pt-10 lg:pb-16 bg-gradient-to-br from-[#082011] via-[#14472A] to-[#05140A]"
       style={{ isolation: 'isolate' }}
     >
       {/* ── Background Pattern Overlay (Subtle noise/grid) ── */}
@@ -104,10 +105,53 @@ const itemVariants = {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-xs sm:text-sm text-white/70 mb-4 sm:mb-5 max-w-xl mx-auto leading-relaxed"
+              className="text-xs sm:text-sm text-white/70 mb-5 sm:mb-6 max-w-xl mx-auto leading-relaxed"
             >
               Providing compassionate pediatric and newborn care with over 15 years of experience. Expert consultations, vaccinations, developmental care, and neonatal services — all under one roof.
             </motion.p>
+
+            {/* ── Online Consultation Banner Section ── */}
+            <motion.div
+              variants={itemVariants}
+              className="w-full max-w-2xl mb-6 sm:mb-8 group cursor-pointer"
+              onClick={() => scrollToSection('#ask-doctor')}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div className="relative p-[2px] rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 shadow-[0_4px_30px_rgba(16,185,129,0.35)] transition-all duration-300">
+                <div className="bg-[#0c2e1b]/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-emerald-400/20 text-left">
+                  <div className="flex items-start sm:items-center gap-3.5 w-full sm:w-auto">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center flex-shrink-0 text-emerald-300 text-xl shadow-inner">
+                      <FaVideo className="animate-pulse" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-300">Online Consultation Available</span>
+                      </div>
+                      <h3 className="text-sm sm:text-base font-poppins font-bold text-white mt-0.5">
+                        We do provide online consultation — Book for yourself
+                      </h3>
+                      <p className="text-xs text-emerald-100/75 mt-0.5">
+                        Have queries or need doctor advice from home? Click here to submit your query.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-full sm:w-auto">
+                    <button
+                      type="button"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-400 to-teal-400 text-neutral-900 font-poppins font-bold text-xs sm:text-sm rounded-xl shadow-md group-hover:from-emerald-300 group-hover:to-teal-300 transition-all duration-200"
+                    >
+                      <span>Book Consultation</span>
+                      <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform duration-200" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
             {/* Trust Metrics */}
             <motion.div

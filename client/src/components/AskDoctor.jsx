@@ -23,12 +23,12 @@ const AskDoctor = () => {
         >
           <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-primary-green bg-primary-50 border border-primary-100 rounded-full px-4 py-1.5 mb-4">
             <FaQuestionCircle className="text-primary-green" />
-            Enquiry
+            Online Consultation &amp; General Queries
           </span>
-          <h2 className="section-heading">Ask Your Doctor</h2>
+          <h2 className="section-heading">Online Consultation &amp; Ask Your Doctor</h2>
           <div className="section-divider" />
           <p className="section-subheading">
-            Have a question or medical query? Send a message to Dr. Syed for expert guidance.
+            Need an online consultation or have a pediatric query? Submit your details below to consult with Dr. Syed.
           </p>
         </motion.div>
 
