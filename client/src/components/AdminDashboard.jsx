@@ -41,8 +41,9 @@ const AdminDashboard = () => {
   // Selected Detail Modal
   const [selectedRecord, setSelectedRecord] = useState(null);
 
-  // Status Filter for Appointments
+  // Status Filter for Appointments & Type Filter for Queries
   const [statusFilter, setStatusFilter] = useState('All');
+  const [queryTypeFilter, setQueryTypeFilter] = useState('All');
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
@@ -198,13 +199,23 @@ const AdminDashboard = () => {
     }
   };
 
-  // Filter queries based on search
-  const filteredQueries = queries.filter(q => 
-    q.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    q.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    q.subject.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    q.message.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter queries based on search & queryType filter
+  const filteredQueries = queries.filter(q => {
+    const matchesSearch = 
+      q.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      q.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      q.phone?.includes(searchTerm) ||
+      (q.queryType && q.queryType.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      q.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      q.message?.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesType = 
+      queryTypeFilter === 'All' || 
+      (queryTypeFilter === 'Online Consultation' && q.queryType === 'Online Consultation') ||
+      (queryTypeFilter === 'Other Query' && (q.queryType === 'Other Query' || !q.queryType || q.queryType === 'General Query'));
+
+    return matchesSearch && matchesType;
+  });
 
   // Filter appointments based on search & status filter
   const filteredAppointments = appointments.filter(a => {
@@ -304,7 +315,14 @@ const AdminDashboard = () => {
             <motion.div whileHover={{ y: -3 }} className="bg-white border border-neutral-100 shadow-card rounded-2xl p-5 flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Queries</p>
-                <p className="text-2xl font-poppins font-bold text-neutral-900 mt-1">{stats.totalQueries}</p>
+                <div className="flex items-baseline gap-2 mt-1 flex-wrap">
+                  <p className="text-2xl font-poppins font-bold text-neutral-900">{stats.totalQueries}</p>
+                  {queries.some(q => q.queryType === 'Online Consultation') && (
+                    <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+                      {queries.filter(q => q.queryType === 'Online Consultation').length} Online
+                    </span>
+                  )}
+                </div>
               </div>
               <div className="w-12 h-12 bg-primary-50 text-primary-green rounded-xl flex items-center justify-center">
                 <FaQuestionCircle size={18} />
@@ -379,13 +397,29 @@ const AdminDashboard = () => {
                     <select
                       value={statusFilter}
                       onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-                      className="pl-9 pr-4 py-2.5 text-sm font-medium border border-neutral-200 rounded-xl outline-none focus:border-primary-green bg-white transition-all"
+                      className="pl-9 pr-4 py-2.5 text-sm font-medium border border-neutral-200 rounded-xl outline-none focus:border-primary-green bg-white transition-all cursor-pointer"
                     >
                       <option value="All">All Statuses</option>
                       <option value="Pending">Pending</option>
                       <option value="Confirmed">Confirmed</option>
                       <option value="Completed">Completed</option>
                       <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                )}
+
+                {/* Query Type Dropdown Filter */}
+                {activeTab === 'queries' && (
+                  <div className="relative flex items-center gap-2">
+                    <FaFilter className="absolute left-3.5 text-neutral-400 text-xs" />
+                    <select
+                      value={queryTypeFilter}
+                      onChange={(e) => { setQueryTypeFilter(e.target.value); setCurrentPage(1); }}
+                      className="pl-9 pr-4 py-2.5 text-sm font-medium border border-neutral-200 rounded-xl outline-none focus:border-primary-green bg-white transition-all cursor-pointer"
+                    >
+                      <option value="All">All Types</option>
+                      <option value="Online Consultation">🩺 Online Consultations</option>
+                      <option value="Other Query">💬 Other Queries</option>
                     </select>
                   </div>
                 )}
