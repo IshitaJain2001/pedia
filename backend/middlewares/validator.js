@@ -18,6 +18,9 @@ exports.generalQueryValidation = [
   body('childAge')
     .trim()
     .notEmpty().withMessage('Child age is required'),
+  body('queryType')
+    .optional()
+    .trim(),
   body('subject')
     .trim()
     .notEmpty().withMessage('Subject is required')

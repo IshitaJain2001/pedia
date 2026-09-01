@@ -497,6 +497,7 @@ const AdminDashboard = () => {
                       <thead>
                         <tr className="bg-neutral-50/50 border-b border-neutral-100">
                           <th className="p-4 text-xs font-bold text-neutral-400 uppercase tracking-wider pl-6">Name</th>
+                          <th className="p-4 text-xs font-bold text-neutral-400 uppercase tracking-wider">Type</th>
                           <th className="p-4 text-xs font-bold text-neutral-400 uppercase tracking-wider">Contact Info</th>
                           <th className="p-4 text-xs font-bold text-neutral-400 uppercase tracking-wider">Child Age</th>
                           <th className="p-4 text-xs font-bold text-neutral-400 uppercase tracking-wider">Subject</th>
@@ -508,6 +509,15 @@ const AdminDashboard = () => {
                         {currentQueries.map((query) => (
                           <tr key={query._id} className="hover:bg-neutral-50/30 transition-colors">
                             <td className="p-4 pl-6 text-sm font-semibold text-neutral-800">{query.name}</td>
+                            <td className="p-4">
+                              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
+                                query.queryType === 'Online Consultation'
+                                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                  : 'bg-neutral-100 text-neutral-600 border border-neutral-200'
+                              }`}>
+                                {query.queryType === 'Online Consultation' ? '🩺 Online Consultation' : '💬 Other Query'}
+                              </span>
+                            </td>
                             <td className="p-4">
                               <p className="text-sm font-medium text-neutral-800">{query.phone}</p>
                               <p className="text-xs text-neutral-400">{query.email}</p>
@@ -632,6 +642,20 @@ const AdminDashboard = () => {
                       <div>
                         <p className="text-[10px] text-neutral-400 uppercase font-semibold">User Full Name</p>
                         <p className="font-semibold text-neutral-800">{selectedRecord.name}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <FaFileMedical className="text-primary-green mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="text-[10px] text-neutral-400 uppercase font-semibold">Query Type</p>
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold mt-0.5 ${
+                          selectedRecord.queryType === 'Online Consultation'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            : 'bg-neutral-100 text-neutral-600 border border-neutral-200'
+                        }`}>
+                          {selectedRecord.queryType === 'Online Consultation' ? '🩺 Online Consultation' : '💬 Other Query'}
+                        </span>
                       </div>
                     </div>
 

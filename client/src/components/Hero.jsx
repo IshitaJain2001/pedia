@@ -26,6 +26,11 @@ const Hero = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleOnlineConsultationClick = () => {
+    window.dispatchEvent(new CustomEvent('set-query-type', { detail: 'Online Consultation' }));
+    scrollToSection('#ask-doctor');
+  };
+
   return (
     <section
       id="home"
@@ -114,7 +119,7 @@ const Hero = () => {
             <motion.div
               variants={itemVariants}
               className="w-full max-w-2xl mb-6 sm:mb-8 group cursor-pointer"
-              onClick={() => scrollToSection('#ask-doctor')}
+              onClick={handleOnlineConsultationClick}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -143,6 +148,10 @@ const Hero = () => {
                   <div className="flex-shrink-0 w-full sm:w-auto">
                     <button
                       type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleOnlineConsultationClick();
+                      }}
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-400 to-teal-400 text-neutral-900 font-poppins font-bold text-xs sm:text-sm rounded-xl shadow-md group-hover:from-emerald-300 group-hover:to-teal-300 transition-all duration-200"
                     >
                       <span>Book Consultation</span>

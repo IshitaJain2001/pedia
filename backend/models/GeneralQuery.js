@@ -26,6 +26,12 @@ const generalQuerySchema = new mongoose.Schema({
     required: [true, 'Child age is required'],
     trim: true
   },
+  queryType: {
+    type: String,
+    enum: ['Online Consultation', 'Other Query', 'General Query'],
+    default: 'Other Query',
+    trim: true
+  },
   subject: {
     type: String,
     required: [true, 'Subject is required'],

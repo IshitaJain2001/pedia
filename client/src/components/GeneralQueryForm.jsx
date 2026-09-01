@@ -1,9 +1,9 @@
-import { useState, forwardRef } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { FaUser, FaEnvelope, FaPhone, FaBaby, FaPen, FaComment } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaBaby, FaPen, FaComment, FaVideo, FaInfoCircle } from 'react-icons/fa';
 
 /* ── Reusable float input for enquiry form ── */
 const FloatInput = forwardRef(({ label, icon: Icon, error, children, ...rest }, ref) => (
@@ -60,15 +60,50 @@ FloatInput.displayName = 'FloatInput';
 
 const GeneralQueryForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm({
+    defaultValues: {
+      queryType: 'Other Query',
+      name: '',
+      email: '',
+      phone: '',
+      childAge: '',
+      subject: '',
+      message: '',
+    }
+  });
+
+  const selectedQueryType = watch('queryType');
+
+  useEffect(() => {
+    const handleSetType = (e) => {
+      if (e.detail) {
+        setValue('queryType', e.detail);
+      }
+    };
+    window.addEventListener('set-query-type', handleSetType);
+    return () => window.removeEventListener('set-query-type', handleSetType);
+  }, [setValue]);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
       const response = await axios.post('https://pedia-backend-6blx.onrender.com/api/general-query', data);
       if (response.data.success) {
-        toast.success('Your query has been submitted successfully! We will get back to you within 24 hours over the mail id or phone number provided by you.', { duration: 6000 });
-        reset();
+        toast.success(
+          data.queryType === 'Online Consultation'
+            ? 'Your Online Consultation request has been submitted successfully! We will connect with you within 24 hours.'
+            : 'Your query has been submitted successfully! We will get back to you within 24 hours.',
+          { duration: 6000 }
+        );
+        reset({
+          queryType: 'Other Query',
+          name: '',
+          email: '',
+          phone: '',
+          childAge: '',
+          subject: '',
+          message: '',
+        });
       } else {
         toast.error(response.data.message || 'Submission failed. Please try again.');
       }
@@ -82,6 +117,37 @@ const GeneralQueryForm = () => {
   return (
     <div className="card p-6 sm:p-8 shadow-card-lg">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+
+        {/* Query Type / Consultation Type Dropdown */}
+        <FloatInput
+          label="Query Type / Purpose"
+          icon={FaVideo}
+          error={errors.queryType?.message}
+        >
+          <select
+            className={`form-input pl-10 cursor-pointer bg-white ${selectedQueryType === 'Online Consultation' ? '!border-emerald-500 !ring-2 !ring-emerald-100 bg-emerald-50/20' : ''}`}
+            {...register('queryType', {
+              required: 'Please select query type',
+            })}
+          >
+            <option value="Other Query">Other Query / General Enquiry</option>
+            <option value="Online Consultation">Online Consultation</option>
+          </select>
+        </FloatInput>
+
+        {selectedQueryType === 'Online Consultation' && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200/80 rounded-xl text-emerald-800 text-xs font-medium"
+          >
+            <FaInfoCircle className="text-emerald-600 flex-shrink-0" />
+            <span>
+              <strong>Online Consultation selected:</strong> Dr. Syed will connect with you via video call / phone call after reviewing your details.
+            </span>
+          </motion.div>
+        )}
 
         {/* Full Name */}
         <FloatInput
@@ -136,7 +202,7 @@ const GeneralQueryForm = () => {
         <FloatInput
           label="Subject"
           icon={FaPen}
-          placeholder="e.g. Query about vaccinations"
+          placeholder="e.g. Query about vaccinations / Consultation request"
           error={errors.subject?.message}
           {...register('subject', {
             required: 'Subject is required',
